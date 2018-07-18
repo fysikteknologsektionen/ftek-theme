@@ -16,6 +16,9 @@
 get_header(); ?>
 
 	<main role="main">
+		<?php if ( is_active_sidebar( 'home-top' ) ) {
+			dynamic_sidebar( 'home-top' );
+		} ?>
 		<?php if ( is_active_sidebar( 'home' ) ) {
 			dynamic_sidebar( 'home' );
 		} ?>

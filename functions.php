@@ -115,10 +115,23 @@ add_action( 'wp_enqueue_scripts', 'ftek_scripts_styles' );
 
 
 function ftek_widgets_init() {
+
+	// Homepage top widget (one column)
 	register_sidebar( array(
-		'name'          => "Framsida",
+		'name'          => "Homepage top",
+		'id'            => 'home-top',
+		'description'   => "Fullpage widget at top",
+		'before_widget' => '<section id="%1$s" class="widget-top %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+	
+	// Homepage middle widget (multiple columns)
+	register_sidebar( array(
+		'name'          => "Homepage middle",
 		'id'            => 'home',
-		'description'   => "Funktioner på framsidan",
+		'description'   => "Widgets in multiple columns on homepage",
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h1 class="widget-title">',

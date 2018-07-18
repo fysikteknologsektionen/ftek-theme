@@ -1,4 +1,4 @@
-@import url(fonts/latin_modern_roman_17/stylesheet.css);
+@import url('fonts/latin_modern_roman_17/stylesheet.css');
 /*
 Theme Name: ftek new
 Author: Johan Winther
@@ -229,7 +229,7 @@ input[type="search"] {
   border-radius: 0.25em;
   width: 5.5em;
   padding-left: 1.2em;
-  background: url(images/search.png) no-repeat left;
+  background: url('images/search.png') no-repeat left;
   background-size: 1em 1em;
   background-color: rgba(255,255,255,0);
   font-family: Georgia, serif;
@@ -259,7 +259,7 @@ header[role="banner"] li > a[href="#"] {
   text-decoration: none;
 }
 
-header[role="banner"] li > a[href="#"]:after {
+header[role="banner"] li > a:not(:last-child):after {
   content: '';
   border: 0.2em solid transparent;
   border-top: 0.3em solid rgba(0,0,0,0.3);
@@ -269,7 +269,7 @@ header[role="banner"] li > a[href="#"]:after {
   vertical-align: bottom;
 }
 
-ul.sub-menu > li > a[href="#"]:after {
+ul.sub-menu > li > a:not(:last-child):after {
   content: '';
   border: 0.2em solid transparent;
   border-left: 0.3em solid rgba(0,0,0,0.3);
@@ -286,9 +286,10 @@ ul.nav-menu {
 ul.nav-menu > li {
   position: relative;
   margin: auto;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-grow: 2;
 }
+
 
 ul.nav-menu > li > a {
   font-size: 1.5em;
@@ -296,13 +297,15 @@ ul.nav-menu > li > a {
 }
 
 ul.nav-menu > li:first-child {
+  justify-self: flex-start;
   flex-grow: 1;
   margin-top: -1em;
+  margin-right: auto;
 }
 
 ul.nav-menu > li:first-child > a {
   display: inline-block;
-  background-image: url(https://ftek.se/wp-content/themes/fteknew/images/logo.svg);
+  background-image: url('images/logo.svg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -332,11 +335,15 @@ ul > li:focus > ul.sub-menu, ul > li:hover > ul.sub-menu {
 ul.sub-menu > li {
   position: relative;
   text-align: left;
-  padding: 0.5em 0.5em 0.5em 1em;
   border-width: 0px 1px 0px 1px;
   border-style: solid; 
   border-color: rgba(0,0,0,0.1);
   background-color: white;
+}
+
+ul.sub-menu > li > a {
+  display: block;
+  padding: 0.5em 0.5em 0.5em 1em;
 }
 
 ul.sub-menu > li:first-child {
@@ -371,31 +378,6 @@ ul.nav-menu, ul.nav-menu ul {
   list-style-position: outside;
 }
 
-nav.horizontal {
-  margin-top: 0.5em;
-  margin-bottom: 1em;
-}
-
-nav.horizontal .menu-toppmeny-container, nav.horizontal li {
-  display: inline-block;
-}
-
-nav.horizontal li a, nav.horizontal #language-link {
-  font-size: 24px;
-  text-align: center;
-  padding: 0 5px;
-  color: black;
-  text-decoration: none;
-}
-
-nav.horizontal li a:hover, nav.horizontal #language-link:hover {
-  color: black;
-  border-bottom: solid black 1px;
-}
-
-nav.horizontal .current-menu-item a, nav.horizontal .current_page_item a {
-  border-bottom: solid black 1px;
-}
 
 /*
  * END header
@@ -403,35 +385,7 @@ nav.horizontal .current-menu-item a, nav.horizontal .current_page_item a {
 
 /* Layout */
 
-#content {
-  margin-right: 250px;
-  padding-right: 2em;
-}
-
-
-#content.fullpage {
-  margin-right: 0;
-  padding-right: 0;
-  overflow-x: auto;
-}
-
-#content.fullpage .entry-title {
-  display: none;
-}
-
-
-#content.single-page {
-  margin: 0 auto;
-  padding: 0;
-  width: 520px;
-}
-
-
-#sidebar {
-  width: 250px;
-  float: right;
-}
-
+/* Home widgets */
 
 .screen-reader-text {
   display: none;
