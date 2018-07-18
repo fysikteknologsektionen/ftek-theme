@@ -34,7 +34,9 @@
 				<li><a href="<?= wp_registration_url( get_permalink() ); ?>"><?=__( 'Register', 'ftek' ) ?></a></li>
 				<li><a href="<?= wp_login_url( get_permalink() ); ?>"><?=__( 'Login', 'ftek' ) ?></a></li>
 			<?php } else { ?>
+				<li><a href="<?= admin_url( 'profile.php' ); ?>"><?=__( 'Settings', 'ftek' ) ?></a></li>
 				<li><a href="<?= wp_logout_url( get_permalink() ); ?>"><?=__( 'Logout', 'ftek' ) ?></a></li>
+				
 			<?php } ?>
 				<li><?php get_search_form(); ?></li>
 			</ul>

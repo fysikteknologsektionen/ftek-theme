@@ -21,6 +21,9 @@ msgstr "Logga in"
 msgid "Logout"
 msgstr "Logga ut"
 
+msgid "Settings"
+msgstr "Inställningar"
+
 msgid "Register"
 msgid "Registrera"
 

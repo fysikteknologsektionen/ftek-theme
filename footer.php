@@ -10,8 +10,6 @@
  */
 ?>
 
-<div class="push-footer"></div>
-<!-- #page -->
 	<footer id="page-footer">
 		<div id="footer-container">
 	    	<a href="http://chs.chalmers.se"><img id="chs-logo" src="<?php bloginfo('stylesheet_directory'); ?>/images/chalmers.svg" /></a>

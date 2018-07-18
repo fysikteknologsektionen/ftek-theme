@@ -181,10 +181,12 @@ header[role="banner"] {
   width: 100%;
   margin: 0 auto;
   border-bottom: 1px solid rgba(0,0,0,0.1);
-  padding-bottom: 1em;
 }
 
 div.top-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
   font-size: 0.8em;
   font-family: Georgia, serif;
 }
@@ -251,6 +253,22 @@ input[type="search"]:focus {
 
 /* Navigation */
 
+
+header[role="banner"] nav {
+  text-align: center;
+  width: 90%;
+  margin:auto;
+  margin-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+@media 
+  (max-width: 800px) {
+    header[role="banner"] nav {
+      font-size: 0.8em;
+    }
+}
+
 header[role="banner"] nav a {
   color: black;
 }
@@ -264,7 +282,7 @@ header[role="banner"] li > a:not(:last-child):after {
   border: 0.2em solid transparent;
   border-top: 0.3em solid rgba(0,0,0,0.3);
   margin-left: 0.3em;
-  margin-bottom: 0.15em;
+  margin-bottom: 0.05em;
   display: inline-block;
   vertical-align: bottom;
 }
@@ -286,8 +304,11 @@ ul.nav-menu {
 ul.nav-menu > li {
   position: relative;
   margin: auto;
+  padding: 0 1em;
   justify-content: space-around;
-  flex-grow: 2;
+  flex-basis: content;
+  flex-grow: 0;
+  border-right: 1px solid rgba(0,0,0,0.1);
 }
 
 
@@ -296,27 +317,41 @@ ul.nav-menu > li > a {
   font-family: "Latin Modern Roman", Georgia, Times, serif;
 }
 
+ul.nav-menu li.current-page-item > a {
+    text-decoration: underline;
+}
+
+/* Top Logo */
 ul.nav-menu > li:first-child {
-  justify-self: flex-start;
   flex-grow: 1;
-  margin-top: -1em;
   margin-right: auto;
+  border: none;
+}
+
+ul.nav-menu > li:last-child {
+  border: none;
+  margin-right: 2em;
 }
 
 ul.nav-menu > li:first-child > a {
-  display: inline-block;
+  display: block;
   background-image: url('images/logo.svg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  height: 6em;
-  padding-left: 6em;
+  height: 4em;
+  padding-left: 4em;
   overflow: hidden;
   width: 0;
 }
 
 ul.nav-menu > li > ul.sub-menu {
-  border-top: 0.5em solid transparent;
+  border-top: 2.75em solid transparent;
+  
+}
+
+ul.nav-menu > li > ul.sub-menu > li:first-child {
+  border-top: 1px solid #8d0000;
 }
 
 ul > li > ul.sub-menu {
@@ -326,11 +361,13 @@ ul > li > ul.sub-menu {
   margin: 0;
   display: none;
   width: 100%;
+  width: max-content;
 }
 
 ul > li:focus > ul.sub-menu, ul > li:hover > ul.sub-menu {
   display: block;
 }
+
 
 ul.sub-menu > li {
   position: relative;
@@ -343,7 +380,7 @@ ul.sub-menu > li {
 
 ul.sub-menu > li > a {
   display: block;
-  padding: 0.5em 0.5em 0.5em 1em;
+  padding: 0.5em 1em;
 }
 
 ul.sub-menu > li:first-child {
@@ -363,13 +400,6 @@ ul.sub-menu ul.sub-menu {
   top: -1px;
 }
 
-header[role="banner"] nav {
-  text-align: center;
-  margin-bottom: 2em;
-  width: 90%;
-  margin:auto;
-}
-
 
 ul.nav-menu, ul.nav-menu ul {
   margin: 0;
@@ -384,6 +414,10 @@ ul.nav-menu, ul.nav-menu ul {
  */
 
 /* Layout */
+
+main {
+  min-height: 50vh;
+}
 
 /* Home widgets */
 
