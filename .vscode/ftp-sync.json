@@ -1,0 +1,24 @@
+{
+    "remotePath": "/srv/www/wp-content/themes/fteknew/",
+    "host": "ftek.se",
+    "username": "johwin",
+    "password": null,
+    "port": 22,
+    "secure": true,
+    "protocol": "sftp",
+    "uploadOnSave": true,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": "C:\\Users\\johan\\.ssh\\id_rsa",
+    "passphrase": "",
+    "ignore": [
+        "\\.vscode",
+        "\\.git",
+        "\\.DS_Store"
+    ],
+    "generatedFiles": {
+        "uploadOnSave": false,
+        "extensionsToInclude": [],
+        "path": ""
+    }
+}

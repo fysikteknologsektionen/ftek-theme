@@ -1,0 +1,1092 @@
+@import url(fonts/latin_modern_roman_17/stylesheet.css);
+/*
+Theme Name: ftek new
+Author: Johan Winther
+Description: Theme for F-sektionen at Chalmers.
+Version: 2.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/*
+ * BEGIN reset
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  background-color: white;
+}
+
+/*html {
+  overflow-y: scroll;
+}*/
+
+/*
+ * END reset
+ */
+
+/*
+ * BEGIN fonts
+ */
+body {
+  -webkit-text-size-adjust: 100%;
+  font-size: 12pt;
+  font-family: sans-serif;
+}
+
+p {
+  line-height: 1.4em;
+}
+
+a {
+  text-decoration: none;
+  color: #8d0000;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 28pt;
+  font-family: "Latin Modern Roman", Georgia, Times, serif;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 18pt;
+  font-family: "Latin Modern Roman", Georgia, Times, serif;
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 14pt;
+  margin-bottom: 0.3em;
+  margin-top: 0.8em;
+}
+
+h3 {
+  font-size: 13pt;
+  font-style: italic;
+  margin-bottom: 0.3em;
+  margin-top: 0.8em;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
+
+/*
+ * END fonts
+ */
+
+
+ ul {
+  list-style-type: disc;
+  list-style-position: outside;
+  margin-left: 1.5em;
+}
+
+
+ol {
+  list-style-type: decimal;
+  list-style-position: outside;
+  margin-left: 1.5em;
+}
+
+
+ul ul, ol ul {
+  list-style-type: circle;
+  list-style-position: outside;
+  margin-left: 1.5em;
+}
+
+
+ol ol, ul ol {
+  list-style-type: lower-latin;
+  list-style-position: outside;
+  margin-left: 1.5em;
+}
+
+
+a.red-button, button, input[type="button"], input[type="submit"] {
+    color: #ffffff;
+    background: #8d0000;
+    padding: 0.4em 0.6em;
+    text-decoration: none;
+    border: 0;
+}
+
+/* for SNF^TM */
+
+sup {
+  position: relative;
+  top: -0.5em;
+  font-size: 0.7em;
+}
+
+
+/*
+ * BEGIN header
+ */
+
+header[role="banner"] {
+  width: 100%;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 1em;
+}
+
+div.top-bar {
+  font-size: 0.8em;
+  font-family: Georgia, serif;
+}
+
+div.top-bar > ul {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 2em;
+  list-style-type: none;
+  list-style-position: outside;
+}
+
+div.top-bar > ul > li {
+  display: inline-block;
+  margin-right: 1.25em;
+}
+
+a.language-link {
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 1em 1em;
+  padding-left: 1.2em;
+}
+
+a.language-link.lang-en {
+  background-image: url('images/flag-EN.png');
+}
+
+a.language-link.lang-sv {
+  background-image: url('images/flag-SV.png');
+}
+
+
+/* Search */
+
+input[type="search"] {
+  -webkit-appearance: none;
+  outline: none;
+  border: none;
+  border-radius: 0.25em;
+  width: 5.5em;
+  padding-left: 1.2em;
+  background: url(images/search.png) no-repeat left;
+  background-size: 1em 1em;
+  background-color: rgba(255,255,255,0);
+  font-family: Georgia, serif;
+  font-size: inherit;
+  transition: width 0.2s ease, background-color 0.2s ease, margin 0.2s ease, font-size 0.2s ease;
+}
+
+div.top-bar input[type="search"]:focus {
+  width: 20em;
+}
+
+input[type="search"]:focus {
+  width: 100%;
+}
+
+.search-form .search-submit {
+  display: none;
+}
+
+/* Navigation */
+
+header[role="banner"] nav a {
+  color: black;
+}
+
+header[role="banner"] li > a[href="#"] {
+  text-decoration: none;
+}
+
+header[role="banner"] li > a[href="#"]:after {
+  content: '';
+  border: 0.2em solid transparent;
+  border-top: 0.3em solid rgba(0,0,0,0.3);
+  margin-left: 0.3em;
+  margin-bottom: 0.15em;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+ul.sub-menu > li > a[href="#"]:after {
+  content: '';
+  border: 0.2em solid transparent;
+  border-left: 0.3em solid rgba(0,0,0,0.3);
+  margin-left: 0.3em;
+  margin-bottom: 0.3em;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+ul.nav-menu {
+  display: flex;
+}
+
+ul.nav-menu > li {
+  position: relative;
+  margin: auto;
+  justify-content: space-between;
+  flex-grow: 2;
+}
+
+ul.nav-menu > li > a {
+  font-size: 1.5em;
+  font-family: "Latin Modern Roman", Georgia, Times, serif;
+}
+
+ul.nav-menu > li:first-child {
+  flex-grow: 1;
+  margin-top: -1em;
+}
+
+ul.nav-menu > li:first-child > a {
+  display: inline-block;
+  background-image: url(https://ftek.se/wp-content/themes/fteknew/images/logo.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 6em;
+  padding-left: 6em;
+  overflow: hidden;
+  width: 0;
+}
+
+ul.nav-menu > li > ul.sub-menu {
+  border-top: 0.5em solid transparent;
+}
+
+ul > li > ul.sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 0;
+  display: none;
+  width: 100%;
+}
+
+ul > li:focus > ul.sub-menu, ul > li:hover > ul.sub-menu {
+  display: block;
+}
+
+ul.sub-menu > li {
+  position: relative;
+  text-align: left;
+  padding: 0.5em 0.5em 0.5em 1em;
+  border-width: 0px 1px 0px 1px;
+  border-style: solid; 
+  border-color: rgba(0,0,0,0.1);
+  background-color: white;
+}
+
+ul.sub-menu > li:first-child {
+  border-top-width: 1px;
+}
+
+ul.sub-menu > li:last-child {
+  border-bottom-width: 1px;
+}
+
+ul.sub-menu > li:focus, ul.sub-menu > li:hover {
+  background-color: rgb(245,245,245);
+} 
+
+ul.sub-menu ul.sub-menu {
+  left: 100%;
+  top: -1px;
+}
+
+header[role="banner"] nav {
+  text-align: center;
+  margin-bottom: 2em;
+  width: 90%;
+  margin:auto;
+}
+
+
+ul.nav-menu, ul.nav-menu ul {
+  margin: 0;
+  list-style-type: none;
+  margin-left: 0;
+  list-style-position: outside;
+}
+
+nav.horizontal {
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+nav.horizontal .menu-toppmeny-container, nav.horizontal li {
+  display: inline-block;
+}
+
+nav.horizontal li a, nav.horizontal #language-link {
+  font-size: 24px;
+  text-align: center;
+  padding: 0 5px;
+  color: black;
+  text-decoration: none;
+}
+
+nav.horizontal li a:hover, nav.horizontal #language-link:hover {
+  color: black;
+  border-bottom: solid black 1px;
+}
+
+nav.horizontal .current-menu-item a, nav.horizontal .current_page_item a {
+  border-bottom: solid black 1px;
+}
+
+/*
+ * END header
+ */
+
+/* Layout */
+
+#content {
+  margin-right: 250px;
+  padding-right: 2em;
+}
+
+
+#content.fullpage {
+  margin-right: 0;
+  padding-right: 0;
+  overflow-x: auto;
+}
+
+#content.fullpage .entry-title {
+  display: none;
+}
+
+
+#content.single-page {
+  margin: 0 auto;
+  padding: 0;
+  width: 520px;
+}
+
+
+#sidebar {
+  width: 250px;
+  float: right;
+}
+
+
+.screen-reader-text {
+  display: none;
+}
+
+/* Footer */
+
+footer#page-footer {
+  background-color: black;
+  color: #666666;
+  clear: both;
+  margin-top: 2em;
+  min-height: 105px;
+  padding: 40px;
+  min-height: 90px;
+}
+
+footer#page-footer a {
+  color: #999999;
+}
+
+
+#footer-djungle-saying {
+  font-family: "Latin Modern Roman", Georgia, Times, serif;
+  padding-right: 2em;
+  font-size: 2em;
+  margin-right: 300px;
+}
+
+
+#colophon {
+  margin-top: 1em;
+  font-size: 0.8em;
+}
+
+
+#chs-logo {
+  float: right;
+  width: 300px;
+  margin-right: 2em;
+}
+
+/* push footer */
+
+.push-footer {
+  height: 200px;
+  clear: both;
+}
+
+/* Search form */
+
+.widget.widget_search {
+  margin-bottom: 20px;
+}
+
+
+
+
+/* Search page */
+
+.search-page #search-form-wide {
+  width: 100%;
+}
+
+.search-page .search-field {
+  width: 100%;
+}
+
+/* Archive stuff */
+
+.archive-title {
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+/* Article stuff */
+
+article {
+    margin-bottom: 4em;
+}
+
+article .entry-thumbnail img {
+  width: 100%;
+  height: auto;
+}
+
+article .entry-title {
+  margin: 0.3em 0;
+}
+
+article .entry-title a {
+  color: black;
+  text-decoration: none;
+}
+
+article h1:first-of-type {
+  margin-top: 0.2em;
+}
+
+article h1 {
+  margin-top: 1em;
+}
+
+article h1 .edit-link {
+  display: none;
+  font-size: 13pt;
+}
+
+article h1 .edit-link a {
+  color: #8d0000;
+}
+
+article h1 .edit-link a:hover {
+  text-decoration: underline;
+}
+
+article .event-time {
+  display: inline-block;
+}
+
+article p {
+  margin-bottom: 0.5em;
+}
+
+article .entry-content img {
+  max-width: 100%;
+}
+
+article .entry-meta {
+  font-size: 1em;
+}
+
+article .category-info {
+  display: inline-block;
+}
+
+article footer {
+  margin-top: 1em;
+  font-style: italic;
+  text-align: right;
+}
+
+article .event-info {
+  margin: 0.5em 0;
+  font-size: 1.2em;
+  font-style: italic;
+}
+
+article .connected-events {
+  list-style-type: none;
+  font-style: italic;
+}
+
+article .related-news {
+  font-style: normal;
+  text-align: left;
+}
+
+article .related-news li {
+  margin-top: 0.1em;
+}
+
+
+.nav-links {
+  font-size: 1.5em;
+}
+
+
+.nav-previous {
+  display: inline;
+}
+
+
+.nav-next {
+  display: inline;
+}
+
+/* Member stuff */
+
+.member {
+  clear: both;
+  margin-top: 2em;
+}
+
+.member img {
+  float: left;
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+
+.member .member-info {
+  margin-left: 95px;
+}
+
+.member .member-name {
+  font-size: 1.5em;
+}
+
+.member .member-meta {
+  margin-top: 0.5em;
+}
+
+.member .member-meta a {
+  color: #666666;
+}
+
+.member .member-position {
+  font-size: 1.3em;
+  font-style: italic;
+}
+
+.member .member-bio {
+  margin-top: 0.5em;
+}
+
+/* Event page */
+
+.single-event .googlemap {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.single-event .related-news ul {
+  font-size: 1.2em;
+}
+
+.single-event .add-calendar {
+  float: right;
+  margin-bottom: 1em;
+}
+
+.single-event footer {
+  margin-top: 1em;
+}
+
+/* Course table */
+
+#course-table,
+.tablepress {
+  width: 100%;
+}
+
+#course-table thead th,
+.tablepress thead th {
+  border-bottom: 1px solid black;
+  background-color: white;
+  position: relative;
+}
+
+#course-table thead th.sorting:hover, #course-table thead th.sorting_asc, #course-table thead th.sorting_desc,
+.tablepress thead th.sorting:hover,
+.tablepress thead th.sorting_asc,
+.tablepress thead th.sorting_desc {
+  background-color: #e6e6e6;
+  /* The following is for sorting arrows */
+}
+
+#course-table thead th.sorting:hover:after, #course-table thead th.sorting_asc:after, #course-table thead th.sorting_desc:after,
+.tablepress thead th.sorting:hover:after,
+.tablepress thead th.sorting_asc:after,
+.tablepress thead th.sorting_desc:after {
+  position: absolute;
+  right: 5px;
+  top: 11px;
+  font-size: 8pt;
+}
+
+#course-table thead th.sorting:hover:after, #course-table thead th.sorting_asc:after,
+.tablepress thead th.sorting:hover:after,
+.tablepress thead th.sorting_asc:after {
+  content: "\25B2";
+}
+
+#course-table thead th.sorting_desc:after,
+.tablepress thead th.sorting_desc:after {
+  content: "\25BC";
+}
+
+
+#course-table tbody {
+  border-bottom: 1px solid black;
+}
+
+#course-table ul {
+  margin: 0;
+  list-style-type: none;
+  margin-left: 0;
+  list-style-position: outside;
+}
+
+#course-table li:last-of-type {
+  margin: 0;
+}
+
+
+#course-table_wrapper {
+  min-height: 450px;
+}
+
+/* Widgets */
+
+.widget {
+  margin-bottom: 40px;
+}
+
+.widget .widget-title {
+  font-size: 24pt;
+  margin-bottom: 10px;
+}
+
+.widget ul {
+  list-style-type: none;
+  margin-left: 0;
+  list-style-position: outside;
+}
+
+/* Events widget */
+
+.eo-events .event-title {
+  display: block;
+}
+
+.eo-events li {
+  margin: 0.5em 0;
+}
+
+.eo-events time.relative-time {
+  font-style: italic;
+  color: #666666;
+}
+
+/* Course widget */
+
+.ftek_course_widget ul {
+  list-style-type: disc;
+  list-style-position: outside;
+  margin-left: 1.5em;
+}
+
+.ftek_course_widget .more-courses-link {
+  display: block;
+  margin-top: 1em;
+}
+
+/* Lunch widget */
+
+.chalmers_lunch_widget .meal-title {
+  font-weight: bold;
+}
+
+.chalmers_lunch_widget li.meal {
+  margin-bottom: 8px;
+}
+
+.chalmers_lunch_widget li.meal ul {
+  list-style-type: disc;
+  list-style-position: outside;
+  margin-left: 1.5em;
+}
+
+/* Calendar widget */
+
+#wp-calendar {
+  width: 220px;
+  margin-top: 1em;
+}
+
+#wp-calendar caption {
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#wp-calendar td, #wp-calendar th {
+  text-align: center;
+}
+
+#wp-calendar td {
+  line-height: 100%;
+}
+
+#wp-calendar tbody td a {
+  display: inline-block;
+  width: 100%;
+  line-height: 100%;
+  text-decoration: underline;
+}
+
+#wp-calendar .today {
+  background-color: #e6e6e6;
+}
+
+#wp-calendar tr {
+  height: 1.5em;
+}
+
+#wp-calendar thead, #wp-calendar tbody {
+  border-bottom: 1px solid black;
+}
+
+/* Calendar Subscribe widget */
+
+.cal-subscription-list, .news-subscription-list {
+  list-style-type: none;
+  margin-left: 0;
+  list-style-position: outside;
+}
+
+.cal-subscription-list li, .news-subscription-list li {
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+/* Calendar */
+
+.eo-fullcalendar {
+  margin-bottom: 1em;
+}
+
+
+.fc-event {
+  padding: 5px;
+}
+
+/* Committee page */
+
+#content.committee-page .entry-thumbnail img {
+  max-width: 100%;
+}
+
+#content.committee-page .entry-title {
+  display: none;
+}
+
+#content.committee-page nav ul {
+  font-family: "Latin Modern Roman", Georgia, Times, serif;
+  list-style-type: none;
+  margin-left: 0;
+  list-style-position: outside;
+}
+
+#content.committee-page nav li {
+  display: inline-block;
+}
+
+/* Sektionsmenyn */
+
+.sektionen-page h1 {
+  text-align: center;
+  clear: both;
+  width: 500px;
+  padding-top: 20px;
+}
+
+.sektionen-page p {
+  margin-left: 500px;
+  padding-left: 1em;
+}
+
+.sektionen-page .menu-container {
+  font-family: "Latin Modern Roman", Georgia, Times, serif;
+  font-size: 17pt;
+  float: left;
+  width: 500px;
+}
+
+.sektionen-page .menu {
+  margin-top: 0;
+  list-style-type: none;
+  margin-left: 0;
+  list-style-position: outside;
+}
+
+.sektionen-page #menu-sektion {
+  text-align: center;
+}
+
+.sektionen-page .description-menu .menu-item {
+  clear: both;
+  margin-bottom: 0.1em;
+}
+
+.sektionen-page .description-menu .menu-item a {
+  padding-left: 0.25em;
+}
+
+.sektionen-page .description-menu .menu-item a:before {
+  content: attr(title);
+  padding-right: 0.25em;
+  text-align: right;
+  min-width: 50%;
+  float: left;
+  color: black;
+}
+
+/* Course pages */
+
+.course-page .entry-title {
+  margin-bottom: 0.3em;
+}
+
+.course-page .entry-header {
+  margin-bottom: 2em;
+}
+
+.course-page .course-meta {
+  float: right;
+  width: 200px;
+  margin-left: 30px;
+}
+
+.course-page .course-meta ul {
+  list-style-type: none;
+  margin-left: 0;
+  list-style-position: outside;
+  font-size: 15pt;
+}
+
+.course-page .course-meta div {
+  margin-bottom: 1em;
+}
+
+.course-page .course-time {
+  font-family: "Latin Modern Roman", Georgia, Times, serif;
+  font-size: 18pt;
+}
+
+.course-page .course-representatives-title {
+  font-family: "Latin Modern Roman", Georgia, Times, serif;
+  font-size: 18pt;
+}
+
+/* Documents */
+
+.ftek-documents ul {
+  list-style-type: none;
+}
+
+.ftek-documents a:visited {
+  color: #666666;
+}
+
+/* Contact */
+
+#address {
+  float: right;
+  width: 200px;
+}
+
+/* 404 */
+
+#not-found {
+  text-align: center;
+  margin: 100px 0;
+}
+
+#not-found h1 {
+  font-size: 10em;
+}
+
+
+.not-found-page .search-form {
+  text-align: center;
+}
+
+.not-found-page .search-field {
+  width: 200px;
+}
+
+/* Editor */
+
+#tinymce {
+  margin: 0.5em 1em;
+}
+
+
+.alignright {
+  float: right;
+}
+
+
+.alignleft {
+  float: left;
+}
+
+/* Media queries - Responsive design */
+@media screen and (min-width: 820px) {
+  
+  #page, #footer-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 740px;
+  }
+}
+@media screen and (max-width: 820px) {
+  
+  header[role="banner"] {
+    width: auto;
+    position: relative;
+  }
+  
+  header[role="banner"] .header-text {
+    padding-top: 90px;
+  }
+  
+  header[role="banner"] img {
+    position: absolute;
+    left: 50%;
+  }
+  
+  header[role="banner"] #logo {
+    margin-left: -100px;
+  }
+
+  
+  .sektionen-page h1 {
+    width: 100%;
+  }
+  
+  .sektionen-page p {
+    display: none;
+  }
+  
+  .sektionen-page .menu-container {
+    width: 100%;
+  }
+  
+  .sektionen-page #menu-sektion {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  
+  #page, #page-footer {
+    width: 520px;
+  }
+
+  
+  #chs-logo {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+  }
+
+  
+  #footer-djungle-saying {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  
+  #page-footer {
+    text-align: center;
+  }
+}

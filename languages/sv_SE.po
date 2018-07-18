@@ -1,0 +1,235 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ftek 1.0\n"
+"POT-Creation-Date: 2014-03-03 13:58+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Johan Winther <johan.winther@outlook.com>\n"
+"Language-Team: \n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+msgid "Login"
+msgstr "Logga in"
+
+msgid "Logout"
+msgstr "Logga ut"
+
+msgid "Register"
+msgid "Registrera"
+
+msgid "Byt till svenska"
+msgstr "Switch to English"
+
+#: ../category.php:18
+#, php-format
+msgid "%s News"
+msgstr "%s Nyheter"
+
+#: ../comments.php:44
+msgid "Comment navigation"
+msgstr "Kommentarnavigering"
+
+#: ../comments.php:45
+msgid "&larr; Older Comments"
+msgstr "&larr; Äldre kommentarer"
+
+#: ../comments.php:46
+msgid "Newer Comments &rarr;"
+msgstr "Nyare kommentarer &rarr;"
+
+#: ../comments.php:51
+msgid "Comments are closed."
+msgstr "Kommentarer är avstängda."
+
+#: ../content-ftek_course_page.php:49
+msgid "Links"
+msgstr "Länkar"
+
+#: ../content-ftek_course_page.php:58
+msgid "Course representatives"
+msgstr "Kursutvärderare"
+
+#: ../content-ftek_course_page.php:65
+msgid "Disclaimer"
+msgstr "Förbehåll"
+
+#: ../content-ftek_course_page.php:67
+msgid ""
+"The information on this page is not official and is to be taken with a "
+"healthy grain of salt."
+msgstr ""
+"Informationen på den här sidan är inte officiell och ska tas med en hälsosam "
+"nypa salt."
+
+#: ../content-ftek_course_page.php:72 ../content-page.php:29 ../content.php:66
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Läs vidare <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../content-ftek_course_page.php:73 ../content-page.php:30 ../content.php:67
+#: ../image.php:69
+msgid "Pages:"
+msgstr "Sidor:"
+
+#: ../content-page.php:18 ../content.php:22 ../image.php:43
+msgid "Edit"
+msgstr "Redigera"
+
+#: ../functions.php:75
+msgid "Top Menu"
+msgstr "Toppmeny"
+
+#: ../functions.php:147
+msgid "Posts navigation"
+msgstr "Inläggsnavigering"
+
+#: ../functions.php:151
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Äldre inlägg"
+
+#: ../functions.php:155
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Nyare inlägg <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../functions.php:183
+msgid "Post navigation"
+msgstr "Inläggsnavigering"
+
+#: ../functions.php:205
+msgid "Sticky"
+msgstr "Klistrad"
+
+#: ../functions.php:212
+#, php-format
+msgid "Written %1$s by %2$s."
+msgstr "Skrivet %1$s av %2$s."
+
+#: ../functions.php:216
+msgid "More news from"
+msgstr "Mer nyheter från"
+
+#: ../functions.php:219
+msgid ", "
+msgstr ", "
+
+#: ../functions/admin_UI.php:19
+msgid "Welcome to the ftek admin!"
+msgstr "Välkommen till fteks admin-sidor!"
+
+#: ../functions/admin_UI.php:24
+msgid "Guidelines – read before posting!"
+msgstr "Riktlinjer – läs innan du skriver!"
+
+#: ../functions/admin_UI.php:29
+msgid "How to write a news item"
+msgstr "Att skriva en nyhet"
+
+#: ../functions/admin_UI.php:34
+msgid "How to create an event"
+msgstr "Att skapa ett evenemang"
+
+#: ../functions/admin_UI.php:39
+msgid "How to edit your club's page"
+msgstr "Att redigera din förenings sida"
+
+#: ../functions/admin_UI.php:44
+msgid "How to add a subpage to your club's page"
+msgstr "Att lägga till en undersida till din förenings sida"
+
+#: ../functions/admin_UI.php:49
+msgid "How to edit course pages"
+msgstr "Att redigera kurssidor"
+
+#: ../functions/admin_UI.php:55
+msgid "How to edit the menus"
+msgstr "Att redigera menyerna"
+
+#: ../functions/admin_UI.php:61
+msgid "How to edit widgets"
+msgstr "Att redigera widgets"
+
+#: ../functions/admin_UI.php:67
+msgid "How to change users roles"
+msgstr "Att ändra användarroller"
+
+#: ../functions/menus.php:15
+msgid "News"
+msgstr "Nyheter"
+
+#: ../functions/shortcodes.php:75 ../functions/shortcodes.php:97
+msgid "All"
+msgstr "Alla"
+
+#: ../image.php:21
+#, php-format
+msgid ""
+"<span class=\"attachment-meta\">Published on <time class=\"entry-date\" "
+"datetime=\"%1$s\">%2$s</time> in <a href=\"%3$s\" title=\"Return to %4$s\" "
+"rel=\"gallery\">%5$s</a></span>"
+msgstr ""
+"<span class=\"attachment-meta\">Publicerad <time class=\"entry-date\" "
+"datetime=\"%1$s\">%2$s</time> i <a href=\"%3$s\" title=\"Återvänd till %4$s"
+"\" rel=\"gallery\">%5$s</a></span>"
+
+#: ../image.php:38
+msgid "Full resolution"
+msgstr "Full upplösning"
+
+#: ../image.php:50
+msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr "<span class=\"meta-nav\">&larr;</span> Föregående"
+
+#: ../image.php:51
+msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Nästa <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../inc/back-compat.php:37 ../inc/back-compat.php:49
+#: ../inc/back-compat.php:64
+#, php-format
+msgid ""
+"ftek theme requires at least WordPress version 3.6. You are running version "
+"%s. Please upgrade and try again."
+msgstr ""
+"ftek-temat kräver minst WordPress version 3.6. Du har version %s. Uppgradera "
+"och försök igen."
+
+#: ../single-event.php:57
+msgid "Related news"
+msgstr "Relaterade nyheter"
+
+#: ../taxonomy-post_format.php:22
+#, php-format
+msgid "%s Archives"
+msgstr "%s Arkiv"
+
+#: ../widget-event-list.php:50
+msgid "More events &#8594;"
+msgstr "Fler evenemang &#8594;"
+
+#: ../widget-event-list.php:52
+msgid "Subscribe"
+msgstr "Prenumerera"
+
+#~ msgid "Course website"
+#~ msgstr "Kurshemsida"
+
+#~ msgid "Lunch Widget"
+#~ msgstr "Lunch-widget"
+
+#~ msgid "Today's lunch"
+#~ msgstr "Dagens lunch"
+
+#~ msgid "No lunch today"
+#~ msgstr "Ingen lunch idag"
+
+#~ msgid "Link to full-size image"
+#~ msgstr "Länk till fullstor bild"
+
+#~ msgid "Sektionsmeny"
+#~ msgstr "Sektionsmeny"
