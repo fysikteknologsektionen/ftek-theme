@@ -9,13 +9,13 @@
 get_header(); ?>
 
 
-	<section id="content" class="course-page single-page">
+	<main role="main" class="course-page single-page">
 
 		<?php /* The loop */ ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 			<?php get_template_part( 'content', 'ftek_course_page' ); ?>
 		<?php endwhile; ?>
 
-    </section>
+    </main>
 
 <?php get_footer(); ?>

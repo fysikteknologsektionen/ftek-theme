@@ -193,6 +193,41 @@ div.top-bar > ul {
   list-style-position: outside;
 }
 
+@media
+  (min-width: 546px) and (max-width: 768px) {
+    div.top-bar > ul {
+      margin: 0.3em;
+    }
+}
+
+@media
+  (max-width: 546px) {
+    div.top-bar {
+      width: 100%;
+      left: 0;
+      right: none;
+      font-size: 1.2em;
+      display: none;
+    }
+    div.top-bar > ul {
+      display: flex;
+      position: relative;
+      left: 0;
+    }
+
+    div.top-bar > ul > li {
+      flex-grow: 1;
+      margin: auto;
+    }
+
+    div.top-bar > ul > li {
+      flex-grow: 1;
+      margin: auto;
+    }
+
+}
+
+
 div.top-bar > ul > li {
   display: inline-block;
   margin-right: 1.25em;
@@ -213,6 +248,45 @@ a.language-link.lang-sv {
   background-image: url('images/flag-SV.png');
 }
 
+@media
+  (max-width: 546px) {
+    a.language-link {
+      display: block;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      height: 2em;
+      padding-left: 2em;
+      overflow: hidden;
+      width: 0;
+    }
+
+    a.logout-link {
+      display: block;
+      background-image: url(images/logout.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      height: 2em;
+      padding-left: 2em;
+      overflow: hidden;
+      width: 0;
+    }
+
+    a.settings-link {
+      display: block;
+      background-image: url(images/gear.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      height: 2em;
+      padding-left: 2em;
+      overflow: hidden;
+      width: 0;
+    }
+}
+
+
 
 /* Search */
 
@@ -230,7 +304,7 @@ input[type="search"] {
   transition: all 0.2s ease;
 }
 
-div.top-bar input[type="search"]:focus {
+div.top-bar input[type="search"]:focus, div.top-bar input[type="search"]:hover {
   width: 20em;
 }
 
@@ -319,8 +393,17 @@ ul.nav-menu > li:first-child {
 
 ul.nav-menu > li:last-child {
   border: none;
-  margin-right: 2em;
+  margin-right: 4em;
 }
+
+@media
+  (min-width: 0px) and (max-width: 768px) {
+  ul.nav-menu > li:last-child {
+      margin-right: auto;
+  }
+}
+
+
 
 ul.nav-menu > li:first-child > a {
   display: block;
@@ -334,27 +417,160 @@ ul.nav-menu > li:first-child > a {
   width: 0;
 }
 
+@media
+  (min-width: 546px) and (max-width: 768px) {
+    ul.nav-menu {
+      flex-wrap: wrap;
+    }
+
+    ul.nav-menu > li {
+      flex: 1 0;
+      margin: 1em 0em;
+    }
+
+    ul.nav-menu > li:first-child {
+      flex: 0 1 100%;
+      margin: 2em 0 0 0;
+      border: none;
+    }
+
+    ul.nav-menu > li:first-child > a {
+      margin: auto;
+    }
+}
+
+@media
+  (max-width: 546px) {
+    
+    ul.nav-menu {
+      display: block;
+      text-align: left;
+    }
+
+    ul.nav-menu > li {
+      margin: 1em 0em;
+      padding: 0;
+      border: 0;
+    }
+
+    ul.nav-menu > li:first-child {
+      margin: 2em 0 0 0;
+      border: none;
+    }
+
+    ul.nav-menu > li:first-child:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 2em;
+      height: 100%;
+      background-image: url(images/burger-menu.svg);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    ul.nav-menu > li:first-child > a {
+      margin: auto;
+    }
+
+    ul.nav-menu > li:not(:first-child) {
+      display: none;
+    }
+
+    ul.nav-menu:focus > li:not(:first-child), ul.nav-menu:hover > li:not(:first-child) {
+      display: block;
+    }
+}
+
 ul.nav-menu > li > ul.sub-menu {
   border-top: 2.75em solid transparent;
 }
 
+@media
+  (min-width: 546px) and (max-width: 768px) {
+
+    ul.nav-menu > li > ul.sub-menu {
+      border-top: 1.55em solid transparent;
+    }
+
+}
+
+@media
+  (max-width: 546px) {
+
+    ul.nav-menu > li > ul.sub-menu {
+      border: 0;
+      margin-top: 0.5em;
+    }
+
+}
 
 ul.nav-menu > li > ul.sub-menu > li:first-child {
-  border-top: 1px solid #8d0000;
+  transition: all 0.2s ease;
+  border-top: 1px solid rgba(141, 0, 0, 0);
 }
+
+ul.nav-menu > li:focus > ul.sub-menu > li:first-child, ul.nav-menu > li:hover > ul.sub-menu > li:first-child {
+  border-top: 2px solid rgba(141, 0, 0, 1);
+}
+
+@media
+  (max-width: 546px) {
+    ul.nav-menu > li:focus > ul.sub-menu > li:first-child, ul.nav-menu > li:hover > ul.sub-menu > li:first-child {
+      border: 0;
+    }
+}
+
 
 ul > li > ul.sub-menu {
   position: absolute;
   top: 100%;
   left: 0;
   margin: 0;
-  display: none;
   width: 100%;
   width: max-content;
+  transition: all 0.1s ease 0.1s;
+  transform-origin: 0 2.75em;
+  transform: scaleY(0);
+  opacity: 0;
+  z-index: 1000;
 }
 
+@media
+  (min-width: 546px) and (max-width: 768px) {
+
+  ul > li > ul.sub-menu {
+    transform-origin: 0 1.55em;
+  }
+}
+
+@media
+  (max-width: 546px) {
+
+  ul > li > ul.sub-menu {
+    display: none;
+    transform: none;
+    position: relative;
+    padding-left: 2em;
+    width: 100%;
+  }
+}
+
+
 ul > li:focus > ul.sub-menu, ul > li:hover > ul.sub-menu {
-  display: block;
+  opacity: 1;
+  transform: scaleY(1);
+  transition: all 0.2s ease 0s;
+}
+
+@media
+  (max-width: 546px) {
+
+  ul > li:focus > ul.sub-menu, ul > li:hover > ul.sub-menu {
+    display: block;
+  }
 }
 
 
@@ -366,6 +582,14 @@ ul.sub-menu > li {
   border-color: rgba(0,0,0,0.1);
   background-color: white;
 }
+
+@media
+  (max-width: 546px) {
+    ul.sub-menu > li {
+      border: 0;
+    }
+}
+
 
 ul.sub-menu > li > a {
   display: block;
@@ -381,9 +605,16 @@ ul.sub-menu > li > a {
 }
 
 @media 
-  (max-width: 800px) {
+  (min-width: 546px) and (max-width: 800px) {
     ul.sub-menu > li > a {
       padding: 1em 1.2em;
+    }
+}
+
+@media 
+  (max-width: 546px) {
+    ul.sub-menu > li > a {
+      padding: 0.75em 0;
     }
 }
 
@@ -391,17 +622,50 @@ ul.sub-menu > li:first-child {
   border-top-width: 1px;
 }
 
+@media
+  (max-width: 546px) {
+    ul.sub-menu > li:first-child {
+      border: 0;
+    }
+}
+
+
 ul.sub-menu > li:last-child {
   border-bottom-width: 1px;
 }
 
 ul.sub-menu > li:focus, ul.sub-menu > li:hover {
   background-color: rgb(245,245,245);
-} 
+}
+
+@media
+  (max-width: 546px) {
+    ul.sub-menu > li:focus, ul.sub-menu > li:hover {
+      background-color: transparent;
+    }
+}
 
 ul.sub-menu ul.sub-menu {
   left: 100%;
   top: -1px;
+  transform: scaleX(0) scaleY(0);
+  transform-origin: 0 0;
+}
+
+@media
+  (max-width: 546px) {
+    ul.sub-menu ul.sub-menu {
+      left: 0;
+      top: 0;
+      transform: none;
+      display: block;
+      opacity: 1;
+    }
+}
+
+
+ul.nav-menu > li > ul.sub-menu > li:focus > ul.sub-menu, ul.nav-menu > li > ul.sub-menu > li:hover > ul.sub-menu {
+  transform: scaleX(1) scaleY(1);
 }
 
 
@@ -432,7 +696,7 @@ main p {
   font-size: 1em;
 }
 
-@media (min-width: 641px) and (max-width: 1024px) {
+@media (min-width: 546px) and (max-width: 1024px) {
   main {
     width: 90%;
   }
@@ -442,7 +706,7 @@ main p {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 546px) {
   main {
     width: 95%;
   }
@@ -1036,78 +1300,4 @@ article .related-news li {
 
 .alignleft {
   float: left;
-}
-
-/* Media queries - Responsive design */
-@media screen and (min-width: 820px) {
-  
-  #page, #footer-container {
-    margin-left: auto;
-    margin-right: auto;
-    width: 740px;
-  }
-}
-@media screen and (max-width: 820px) {
-  
-  header[role="banner"] {
-    width: auto;
-    position: relative;
-  }
-  
-  header[role="banner"] .header-text {
-    padding-top: 90px;
-  }
-  
-  header[role="banner"] img {
-    position: absolute;
-    left: 50%;
-  }
-  
-  header[role="banner"] #logo {
-    margin-left: -100px;
-  }
-
-  
-  .sektionen-page h1 {
-    width: 100%;
-  }
-  
-  .sektionen-page p {
-    display: none;
-  }
-  
-  .sektionen-page .menu-container {
-    width: 100%;
-  }
-  
-  .sektionen-page #menu-sektion {
-    text-align: center;
-  }
-}
-@media screen and (max-width: 600px) {
-  
-  #page, #page-footer {
-    width: 520px;
-  }
-
-  
-  #chs-logo {
-    float: none;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2em;
-  }
-
-  
-  #footer-djungle-saying {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-  }
-
-  
-  #page-footer {
-    text-align: center;
-  }
 }

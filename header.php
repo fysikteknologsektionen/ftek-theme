@@ -31,11 +31,11 @@
 			?>
 				<li><a href="<?= $new_url ?>" title="<?=__( 'Byt till svenska', 'ftek' ) ?>" class="language-link <?= $lang_class?>"><?= $new_lang?></a></li>
 			<?php if (!is_user_logged_in()) { ?>
-				<li><a href="<?= wp_registration_url( get_permalink() ); ?>"><?=__( 'Register', 'ftek' ) ?></a></li>
-				<li><a href="<?= wp_login_url( get_permalink() ); ?>"><?=__( 'Login', 'ftek' ) ?></a></li>
+				<li><a href="<?= wp_registration_url( get_permalink() ); ?>" class ="register-link"><?=__( 'Register', 'ftek' ) ?></a></li>
+				<li><a href="<?= wp_login_url( get_permalink() ); ?>" class ="login-link"><?=__( 'Login', 'ftek' ) ?></a></li>
 			<?php } else { ?>
-				<li><a href="<?= admin_url( 'profile.php' ); ?>"><?=__( 'Settings', 'ftek' ) ?></a></li>
-				<li><a href="<?= wp_logout_url( get_permalink() ); ?>"><?=__( 'Logout', 'ftek' ) ?></a></li>
+				<li><a href="<?= admin_url( 'profile.php' ); ?>" class="settings-link"><?=__( 'Settings', 'ftek' ) ?></a></li>
+				<li><a href="<?= wp_logout_url( get_permalink() ); ?>" class="logout-link"><?=__( 'Logout', 'ftek' ) ?></a></li>
 				
 			<?php } ?>
 				<li><?php get_search_form(); ?></li>
