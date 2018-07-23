@@ -30,6 +30,30 @@ msgid "Registrera"
 msgid "Byt till svenska"
 msgstr "Switch to English"
 
+msgid "Org. no"
+msgstr "Org. nr"
+
+msgid "Visitor address"
+msgstr "Besöksadress"
+
+msgid "Mailing address"
+msgstr "Postadress"
+
+msgid "Development"
+msgstr "Utveckling
+
+msgid "Development and design"
+msgstr "Design och utveckling"
+
+msgid "Maintenance and development"
+msgstr "Underhåll och utveckling"
+
+msgid "A Student Division of"
+msgstr "En del av"
+
+msgid "Looking for someone?"
+msgstr "Letar du efter någon?"
+
 #: ../category.php:18
 #, php-format
 msgid "%s News"
