@@ -3,7 +3,7 @@
  * The default template for displaying content. Used for both single and index/archive/search.
  *
  * @package ftek
- * @since ftek 0.1
+ * @since ftek 2.0
  */
 ?>
 
@@ -19,17 +19,16 @@
             $infos = array(course_code(),
                            course_credit(),
                            course_pretty_classes(),
-                           'LP '.course_pretty_study_periods());
-            
+                           'LP ' . course_pretty_study_periods());
             echo join( " | ", array_filter($infos) ); ?>
         </div>
-	</header><!-- .entry-header -->
+	</header>
 	
 
 	<?php if ( is_search() ) : // Only display Excerpts for Search ?>
 	<div class="entry-summary">
 		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
+	</div>
 	<?php else : ?>
     <div class="course-meta">
         <?php
@@ -65,12 +64,12 @@
             <?= $vbl ?>
         </div>
         <?php endif; ?>
-	</div><!-- .entry-content -->
+	</div>
         
 	<?php endif; ?>
 	<?php if (get_post_type( $post ) == 'post'): ?>
 		<footer class="entry-meta">
 			<?php ftek_entry_meta(); ?>
-		</footer><!-- .entry-meta -->
+		</footer>
 	<?php endif; ?>
-</article><!-- #post -->
+</article>

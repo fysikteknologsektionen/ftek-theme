@@ -7,12 +7,12 @@
  * 'pages' on your WordPress site will use a different template.
  *
  * @package ftek
- * @since ftek 0.1
+ * @since ftek 2.0
  */
 
 
 get_header(); ?>
-	<main role="main" class="page">
+	<main role="main">
 		<?php if ( have_posts() ) : ?>
 
 			<?php /* The loop */ ?>

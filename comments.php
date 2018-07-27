@@ -5,7 +5,7 @@
  * The area of the page that contains comments and the comment form.
  *
  * @package ftek
- * @since ftek 0.1
+ * @since ftek 2.0
  */
 
 /*

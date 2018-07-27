@@ -109,6 +109,7 @@ function ftek_scripts_styles() {
 	wp_enqueue_script( 'ftek-hyphenator', get_template_directory_uri() . '/js/hyphenator.js', false, '2014-02-22', true);
 
 	wp_enqueue_style( 'ftek-style', get_stylesheet_uri(), array(), null, 'screen');
+	wp_enqueue_style( 'ftek-style-print', get_stylesheet_directory_uri(), array(), null, 'print');
 
 }
 add_action( 'wp_enqueue_scripts', 'ftek_scripts_styles' );
@@ -382,7 +383,7 @@ function ftek_event_info() {
 	$result = ftek_event_date();
 	$venue = eo_get_venue_name();
 	if ($venue != '') {
-		$result .= ' @ '. $venue;
+		$result .= ' @ <a href="/evenemang/plats/'. eo_get_venue_slug() .'" title="Evenemang på '. $venue .'">'. $venue . '</a>';
 	}
 	return $result;
 }

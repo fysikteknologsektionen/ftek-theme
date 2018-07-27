@@ -10,21 +10,22 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package ftek
- * @since ftek 0.1
+ * @since ftek 2.0
  */
 
 get_header(); ?>
 
-<?php get_sidebar(); ?>
-	<section id="content">
-		<?php if ( have_posts() ) : ?>
-			<?php /* The loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', get_post_format() ); ?>
-			<?php endwhile; ?>
-			<?php ftek_paging_nav(); ?>
-		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
-		<?php endif; ?>
-	</section><!-- #content -->
+	<main role="main">
+		<?php if ( is_active_sidebar( 'home-top' ) ) {
+			dynamic_sidebar( 'home-top' );
+		} ?>
+		<?php if ( is_active_sidebar( 'home' ) ) {
+			dynamic_sidebar( 'home' );
+		} ?>
+
+		<h1>Välkommen till <?= bloginfo('name') ?>!</h1>
+		<p>Vår hemsida är under konstruktion, men alla sidor som finns i navigeringsmenyn borde fungera som de ska.</p>
+
+	</main>
+	
 <?php get_footer(); ?>

@@ -1,18 +1,15 @@
 <?php
 /**
- * The template for displaying all pages.
+ * The template for displaying single events.
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages and that other
- * 'pages' on your WordPress site will use a different template.
  *
  * @package ftek
- * @since ftek 0.1
+ * @since ftek 2.0
  */
 
 get_header(); ?>
-		<section id="content" role="main" class="single-event single-page">
-			<div class="content-inner">
+
+		<main role="main" class="single-event">
 
 			<?php /* The loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
@@ -38,7 +35,7 @@ get_header(); ?>
 
 					<section class="entry-content">
 						<?php the_content(); ?>
-					</section><!-- .entry-content -->
+					</section>
 					
 					<footer>
 						<div class="event-map">
@@ -77,11 +74,10 @@ get_header(); ?>
 						?>
 						</div>
 					</footer>
-				</article><!-- #post -->
+				</article>
 
 			<?php endwhile; ?>
-			</div>
-		</section><!-- #content -->
+		</main>
 
 
 <?php get_footer(); ?>

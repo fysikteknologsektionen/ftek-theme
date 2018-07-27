@@ -3,16 +3,14 @@
  * The template for displaying 404 pages (Not Found).
  *
  * @package ftek
- * @since ftek 0.1
+ * @since ftek 2.0
  */
 
 get_header(); ?>
 
-		<div id="content" class="fullpage not-found-page" role="main">
-            <div id="not-found">
-			    <h1>404</h1>
-			    <?php get_search_form(); ?>
-            </div>
-		</div><!-- #content -->
-        
+	<main role="main" class="page-404">
+		<h1><?= __('Page could not be found.', 'ftek') ?></h1>
+		<?php get_search_form(); ?>
+	</main>
+
 <?php get_footer(); ?>

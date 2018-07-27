@@ -17,7 +17,7 @@
 				<li>Email: <a href="mailto:info@ftek.se" target="_blank">info@ftek.se</a></li>
 				<li><?= __('Visitor adress', 'ftek') ?>: <a href="https://www.google.com/maps/place/Focus/@57.690859,11.9751408,19z/data=!4m5!3m4!1s0x464ff373530bf8cd:0xb31fc4afa7529106!8m2!3d57.6910046!4d11.975559" target="_blank">Focus, Kemivägen 11, 412 58 Göteborg</a></li>
 				<li><?= __('Mailing adress', 'ftek') ?>: <a href="https://www.google.com/maps/place/Fysikgränd+3,+411+33+Göteborg/" target="_blank">Fysikgränd 3, 411 33 Göteborg</a></li>
-				<li><a href="/kontakt"><?= __('Looking for someone?') ?></a></li>
+				<li><a href="/kontakt"><?= __('Looking for someone?', 'ftek') ?></a></li>
 			</ul>
 		</address>
 		<div id="footer-djungle-saying">

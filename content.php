@@ -15,49 +15,12 @@
 			<?php the_post_thumbnail(); ?>
 		</a>
 		<?php endif; ?>
-		
-		
-		
+
 		<h1 class="entry-title hyphenate">
 			<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
 		<?php edit_post_link( __( 'Edit', 'ftek' ), '<span class="edit-link">', '</span>' ); ?>
 		</h1>
 	</header><!-- .entry-header -->
-	
-	<?php
-		// Find connected events
-		$connected = new WP_Query( array(
-		  'connected_type' => 'posts_to_events',
-		  'connected_from' => $post,
-		  'nopaging' => true,
-		) );
-
-		
-		// Display connected events, commented out to prevent old events from being displayed on all pages after update to WP 3.9.1
-	/*	if ( $connected->have_posts() ) :
-		?>
-		
-		<ul class="connected-events event-info">
-		<?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
-			<li>
-				<a href="<?php the_permalink(); ?>"><?php the_title(); print "test1" ?></a>
-				<span class="inline-block">
-					<?= ftek_event_info(); ?>
-                </span>
-                <span class="inline-block">
-				–
-				<time class="relative-time" datetime="<?php eo_the_start('c') ?>">om ett tag</time>
-                </span>
-			</li>
-		<?php endwhile; ?>
-		</ul>			
-		
-		<?php 
-		// Prevent weirdness
-		wp_reset_postdata();
-		
-		endif; */
-	?>
 
 	<?php if ( is_search() ) : // Only display Excerpts for Search ?>
 	<div class="entry-summary">

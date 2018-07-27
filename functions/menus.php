@@ -15,11 +15,14 @@ function committee_menu($post)
         $news_item = "<li><a href='$url'>".__("News","ftek").'</a></li>';
     }
     
-	$menu_items  = wp_list_pages("title_li=&include=".$main_ID."&echo=0");
+	//$menu_items  = wp_list_pages("title_li=&include=".$main_ID."&echo=0");
     $menu_items .= $news_item;
-	$menu_items .= wp_list_pages("title_li=&child_of=".$main_ID."&depth=1&echo=0");
+    $menu_items .= wp_list_pages("title_li=&child_of=".$main_ID."&depth=1&echo=0");
+    /*if (function_exists('get_all_wp_terms_meta')) { 
+        $menu_items .= '<li>'. get_all_wp_terms_meta($cat->cat_ID)['email'][0] .'</li>';
+    }*/
 	if ($menu_items) {
-        return '<ul>'. $menu_items.'</ul>';
+        return '<ul>'. $menu_items . '</ul>';
     }
     else {
         return '';
