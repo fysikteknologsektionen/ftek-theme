@@ -15,6 +15,12 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
+msgid "The Physics Division"
+msgstr "Fysikteknologsektionen"
+
+msgid "Chalmers tekniska högskola"
+msgstr "Chalmers University of Technology"
+
 msgid "Login"
 msgstr "Logga in"
 
@@ -106,6 +112,11 @@ msgstr "Toppmeny"
 msgid "Posts navigation"
 msgstr "Inläggsnavigering"
 
+msgid "Posts"
+msgstr "Inlägg"
+
+msgid "Types"
+msgstr "Typer"
 
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Äldre inlägg"
@@ -232,20 +243,65 @@ msgstr "Fler evenemang &#8594;"
 msgid "Subscribe"
 msgstr "Prenumerera"
 
-#~ msgid "Course website"
-#~ msgstr "Kurshemsida"
+msgid "Go to calendar view"
+msgstr "Gå till kalendervyn"
 
-#~ msgid "Lunch Widget"
-#~ msgstr "Lunch-widget"
+msgid "You are only viewing events. Would you like to "
+msgstr "Du visar just nu endast evenemang. Vill du "
 
-#~ msgid "Today's lunch"
-#~ msgstr "Dagens lunch"
+msgid "go to the calendar"
+msgstr "öppna kalendern"
 
-#~ msgid "No lunch today"
-#~ msgstr "Ingen lunch idag"
+msgid "Filter"
+msgstr "Filtrera"
 
-#~ msgid "Link to full-size image"
-#~ msgstr "Länk till fullstor bild"
+msgid "Reset"
+msgstr "Återställ"
 
-#~ msgid "Sektionsmeny"
-#~ msgstr "Sektionsmeny"
+msgid "Showing news from"
+msgstr "Visar nyheter från"
+
+msgid "By:"
+msgstr "Av:"
+
+
+# Jungle sayings
+
+msgid "It is terror for the evil man to awake in darkness and see The Phantom."
+msgstr "Att vakna i mörkret och se Fantomen – en fasa för onda män."
+
+msgid "He who looks upon the Phantom's face will die a horrible death."
+msgstr "Den som ser Fantomen utan mask dör en fasansfull död."
+
+msgid "There are times when the Phantom leaves the jungle and walks the streets of the town like an ordinary man."
+msgstr "Det finns nätter då Fantomen lämnar djungeln och går på stadens gator som en vanlig man."
+
+msgid "You never find the Phantom – he finds you."
+msgstr "Du hittar aldrig Fantomen – han hittar dig."
+
+msgid "When the Phantom asks, you answer."
+msgstr "Då Fantomen frågar svarar man."
+
+msgid "When the Phantom moves, lightning stands still."
+msgstr "Då Fantomen rör sig står blixten stilla."
+
+msgid "The voice of the Phantom turns the blood to ice."
+msgstr "Fantomens röst isar i blodet."
+
+msgid "The Phantom has the strength of ten tigers."
+msgstr "Fantomen har tio tigrars styrka."
+
+msgid "The Phantom has a thousand eyes and a thousand ears."
+msgstr "Fantomen har tusen ögon och tusen öron."
+
+msgid "The Phantom moves as silently as the jungle cat."
+msgstr "Fantomen smyger tystare än djungelkatten."
+
+msgid "The Phantom is rough with roughnecks."
+msgstr "Fantomen är hård mot de hårda."
+
+msgid "Never point a gun at the Phantom."
+msgstr "Sikta aldrig på Fantomen."
+
+msgid "Learn to love the darkness."
+msgstr "Lär dig älska mörkret."

@@ -46,3 +46,12 @@ else
 jQuery(document).ready(function() {
   jQuery("time.relative-time").timeago();
 });
+
+jQuery('a[href="#"]').click(function(event) {
+  event.preventDefault();
+});
+
+jQuery('button.close-button').click(function(event) {
+  event.preventDefault();
+  jQuery(this).parent().remove();
+});

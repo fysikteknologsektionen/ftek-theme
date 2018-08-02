@@ -9,7 +9,7 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package ftek
- * @since ftek 0.1
+ * @since ftek 2.0
  */
 
 get_header(); ?>
@@ -24,13 +24,13 @@ get_header(); ?>
 
 			<?php /* The loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', get_post_format() ); ?>
+				<?php get_template_part( 'article', get_post_format() ); ?>
 			<?php endwhile; ?>
 
 			<?php ftek_paging_nav(); ?>
 
 		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
+			<?php get_template_part( 'article', 'none' ); ?>
 		<?php endif; ?>
 
 		</div><!-- #content -->

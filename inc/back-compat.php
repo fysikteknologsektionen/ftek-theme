@@ -7,14 +7,14 @@
  * many new functions and markup changes introduced in 3.6.
  *
  * @package ftek
- * @since ftek 0.1
+ * @since ftek 2.0
  */
 
 /**
  * Prevent switching to ftek theme on old versions of WordPress. Switches
  * to the default theme.
  *
- * @since ftek 0.1
+ * @since ftek 2.0
  *
  * @return void
  */
@@ -29,7 +29,7 @@ add_action( 'after_switch_theme', 'ftek_switch_theme' );
  * Prints an update nag after an unsuccessful attempt to switch to
  * ftek theme on WordPress versions prior to 3.6.
  *
- * @since ftek 0.1
+ * @since ftek 2.0
  *
  * @return void
  */
@@ -41,7 +41,7 @@ function ftek_upgrade_notice() {
 /**
  * Prevents the Customizer from being loaded on WordPress versions prior to 3.6.
  *
- * @since ftek 0.1
+ * @since ftek 2.0
  *
  * @return void
  */
@@ -55,7 +55,7 @@ add_action( 'load-customize.php', 'ftek_customize' );
 /**
  * Prevents the Theme Preview from being loaded on WordPress versions prior to 3.4.
  *
- * @since ftek 0.1
+ * @since ftek 2.0
  *
  * @return void
  */

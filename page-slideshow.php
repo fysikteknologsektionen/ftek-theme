@@ -6,7 +6,7 @@
  * Empty template for the slideshow to be displayed on the TV.
  *
  * @package ftek
- * @since ftek 0.1
+ * @since ftek 2.0
  */
 ?>
 
@@ -30,11 +30,11 @@
 		<?php if ( have_posts() ) : ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 			
-				<?php get_template_part( 'content', 'page' ); ?>
+				<?php get_template_part( 'article', 'page' ); ?>
 			<?php endwhile; ?>
 			
 		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
+			<?php get_template_part( 'article', 'none' ); ?>
 		<?php endif; ?>
 
 	</section><!-- #content -->

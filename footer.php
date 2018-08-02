@@ -6,22 +6,22 @@
  * #main and #page div elements.
  *
  * @package ftek
- * @since ftek 0.1
+ * @since ftek 2.0
  */
 ?>
 	<footer id="page-footer">
-		<address id="footer-contact">
+		<div id="footer-contact">
 			<ul>
-				<li>Fysikteknologsektionen</li>
+				<li><a href="<?= get_page_link(124) ?>" title="<?= get_the_title(124) ?>"><?= bloginfo('name') ?></a></li>
 				<li><?= __('Org. no', 'ftek') ?>: 857208-8477</li>
 				<li>Email: <a href="mailto:info@ftek.se" target="_blank">info@ftek.se</a></li>
 				<li><?= __('Visitor adress', 'ftek') ?>: <a href="https://www.google.com/maps/place/Focus/@57.690859,11.9751408,19z/data=!4m5!3m4!1s0x464ff373530bf8cd:0xb31fc4afa7529106!8m2!3d57.6910046!4d11.975559" target="_blank">Focus, Kemivägen 11, 412 58 Göteborg</a></li>
 				<li><?= __('Mailing adress', 'ftek') ?>: <a href="https://www.google.com/maps/place/Fysikgränd+3,+411+33+Göteborg/" target="_blank">Fysikgränd 3, 411 33 Göteborg</a></li>
 				<li><a href="/kontakt"><?= __('Looking for someone?', 'ftek') ?></a></li>
 			</ul>
-		</address>
+		</div>
 		<div id="footer-djungle-saying">
-			<p><a href="/sektionshelgon"><?= generate_footer_quote() ?></a></p>
+			<p><a href="/sektionshelgon"><?= __(generate_footer_quote()) ?></a></p>
 		</div>
 		<div id="footer-chs-logo">
 			<a href="https://chalmersstudentkar.se"><img id="chs-logo" src="<?php bloginfo('stylesheet_directory'); ?>/images/chalmers.svg" /></a>
@@ -32,6 +32,7 @@
 			<p><?=__('Maintenance and development', 'ftek')?>: <a href="/spidera/">Spidera</a></p>
 		</div>
 		<div id="footer-copyright">
+			<p><a href="<?= get_page_link(23) ?>"><?= get_the_title(23) ?></a> | <a href="<?= get_page_link(6122) ?>"><?= get_the_title(6122) ?></a></p>
 			<p><a href="/support">Support</a></p>
 			<p>© 2018 Fysikteknologsektionen<p>
 		</div>

@@ -3,7 +3,7 @@
  * The default template for displaying content. Used for both single and index/archive/search.
  *
  * @package ftek
- * @since ftek 0.1
+ * @since ftek 2.0
  */
 ?>
 

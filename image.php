@@ -5,7 +5,7 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package ftek
- * @since ftek 0.1
+ * @since ftek 2.0
  */
 
 get_header(); ?>

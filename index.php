@@ -15,17 +15,17 @@
 
 get_header(); ?>
 
-	<main role="main">
+	<main role="main" class="home">
+		<div class="widget-container widget-top">
 		<?php if ( is_active_sidebar( 'home-top' ) ) {
 			dynamic_sidebar( 'home-top' );
 		} ?>
+		</div>
+		<div class="widget-container widget-column">
 		<?php if ( is_active_sidebar( 'home' ) ) {
 			dynamic_sidebar( 'home' );
 		} ?>
-
-		<h1>Välkommen till <?= bloginfo('name') ?>!</h1>
-		<p>Vår hemsida är under konstruktion, men alla sidor som finns i navigeringsmenyn borde fungera som de ska.</p>
-
+		</div>
 	</main>
 	
 <?php get_footer(); ?>

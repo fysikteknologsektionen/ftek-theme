@@ -43,7 +43,7 @@ require get_template_directory() . '/inc/back-compat.php';
 * @uses register_nav_menu() To add support for a navigation menu.
 * @uses set_post_thumbnail_size() To set a custom post thumbnail size.
 *
-* @since ftek 0.1
+* @since ftek 2.0
 *
 * @return void
 */
@@ -96,7 +96,7 @@ add_action( 'after_setup_theme', 'ftek_setup' );
 /**
 * Enqueues scripts and styles for front end.
 *
-* @since ftek 0.1
+* @since ftek 2.0
 *
 * @return void
 */
@@ -148,7 +148,7 @@ if ( ! function_exists( 'ftek_paging_nav' ) ) :
 	/**
 	* Displays navigation to next/previous set of posts when applicable.
 	*
-	* @since ftek 0.1
+	* @since ftek 2.0
 	*
 	* @return void
 	*/
@@ -209,7 +209,7 @@ if ( ! function_exists( 'ftek_entry_meta' ) ) :
 	*
 	* Create your own ftek_entry_meta() to override in a child theme.
 	*
-	* @since ftek 0.1
+	* @since ftek 2.0
 	*
 	* @return void
 	*/
@@ -233,6 +233,21 @@ if ( ! function_exists( 'ftek_entry_meta' ) ) :
 		if ( $categories_list ) {
 			echo '<span class="categories-links">' . $categories_list . '</span>.';
 		}
+		if (get_post_type() == 'post') {
+			echo date_i18n( get_option('date_format'), strtotime(get_the_date("d F Y")));
+		} elseif (get_post_type() == 'event') {
+			echo ftek_event_date() . ' @ ' .eo_get_venue_name();
+		}
+		echo '<span class="sep">|</span>';
+
+		$author_text = __('By:', 'ftek') . ' ';
+		$post_categories = get_the_category();
+		foreach($post_categories as $c) {
+			$cat = get_category( $c );
+			$author_text .= ( reset($post_categories) === $c ) ? '' : ', ';
+			$author_text .= esc_html(__($cat->name));
+		}
+		echo $author_text;
 	}
 endif;
 
@@ -240,7 +255,7 @@ if ( ! function_exists( 'ftek_the_attached_image' ) ) :
 	/**
 	* Prints the attached image with a link to the next attached image.
 	*
-	* @since ftek 0.1
+	* @since ftek 2.0
 	*
 	* @return void
 	*/
@@ -358,19 +373,19 @@ add_action( 'pre_get_posts', 'ftek_front_page_category' );
 function generate_footer_quote()
 {
 	$quotes = array(
-		"Att vakna i mörkret och se Fantomen – en fasa för onda män.",
-		"Den som ser Fantomen utan mask dör en fasansfull död.",
-		"Det finns nätter då Fantomen lämnar djungeln och går på stadens gator som en vanlig man.",
-		"Du hittar aldrig Fantomen – han hittar dig.",
-		"Då Fantomen frågar svarar man.",
-		"Då Fantomen rör sig står blixten stilla.",
-		"Fantomens röst isar i blodet.",
-		"Fantomen har tio tigrars styrka.",
-		"Fantomen har tusen ögon och tusen öron.",
-		"Fantomen smyger tystare än djungelkatten.",
-		"Fantomen är hård mot de hårda.",
-		"Sikta aldrig på Fantomen.",
-		"Lär dig älska mörkret."
+		"It is terror for the evil man to awake in darkness and see The Phantom.",
+		"He who looks upon the Phantom's face will die a horrible death.",
+		"There are times when the Phantom leaves the jungle and walks the streets of the town like an ordinary man.",
+		"You never find the Phantom – he finds you.",
+		"When the Phantom asks, you answer.",
+		"When the Phantom moves, lightning stands still.",
+		"The voice of the Phantom turns the blood to ice.",
+		"The Phantom has the strength of ten tigers.",
+		"The Phantom has a thousand eyes and a thousand ears.",
+		"The Phantom moves as silently as the jungle cat.",
+		"The Phantom is rough with roughnecks.",
+		"Never point a gun at the Phantom.",
+		"Learn to love the darkness."
 	);
 	return $quotes[array_rand($quotes)];
 }
@@ -429,10 +444,34 @@ function my_login_logo() { ?>
 		background-size: 128px 128px;
 		background-repeat: no-repeat;
 		padding-bottom: 0px;
+		filter: invert(1);
+	}
+	#login a, #login #nav a, #login #backtoblog a {
+		color: white;
+	}
+	body.login {
+		background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/phantom-bg.jpg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center right;
+		background-attachment: fixed;
+	}
+	div#login {
+		padding: 5% 0 0;
 	}
 </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+
+/*
+* Change top link on login page to homepage
+*/
+
+function my_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
 
 /*
 * Remove username in registration form
@@ -464,7 +503,7 @@ add_filter('registration_errors', function($wp_error, $sanitized_user_login, $us
 }, 10, 3);
 
 /*
-* Make CID from email the username
+* Make CID username
 */
 add_action('login_form_register', function(){
 	if(isset($_POST['user_email']) && !empty($_POST['user_email'])){
@@ -483,10 +522,10 @@ add_action( 'user_register', function($user_id){
     if ( class_exists('LDAPUser') ) {
         $user = get_userdata($user_id);
         $ldap_user = new LDAPUser($user->user_login);
-	if ($ldap_user->cid != $ldap_user->given_name) {
-	    update_user_meta($user_id, 'first_name', $ldap_user->given_name);
-	    update_user_meta($user_id, 'last_name', $ldap_user->surname);
-	}
+		if ($ldap_user->cid != $ldap_user->given_name) {
+			update_user_meta($user_id, 'first_name', $ldap_user->given_name);
+			update_user_meta($user_id, 'last_name', $ldap_user->surname);
+		}
     }
 });
 
@@ -520,6 +559,28 @@ function user_logged_in ($params, $content = null){
 add_filter('widget_text','do_shortcode');
 
 
+/* Ajax load more helper function */
+// Prints ajax_load_more shortcode
+function print_ajax_loader($sc_options = array(
+	'post_type' => 'any',
+	'posts_per_page' => '12',
+	'transition_container' => 'false',
+	'scroll' => 'true',
+	'scroll_distance' => '-250',
+	'progress_bar' => 'true',
+	'progress_bar_color' => '8d0000',
+	'button_label' => '...',
+	'button_loading_label' => '...',)) {
+
+    $sc_prefix = '[ajax_load_more ';
+	$sc_suffix = ']';
+	
+	foreach ($sc_options as $key => &$value)
+		$value = '"' . $value . '"';
+	$sc_args = urldecode(http_build_query($sc_options, '', ' '));
+	$shortcode = $sc_prefix . $sc_args . $sc_suffix;
+	echo do_shortcode($shortcode);
+}
 
 /* Imports */
 

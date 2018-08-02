@@ -31,13 +31,13 @@ get_header(); ?>
 				<nav id="committee" class="horizontal">
                     <?= committee_menu($post); ?>
 				</nav>
-				<?php get_template_part( 'content', 'page' ); ?>
+				<?php get_template_part( 'article', 'page' ); ?>
 			<?php endwhile; ?>
 
 			<?php ftek_paging_nav(); ?>
 
 		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
+			<?php get_template_part( 'article', 'none' ); ?>
 		<?php endif; ?>
 
 	</main>

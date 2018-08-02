@@ -41,38 +41,6 @@ get_header(); ?>
 						<div class="event-map">
 							<?php echo eo_get_venue_map(eo_get_venue(), array('width'=>'100%','height'=>'400px')); ?>
 						</div>
-						<div class="related-news">
-						<?php
-						    // Find connected events
-						    $connected = new WP_Query( array(
-						      'connected_type' => 'posts_to_events',
-						      'connected_to' => $post,
-						      'nopaging' => true,
-						    ) );
-						    
-						    // Display connected events
-						    if ( $connected->have_posts() ) :
-						    ?>
-						    <h2> 
-						    	<?php _e("Related news", "ftek") ?>
-						    </h2>
-						    <ul class="connected-posts">
-						    <?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
-						    	<li>
-						    		<a href="<?php the_permalink(); ?>">
-						    			<?php the_title(); ?> 
-						    		</a>
-						    	</li>
-						    <?php endwhile; ?>
-						    </ul>
-						    
-						    <?php 
-						    // Prevent weirdness
-						    wp_reset_postdata();
-						    
-						    endif;
-						?>
-						</div>
 					</footer>
 				</article>
 
