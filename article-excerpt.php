@@ -1,6 +1,6 @@
 <?php
 /**
- * The default template for displaying content. Used for both single and index/archive/search.
+ * Template for displaying excerpt content.
  *
  * @package ftek
  * @since ftek 2.0

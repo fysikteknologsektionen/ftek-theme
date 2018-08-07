@@ -42,16 +42,37 @@ else
   };
 }
 
+// On document finished loading
 
-jQuery(document).ready(function() {
-  jQuery("time.relative-time").timeago();
+jQuery(document).ready(function($) {
+
+  $('a[href*="//"]:not([href*="ftek.se"])').attr("target","_blank");
+
+  $("time.relative-time").timeago();
+  
+  $('a[href="#"]').click(function(event) {
+    event.preventDefault();
+  });
+
+  $('button.close-button').click(function(event) {
+    event.preventDefault();
+    $(this).parent().remove();
+  });
+
+  $('li.menu-item-has-children').click(function(event) {
+    event.stopPropagation();
+    if ($(this).hasClass('hovered')) {
+      $(this).find('li.menu-item-has-children').removeClass('hovered');
+    } else {
+      $(this).siblings('li.menu-item-has-children').removeClass('hovered');
+    }
+
+    $(this).toggleClass('hovered');
+  });
+
+  $('ul.nav-menu > li:first-child').click(function(event) {
+    event.stopPropagation();
+    $(this).toggleClass('hovered');
 });
 
-jQuery('a[href="#"]').click(function(event) {
-  event.preventDefault();
-});
-
-jQuery('button.close-button').click(function(event) {
-  event.preventDefault();
-  jQuery(this).parent().remove();
 });

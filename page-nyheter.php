@@ -84,13 +84,15 @@ get_header();?>
                     if ( in_array($category->slug, $cat) ) {
                         echo ($first_item) ? '' : ', ';
                         $first_item = false;
-                        echo '<a href="/kategori/'.$category->slug.'">' . esc_html(__($category->name)) . '</a>';
+                        echo '<a href="/'.$category->slug.'">' . esc_html(__($category->name)) . '</a>';
                     }
                 }
                 echo '.</span><button class="close-button" >×</button></p>';
             } ?>
-            <div class="entry-content">
-                <?php get_template_part( 'news', 'none' ); ?>
+            <div class="entry-main">
+                <div class="entry-content">
+                    <?php get_template_part( 'news', 'none' ); ?>
+                </div>
             </div>
         </article>
 

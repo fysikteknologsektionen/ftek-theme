@@ -8,13 +8,13 @@
 
 get_header(); ?>
 
-	<main role="main" class="single-page">
+	<main role="main">
 
 		<?php /* The loop */ ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php get_template_part( 'article', get_post_type() ); ?>
-			<?php ftek_post_nav(); ?>
+			<?php //ftek_post_nav(); ?>
 
 		<?php endwhile; ?>
 

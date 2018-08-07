@@ -27,8 +27,7 @@
 	<div id="page">
 
 	<section id="content" class="committee-page single-page">
-		<?php if ( have_posts() ) : ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			
 				<?php get_template_part( 'article', 'page' ); ?>
 			<?php endwhile; ?>

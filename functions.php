@@ -103,9 +103,10 @@ add_action( 'after_setup_theme', 'ftek_setup' );
 function ftek_scripts_styles() {
 
 	wp_enqueue_script( 'jquery-timeago', get_template_directory_uri() . '/js/jquery.timeago.js', array( 'jquery' ), '1.3.0', true );
-	wp_enqueue_script( 'ftek-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '2013-10-18', true );
+	wp_enqueue_script( 'ftek-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), null, true );
 	$ftek_info = array('language' => get_bloginfo("language") );
 	wp_localize_script( 'ftek-script', 'ftek_info', $ftek_info );
+	//wp_enqueue_script( 'ftek-fetch-script', get_template_directory_uri() . '/js/fetch.js', array( 'jquery' ), null, true );
 	wp_enqueue_script( 'ftek-hyphenator', get_template_directory_uri() . '/js/hyphenator.js', false, '2014-02-22', true);
 
 	wp_enqueue_style( 'ftek-style', get_stylesheet_uri(), array(), null, 'screen');

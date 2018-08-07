@@ -66,7 +66,6 @@ get_header(); ?>
 					<?php if ( ! empty( $post->post_content ) ) : ?>
 					<div class="entry-description">
 						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'ftek' ), 'after' => '</div>' ) ); ?>
 					</div><!-- .entry-description -->
 					<?php endif; ?>
 

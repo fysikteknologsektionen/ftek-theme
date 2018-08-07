@@ -13,24 +13,12 @@
 
 get_header(); ?>
 	<main role="main">
-		<?php if ( have_posts() ) : ?>
 
-			<?php /* The loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php
-                if ( has_post_thumbnail() ) : ?>
-					<a href="<?php the_permalink(); ?>" class="entry-thumbnail">
-						<?php the_post_thumbnail(); ?>
-					</a>
-				<?php elseif ( has_post_thumbnail($post->post_parent) ): ?>
-					<a href="<?php echo get_permalink($post->post_parent); ?>"
-                         class="entry-thumbnail">
-						<?php echo get_the_post_thumbnail($post->post_parent); ?>
-					</a>
-				<?php endif; ?>
+			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+				<?php /*
 				<nav id="committee" class="horizontal">
                     <?= committee_menu($post); ?>
-				</nav>
+				</nav> */?>
 				<?php get_template_part( 'article', 'page' ); ?>
 			<?php endwhile; ?>
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * The default template for displaying content. Used for both single and index/archive/search.
+ * Template for displaying content in posts.
  *
  * @package ftek
  * @since ftek 2.0
@@ -16,8 +16,8 @@
 		<?php endif; ?>
 
 		<h1 class="entry-title hyphenate">
-			<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-		<?php edit_post_link( __( 'Edit', 'ftek' ), '<span class="edit-link">', '</span>' ); ?>
+			<a href="<?php the_permalink(); ?>" ><?php the_title(); ?></a>
+		
 		</h1>
 	</header><!-- .entry-header -->
 
@@ -28,7 +28,6 @@
 	<?php else : ?>
 	<div class="entry-content">
 		<?php the_content( ); ?>
-		<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'ftek' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
 	</div><!-- .entry-content -->
 	<?php endif; ?>
 	<?php if (get_post_type( $post ) == 'post' && is_single()): ?>

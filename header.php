@@ -14,7 +14,13 @@
 <body>
 	<header role="banner">
 		<nav>
-			<?php wp_nav_menu( array( 'theme_location' => 'top', 'menu_class' => 'nav-menu' ) ); ?>
+			<?php $args = array(
+				'theme_location' => 'top',
+				'menu_class' => 'nav-menu',
+				'after' => '<span></span>'
+			);
+			wp_nav_menu( $args );
+			?>
 		</nav>
 		<div class="top-bar">
 			<menu>
