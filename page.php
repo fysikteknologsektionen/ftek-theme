@@ -12,21 +12,16 @@
 
 
 get_header(); ?>
+
 	<main role="main">
 
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-				<?php /*
-				<nav id="committee" class="horizontal">
-                    <?= committee_menu($post); ?>
-				</nav> */?>
-				<?php get_template_part( 'article', 'page' ); ?>
+				<?php get_template_part( 'article', get_post_type() ); ?>
 			<?php endwhile; ?>
-
-			<?php ftek_paging_nav(); ?>
-
-		<?php else : ?>
-			<?php get_template_part( 'article', 'none' ); ?>
-		<?php endif; ?>
+			<?php else : ?>
+				<?php get_template_part( 'article', 'none' ); ?>
+			<?php endif; ?>
 
 	</main>
+
 <?php get_footer(); ?>

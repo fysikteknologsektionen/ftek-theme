@@ -215,8 +215,8 @@ msgstr "Att redigera widgets"
 msgid "How to change users roles"
 msgstr "Att ändra användarroller"
 
-msgid "Latest updated"
-msgstr "Senast uppdaterad"
+msgid "Updated"
+msgstr "Uppdaterad"
 
 msgid "News"
 msgstr "Nyheter"
@@ -258,9 +258,14 @@ msgstr ""
 "och försök igen."
 
 
+msgid "Related pages"
+msgstr "Relaterade sidor"
+
 msgid "Related news"
 msgstr "Relaterade nyheter"
 
+msgid "No related news could be found."
+msgstr "Inga relaterade nyheter hittades."
 
 
 msgid "%s Archives"

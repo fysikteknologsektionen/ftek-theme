@@ -13,7 +13,7 @@
 
 <body>
 	<header role="banner">
-		<nav>
+		<nav class="main-menu">
 			<?php $args = array(
 				'theme_location' => 'top',
 				'menu_class' => 'nav-menu',
@@ -22,18 +22,18 @@
 			wp_nav_menu( $args );
 			?>
 		</nav>
-		<div class="top-bar">
-			<menu>
+		<nav class="top-bar">
+			<ul>
 			<?php 
 				$url = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 				if (qtrans_getLanguage() == 'sv') {
 					$new_lang = "English";
-					$lang_class = "lang-en";
+					$lang_class = "qtranxs_flag_en";
 					$new_url = qtrans_convertURL($url, 'en');
 				}  
 				else {
 					$new_lang = "Svenska";
-					$lang_class = "lang-sv";
+					$lang_class = "qtranxs_flag_sv";
 					$new_url = qtranxf_convertURL($url, 'sv', $forceadmin = false, $showDefaultLanguage = true);
 				}
 				$new_url = preg_replace("/^http:/", "https:", $new_url);
@@ -48,6 +48,6 @@
 				
 			<?php } ?>
 				<li><?php get_search_form(); ?></li>
-			</menu>
+			</ul>
 		</div>
 	</header>

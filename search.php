@@ -23,21 +23,26 @@ get_header(); ?>
 					</h1>
 					<?= get_search_form() ?>
 				</header>
-				<div class="entry-content">
-					<?php 
-						$sc_options = array(
-							'post__in' => join(',', $post_ids), // Include posts from search
-							'post_type' => 'any',
-							'posts_per_page' => '12',
-							'transition_container' => 'false',
-							'scroll' => 'true',
-							'scroll_distance' => '-250',
-							'progress_bar' => 'true',
-							'progress_bar_color' => '8d0000',
-							'button_label' => '...',
-							'button_loading_label' => '...',);
-						print_ajax_loader($sc_options);
-					?>
+
+				<div class="entry-main">
+					
+					<div class="entry-content">
+						<?php 
+							$sc_options = array(
+								'post__in' => join(',', $post_ids), // Include posts from search
+								'post_type' => 'any',
+								'posts_per_page' => '12',
+								'transition_container' => 'false',
+								'scroll' => 'true',
+								'scroll_distance' => '-250',
+								'progress_bar' => 'true',
+								'progress_bar_color' => '8d0000',
+								'button_label' => '...',
+								'button_loading_label' => '...',);
+							print_ajax_loader($sc_options);
+						?>
+					</div>
+
 				</div>
 		</main>
 

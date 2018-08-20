@@ -1,16 +1,14 @@
 <?php
 /**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages and that other
- * 'pages' on your WordPress site will use a different template.
+ * The template for displaying the news page.
  *
  * @package ftek
  * @since ftek 2.0
  */
 
 /* Parse queries */
+
+// Post types
 
 $post_types = array('post'=>__('Posts', 'ftek'),'event'=>__('Events', 'eventorganiser'));
 $all_post_types = array('post','event');
@@ -21,11 +19,13 @@ if ( $post_types_active ) {
     $types = array();
 }
 
+// Categories
+
 $categories = get_categories();
-function cmp($a, $b) {
+// Sort alpabetically
+usort($categories, function($a, $b) {
     return strcmp(__($a->name), __($b->name));
-}
-usort($categories, "cmp");
+});
 $all_categories = array_map(function($o) { return $o->slug; }, $categories);
 $category_active = isset($_GET['category']) && $_GET['category'] != $all_categories;
 if ( $category_active ) {
@@ -68,25 +68,50 @@ get_header();?>
                     </div>
                 </form>
             </div>
-            <?php if ($types == array('event') && !$category_active) {
+            <?php 
+            // Show info bar if filter is active
+            if ($types == array('event') && !$category_active) {
                 echo '<p class="info-bar"><span>' . 
                 __('You are only viewing events. Would you like to ', 'ftek') . 
                 '<a href="/kalender" title="' . 
                 __('Go to calendar view', 'ftek') . '">' . 
                 __('go to the calendar', 'ftek') . 
                 '</a>?</span><button class="close-button" >×</button></p>';
-            } ?>
-            <?php if ( $category_active ) {
+            }
+            if ( $category_active ) {
                 echo '<p class="info-bar"><span>' . 
                 __('Showing news from', 'ftek') . ' ';
                 $first_item = true;
                 foreach ($categories as $category) {
-                    if ( in_array($category->slug, $cat) ) {
+                    if ( in_array($category->slug, $cat) ) { // Is current category a category of the post?
                         echo ($first_item) ? '' : ', ';
                         $first_item = false;
-                        echo '<a href="/'.$category->slug.'">' . esc_html(__($category->name)) . '</a>';
+                        $page = get_page_by_path( $category->slug, OBJECT );
+                        if ( isset( $page ) ) {
+                            echo '<a href="/'.$category->slug.'">';
+                            echo esc_html( __($category->name) );
+                            echo '</a>';
+                        } else {
+                            echo esc_html( __($category->name) );
+                        }
                     }
                 }
+                echo '.</span><button class="close-button" >×</button></p>';
+            } elseif ($_GET['yearnum'] || $_GET['monthnum'] || $_GET['daynum']) {
+                echo '<p class="info-bar"><span>' . 
+                __('Showing news from', 'ftek') . ' ';
+                $date_str = '';
+                if ((int) $_GET['daynum'] !== 0) {
+                    $date_str .= ' '.strip_tags($_GET['daynum']);
+                }
+                if ((int) $_GET['monthnum'] !== 0) {
+                    $dateObj   = DateTime::createFromFormat('!m', $_GET['monthnum']);
+                    $date_str .= ' '.__($dateObj->format('F'));
+                }
+                if ((int) $_GET['yearnum'] !== 0) {
+                    $date_str .= ' '.$_GET['yearnum'];
+                }
+                echo $date_str;
                 echo '.</span><button class="close-button" >×</button></p>';
             } ?>
             <div class="entry-main">

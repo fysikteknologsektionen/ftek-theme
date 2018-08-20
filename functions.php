@@ -57,36 +57,36 @@ function ftek_setup() {
 	* template files.
 	*/
 	load_theme_textdomain( 'ftek', get_template_directory() . '/languages' );
-
+	
 	/*
 	* This theme styles the visual editor to resemble the theme style,
 	* specifically font, colors, icons, and column width.
 	*/
 	// Deactivated because of bugs: https://core.trac.wordpress.org/ticket/17154
 	// If we make a custom stylesheet for editor with workarounds it might work
-
+	
 	// add_editor_style( array( 'style.css' ) );
-
+	
 	// Adds RSS feed links to <head> for posts and comments.
 	add_theme_support( 'automatic-feed-links' );
-
+	
 	// Switches default core markup for search form, comment form, and comments
 	// to output valid HTML5.
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list' ) );
-
+	
 	// This theme uses one main top menu.
 	register_nav_menu( 'top', __( 'Top Menu', 'ftek' ) );
-
+	
 	/*
 	* This theme uses a custom image size for featured images, displayed on
 	* "standard" posts and pages.
 	*/
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 600, 100, true );
-
+	
 	// This theme uses its own gallery styles.
 	//add_filter( 'use_default_gallery_style', '__return_false' );
-
+	
 	// Allows use of shortcodes in the text widget
 	add_filter('widget_text', 'do_shortcode');
 }
@@ -101,23 +101,26 @@ add_action( 'after_setup_theme', 'ftek_setup' );
 * @return void
 */
 function ftek_scripts_styles() {
-
+	
 	wp_enqueue_script( 'jquery-timeago', get_template_directory_uri() . '/js/jquery.timeago.js', array( 'jquery' ), '1.3.0', true );
 	wp_enqueue_script( 'ftek-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), null, true );
 	$ftek_info = array('language' => get_bloginfo("language") );
 	wp_localize_script( 'ftek-script', 'ftek_info', $ftek_info );
-	//wp_enqueue_script( 'ftek-fetch-script', get_template_directory_uri() . '/js/fetch.js', array( 'jquery' ), null, true );
 	wp_enqueue_script( 'ftek-hyphenator', get_template_directory_uri() . '/js/hyphenator.js', false, '2014-02-22', true);
-
 	wp_enqueue_style( 'ftek-style', get_stylesheet_uri(), array(), null, 'screen');
-	wp_enqueue_style( 'ftek-style-print', get_stylesheet_directory_uri(), array(), null, 'print');
-
+	//wp_enqueue_style( 'ftek-style-print', get_stylesheet_directory_uri(), array(), null, 'print');
+	
+	// Calendar page
+	if ( is_page( 'kalender' ) ) {
+		wp_enqueue_script( 'ftek-calendar-script', get_template_directory_uri() . '/js/calendar.js', array( 'jquery' ), null, true );
+		wp_localize_script( 'ftek-calendar-script', 'get_vars', $_GET );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'ftek_scripts_styles' );
 
 
 function ftek_widgets_init() {
-
+	
 	// Homepage top widget (one column)
 	register_sidebar( array(
 		'name'          => "Homepage top",
@@ -126,8 +129,8 @@ function ftek_widgets_init() {
 		'before_widget' => '<section id="%1$s" class="widget-top %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
-	) );
+		'after_title'   => '</h1>',)
+	);
 	
 	// Homepage middle widget (multiple columns)
 	register_sidebar( array(
@@ -138,11 +141,10 @@ function ftek_widgets_init() {
 		'after_widget'  => '</section>',
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
-	) );
+		)
+	);
 }
 add_action( 'widgets_init', 'ftek_widgets_init' );
-
-
 
 
 if ( ! function_exists( 'ftek_paging_nav' ) ) :
@@ -155,21 +157,21 @@ if ( ! function_exists( 'ftek_paging_nav' ) ) :
 	*/
 	function ftek_paging_nav() {
 		global $wp_query;
-
+		
 		// Don't print empty markup if there's only one page.
 		if ( $wp_query->max_num_pages < 2 )
 		return;
 		?>
 		<nav class="navigation paging-navigation" role="navigation">
-			<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'ftek' ); ?></h1>
-			<div class="nav-links">
-				<?php if ( get_next_posts_link() ) : ?>
-					<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'ftek' ) ); ?></div>
-				<?php endif; ?>
-				<?php if ( get_previous_posts_link() ) : ?>
-					<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'ftek' ) ); ?></div>
-				<?php endif; ?>
-			</div><!-- .nav-links -->
+		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'ftek' ); ?></h1>
+		<div class="nav-links">
+		<?php if ( get_next_posts_link() ) : ?>
+		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'ftek' ) ); ?></div>
+		<?php endif; ?>
+		<?php if ( get_previous_posts_link() ) : ?>
+		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'ftek' ) ); ?></div>
+		<?php endif; ?>
+		</div><!-- .nav-links -->
 		</nav><!-- .navigation -->
 		<?php
 	}
@@ -185,20 +187,20 @@ if ( ! function_exists( 'ftek_post_nav' ) ) :
 	*/
 	function ftek_post_nav() {
 		global $post;
-
+		
 		// Don't print empty markup if there's nowhere to navigate.
 		$previous = ( is_attachment() ) ? get_post( $post->post_parent ) : get_adjacent_post( false, '', true );
 		$next     = get_adjacent_post( false, '', false );
-
+		
 		if ( ! $next && ! $previous )
 		return;
 		?>
 		<nav class="navigation post-navigation" role="navigation">
-			<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'ftek' ); ?></h1>
-			<div class="nav-links">
-				<div class="nav-previous"><?php previous_post_link( '%link', _x( '<span class="meta-nav">&larr;</span> %title', 'Previous post link', 'ftek' ) ); ?></div>
-				<div class="nav-next"><?php next_post_link( '%link', _x( '%title <span class="meta-nav">&rarr;</span>', 'Next post link', 'ftek' ) ); ?></div>
-			</div><!-- .nav-links -->
+		<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'ftek' ); ?></h1>
+		<div class="nav-links">
+		<div class="nav-previous"><?php previous_post_link( '%link', _x( '<span class="meta-nav">&larr;</span> %title', 'Previous post link', 'ftek' ) ); ?></div>
+		<div class="nav-next"><?php next_post_link( '%link', _x( '%title <span class="meta-nav">&rarr;</span>', 'Next post link', 'ftek' ) ); ?></div>
+		</div><!-- .nav-links -->
 		</nav><!-- .navigation -->
 		<?php
 	}
@@ -214,41 +216,16 @@ if ( ! function_exists( 'ftek_entry_meta' ) ) :
 	*
 	* @return void
 	*/
-	function ftek_entry_meta() {
-		if ( is_sticky() && is_home() && ! is_paged() )
-		echo '<span class="featured-post">' . __( 'Sticky', 'ftek' ) . '</span>';
-
-		echo '<span class="creation-info">';
-
-		$isodate = get_the_time('c');
-		$date = get_the_date(get_option('date_format'));
-
-		printf( __('Written %1$s by %2$s.', 'ftek'), "<time class='relative-time' datetime='$isodate'>$date</time>", get_the_author() );
-
-		echo "</span> ";
-		echo '<span class="category-info">';
-		echo __("More news from", 'ftek') . " ";
-
-		// Translators: used between list items, there is a space after the comma.
-		$categories_list = get_the_category_list( __( ', ', 'ftek' ) );
-		if ( $categories_list ) {
-			echo '<span class="categories-links">' . $categories_list . '</span>.';
+	function ftek_entry_meta( $post_type ) {
+		echo "<div class='entry-meta'>";
+		if ( $post_type == 'post' ) {
+			$categories_list = get_the_category_list();
+			if ( $categories_list ) {
+				echo $categories_list;
+			}
 		}
-		if (get_post_type() == 'post') {
-			echo date_i18n( get_option('date_format'), strtotime(get_the_date("d F Y")));
-		} elseif (get_post_type() == 'event') {
-			echo ftek_event_date() . ' @ ' .eo_get_venue_name();
-		}
-		echo '<span class="sep">|</span>';
-
-		$author_text = __('By:', 'ftek') . ' ';
-		$post_categories = get_the_category();
-		foreach($post_categories as $c) {
-			$cat = get_category( $c );
-			$author_text .= ( reset($post_categories) === $c ) ? '' : ', ';
-			$author_text .= esc_html(__($cat->name));
-		}
-		echo $author_text;
+		echo ftek_updated_meta( $post_type );
+		echo '</div>';
 	}
 endif;
 
@@ -264,7 +241,7 @@ if ( ! function_exists( 'ftek_the_attached_image' ) ) :
 		$post                = get_post();
 		$attachment_size     = apply_filters( 'ftek_attachment_size', array( 724, 724 ) );
 		$next_attachment_url = wp_get_attachment_url();
-
+		
 		/**
 		* Grab the IDs of all the image attachments in a gallery so we can get the URL
 		* of the next adjacent image in a gallery, or the first image (if we're
@@ -280,32 +257,32 @@ if ( ! function_exists( 'ftek_the_attached_image' ) ) :
 			'post_mime_type' => 'image',
 			'order'          => 'ASC',
 			'orderby'        => 'menu_order ID'
-		) );
-
-		// If there is more than 1 attachment in a gallery...
-		if ( count( $attachment_ids ) > 1 ) {
-			foreach ( $attachment_ids as $attachment_id ) {
-				if ( $attachment_id == $post->ID ) {
-					$next_id = current( $attachment_ids );
-					break;
+			) );
+			
+			// If there is more than 1 attachment in a gallery...
+			if ( count( $attachment_ids ) > 1 ) {
+				foreach ( $attachment_ids as $attachment_id ) {
+					if ( $attachment_id == $post->ID ) {
+						$next_id = current( $attachment_ids );
+						break;
+					}
 				}
+				
+				// get the URL of the next image attachment...
+				if ( $next_id )
+				$next_attachment_url = get_attachment_link( $next_id );
+				
+				// or get the URL of the first image attachment.
+				else
+				$next_attachment_url = get_attachment_link( array_shift( $attachment_ids ) );
 			}
-
-			// get the URL of the next image attachment...
-			if ( $next_id )
-			$next_attachment_url = get_attachment_link( $next_id );
-
-			// or get the URL of the first image attachment.
-			else
-			$next_attachment_url = get_attachment_link( array_shift( $attachment_ids ) );
-		}
-
-		printf( '<a href="%1$s" title="%2$s" rel="attachment">%3$s</a>',
-		esc_url( $next_attachment_url ),
-		the_title_attribute( array( 'echo' => false ) ),
-		wp_get_attachment_image( $post->ID, $attachment_size )
-	);
-}
+			
+			printf( '<a href="%1$s" title="%2$s" rel="attachment">%3$s</a>',
+			esc_url( $next_attachment_url ),
+			the_title_attribute( array( 'echo' => false ) ),
+			wp_get_attachment_image( $post->ID, $attachment_size )
+		);
+	}
 endif;
 
 
@@ -314,61 +291,43 @@ endif;
 */
 
 
-/* Allows connecting posts and events together, using the Posts2Posts plugin */
+function ftek_disable_profile_fields() {
+	global $pagenow;
 
-function my_connection_types() {
-	p2p_register_connection_type( array(
-		'name' => 'posts_to_events',
-		'from' => 'post',
-		'to' => 'event'
-	) );
-}
-add_action( 'p2p_init', 'my_connection_types' );
-
-
-
-/* To distinguish events with identical titles. */
-
-function append_date_to_candidate_title( $title, $post, $ctype ) {
-	if ( 'posts_to_events' == $ctype->name && 'event' == $post->post_type ) {
-		$title .= " – " . eo_get_the_end('j M Y', $post->ID, null, $post->occurrence_id);
-	}
-
-	return $title;
-}
-
-add_filter( 'p2p_candidate_title', 'append_date_to_candidate_title', 10, 3 );
-
-
-/* In the connection box, only show future events ordered from earliest to latest. */
-
-function order_candidate_events_by_date( $args, $ctype, $post_id ) {
-	if ( 'posts_to_events' == $ctype->name && 'from' == $ctype->get_direction() ) {
-		$args['orderby'] = 'eventstart';
-		$args['order'] = 'asc';
-		$args['event_end_after'] = 'today';
-	}
-
-	return $args;
-}
-
-add_filter( 'p2p_connectable_args', 'order_candidate_events_by_date', 10, 3 );
-
-
-
-
-
-
-/*
-* Modify home page loop to only display posts in category 'framsida'
-*/
-
-function ftek_front_page_category( $query ) {
-	if ( $query->is_home() && $query->is_main_query() ) {
-		$query->set( 'category_name', 'framsida' );
+	// Only show on profile page for non-admins
+	if ($pagenow == 'profile.php' && !current_user_can( 'manage_options' )) { ?>
+		<script>
+			jQuery(document).ready(function ($) {
+				if ($('input[name=email]').length) {
+					$('h2:nth-of-type(3), h2:nth-of-type(3) + table, \
+						h2:nth-of-type(2), \
+						h2:nth-of-type(4), \
+						tr.user-comment-shortcuts-wrap, \
+						tr.user-email-wrap, \
+						tr.user-admin-color-wrap, \
+						h3:nth-of-type(1), h3:nth-of-type(1) + ul, \
+						h3:nth-of-type(2), h3:nth-of-type(2) + table, \
+						div#screen-meta-links, \
+						div#wpfooter \
+					').css("display","none");
+				}
+			});
+		</script>
+	<?php
 	}
 }
-add_action( 'pre_get_posts', 'ftek_front_page_category' );
+add_action('admin_footer', 'ftek_disable_profile_fields');
+
+
+function set_default_admin_color($user_id) {
+    $args = array(
+            'ID' => $user_id,
+            'admin_color' => 'midnight'
+    );
+    wp_update_user( $args );
+}
+add_action('user_register', 'set_default_admin_color');
+
 
 
 function generate_footer_quote()
@@ -422,6 +381,65 @@ function ftek_event_date() {
 	}
 }
 
+function ftek_group_logo($slug) {
+	if (function_exists('wp_get_terms_meta')) {
+		return wp_get_terms_meta($slug, 'logo' , true);
+	} else {
+		return false;
+	}
+}
+
+function ftek_updated_meta( $post_type ) {
+	$date_updated = get_the_modified_time("c");
+	$date = date_i18n( get_option('date_format'), strtotime($date_updated)).' '.date_i18n( get_option('time_format'), strtotime($date_updated));
+	if ($post_type == 'post') {
+		// Published
+		$html .= "<p class='entry-published'>";
+		$html .= __('Published').' ';
+		$html .= "<time class='relative-time' datetime='$date_updated'>";
+		$html .= $date;
+		$html .= '</time></p>';
+	}
+	// Updated
+	$html .= "<p class='entry-updated'>";
+	$html .= __('Updated', 'ftek').' ';
+	$html .= "<time class='relative-time' datetime='$date_updated'>";
+	$html .= $date;
+	$html .= '</time>';
+	
+	$html .= '</p>';
+	return $html;
+}
+
+function ftek_page_menu($post)
+{
+	$main_ID = $post->post_parent;
+	if ( !$main_ID ) {
+		$main_ID = $post->ID;
+	}
+	$main = get_post( $main_ID );
+	$menu_items .= wp_list_pages("title_li=&child_of=".$main_ID."&depth=1&echo=0");
+	if ($menu_items) {
+		return '<ul>'. $menu_items . '</ul>';
+	} else {
+		return false;
+	}
+}
+
+
+/* Allow style tags in pages and posts (and also comments - YOU CAN NEVER ENABLE COMMENTS ANYWHERE) */
+
+if( !function_exists('ftek_add_allowed_tags') ) {
+	function ftek_add_allowed_tags($tags) {
+		/*$tags['time'] = array(
+			'datetime' => true,
+		);*/
+		$tags['style'] = array();
+		return $tags;
+	}
+	add_filter('wp_kses_allowed_html', 'ftek_add_allowed_tags');
+}
+
 /*
 * Fixes english home link
 */
@@ -460,131 +478,162 @@ function my_login_logo() { ?>
 	div#login {
 		padding: 5% 0 0;
 	}
-</style>
-<?php }
-add_action( 'login_enqueue_scripts', 'my_login_logo' );
-
-
-/*
-* Change top link on login page to homepage
-*/
-
-function my_login_logo_url() {
-    return home_url();
-}
-add_filter( 'login_headerurl', 'my_login_logo_url' );
-
-/*
-* Remove username in registration form
-*/
-add_action('login_head', function(){
-	?>
-
-<script type="text/javascript" src="<?php echo site_url('/wp-includes/js/jquery/jquery.js'); ?>"></script>
-<script type="text/javascript">
-jQuery(document).ready(function($){
-	$('#registerform > p:first-child').remove();
-});
-</script>
-<?php
-});
-
-/*
-* Remove error for username, only show error for email only.
-*/
-add_filter('registration_errors', function($wp_error, $sanitized_user_login, $user_email){
-	if(isset($wp_error->errors['empty_username'])){
-		unset($wp_error->errors['empty_username']);
-	}
-
-	if(isset($wp_error->errors['username_exists'])){
-		unset($wp_error->errors['username_exists']);
-	}
-	return $wp_error;
-}, 10, 3);
-
-/*
-* Make CID username
-*/
-add_action('login_form_register', function(){
-	if(isset($_POST['user_email']) && !empty($_POST['user_email'])){
-		preg_match('/(.+)@.*chalmers.se/',$_POST['user_email'], $cid);
-		$_POST['user_login'] = $cid[1];
-	}
-});
-
-/*
- * Set first and last name
- */
-
-add_action( 'user_register', function($user_id){
-    set_include_path(get_include_path().PATH_SEPARATOR.'/usr/local/spidera/php/');
-    include_once('ldap_functions.php');
-    if ( class_exists('LDAPUser') ) {
-        $user = get_userdata($user_id);
-        $ldap_user = new LDAPUser($user->user_login);
-		if ($ldap_user->cid != $ldap_user->given_name) {
-			update_user_meta($user_id, 'first_name', $ldap_user->given_name);
-			update_user_meta($user_id, 'last_name', $ldap_user->surname);
-		}
-    }
-});
-
-
-/*
-* Shortcode for if user is logged in
-*/
-add_shortcode('not_logged_in', 'user_not_logged_in' );
-
-function user_not_logged_in ($params, $content = null){
-	if (is_user_logged_in()){
-		return;
-	} else {
-		return do_shortcode($content);
-	}
-}
-
-add_shortcode('logged_in', 'user_logged_in');
-
-function user_logged_in ($params, $content = null){
-	if (is_user_logged_in()){
-		return do_shortcode($content);
-	} else {
-		return;
-	}
-}
-
-/*
-* Allow shortcodes in widgets, requested by wello
-*/
-add_filter('widget_text','do_shortcode');
-
-
-/* Ajax load more helper function */
-// Prints ajax_load_more shortcode
-function print_ajax_loader($sc_options = array(
-	'post_type' => 'any',
-	'posts_per_page' => '12',
-	'transition_container' => 'false',
-	'scroll' => 'true',
-	'scroll_distance' => '-250',
-	'progress_bar' => 'true',
-	'progress_bar_color' => '8d0000',
-	'button_label' => '...',
-	'button_loading_label' => '...',)) {
-
-    $sc_prefix = '[ajax_load_more ';
-	$sc_suffix = ']';
+	</style>
+	<?php }
+	add_action( 'login_enqueue_scripts', 'my_login_logo' );
 	
-	foreach ($sc_options as $key => &$value)
-		$value = '"' . $value . '"';
-	$sc_args = urldecode(http_build_query($sc_options, '', ' '));
-	$shortcode = $sc_prefix . $sc_args . $sc_suffix;
-	echo do_shortcode($shortcode);
-}
-
-/* Imports */
-
-include("functions/admin_UI.php");
-include("functions/menus.php");
-include("functions/shortcodes.php");?>
+	
+	/*
+	* Change top link on login page to homepage
+	*/
+	
+	function my_login_logo_url() {
+		return home_url();
+	}
+	add_filter( 'login_headerurl', 'my_login_logo_url' );
+	
+	/*
+	* Remove username in registration form
+	*/
+	add_action('login_head', function(){
+		?>
+		
+		<script type="text/javascript" src="<?php echo site_url('/wp-includes/js/jquery/jquery.js'); ?>"></script>
+		<script type="text/javascript">
+		jQuery(document).ready(function($){
+			$('#registerform > p:first-child').remove();
+		});
+		</script>
+		<?php
+	});
+	
+	/*
+	* Remove error for username, only show error for email only.
+	*/
+	add_filter('registration_errors', function($wp_error, $sanitized_user_login, $user_email){
+		if(isset($wp_error->errors['empty_username'])){
+			unset($wp_error->errors['empty_username']);
+		}
+		
+		if(isset($wp_error->errors['username_exists'])){
+			unset($wp_error->errors['username_exists']);
+		}
+		return $wp_error;
+	}, 10, 3);
+	
+	/*
+	* Make CID username
+	*/
+	add_action('login_form_register', function(){
+		if(isset($_POST['user_email']) && !empty($_POST['user_email'])){
+			preg_match('/(.+)@.*chalmers.se/',$_POST['user_email'], $cid);
+			$_POST['user_login'] = $cid[1];
+		}
+	});
+	
+	/*
+	* Set first and last name
+	*/
+	
+	add_action( 'user_register', function($user_id){
+		set_include_path(get_include_path().PATH_SEPARATOR.'/usr/local/spidera/php/');
+		include_once('ldap_functions.php');
+		if ( class_exists('LDAPUser') ) {
+			$user = get_userdata($user_id);
+			$ldap_user = new LDAPUser($user->user_login);
+			if ($ldap_user->cid != $ldap_user->given_name) {
+				update_user_meta($user_id, 'first_name', $ldap_user->given_name);
+				update_user_meta($user_id, 'last_name', $ldap_user->surname);
+			}
+		}
+	});
+	
+	
+	/*
+	* Shortcode for if user is logged in
+	*/
+	add_shortcode('not_logged_in', 'user_not_logged_in' );
+	
+	function user_not_logged_in ($params, $content = null){
+		if (is_user_logged_in()){
+			return;
+		} else {
+			return do_shortcode($content);
+		}
+	}
+	
+	add_shortcode('logged_in', 'user_logged_in');
+	
+	function user_logged_in ($params, $content = null){
+		if (is_user_logged_in()){
+			return do_shortcode($content);
+		} else {
+			return;
+		}
+	}
+	
+	/*
+	* Allow shortcodes in widgets, requested by wello
+	*/
+	add_filter('widget_html','do_shortcode');
+	
+	
+	/* Ajax load more helper function */
+	// Prints ajax_load_more shortcode
+	function print_ajax_loader($sc_options = array(
+		'post_type' => 'any',
+		'posts_per_page' => '12',
+		'transition_container' => 'false',
+		'scroll' => 'true',
+		'scroll_distance' => '-250',
+		'progress_bar' => 'true',
+		'progress_bar_color' => '8d0000',
+		'button_label' => '...',
+		'button_loading_label' => '...',)) {
+			
+			$sc_prefix = '[ajax_load_more ';
+			$sc_suffix = ']';
+			
+			foreach ($sc_options as $key => &$value)
+			$value = '"' . $value . '"';
+			$sc_args = urldecode(http_build_query($sc_options, '', ' '));
+			$shortcode = $sc_prefix . $sc_args . $sc_suffix;
+			echo do_shortcode($shortcode);
+		}
+		
+		/* Event Organiser calendar helper function */
+		// Prints eo_fullcalendar shortcode
+		function print_eo_calendar($sc_options = array(
+			'tooltip' => 'false',
+			'headerLeft' => 'today, prev, next, goto, title',
+			'headerCenter' => '',
+			'headerRight' => 'month, basicWeek, basicDay, category',
+			)) {
+				
+				$sc_prefix = '[eo_fullcalendar ';
+				$sc_suffix = ']';
+				
+				foreach ($sc_options as $key => &$value)
+				$value = '"' . $value . '"';
+				$sc_args = urldecode(http_build_query($sc_options, '', ' '));
+				$shortcode = $sc_prefix . $sc_args . $sc_suffix;
+				echo do_shortcode($shortcode);
+			}
+			
+			/* Redirect to date.php even when no posts */
+			function wpd_date_404_template( $template = '' ){
+				global $wp_query;
+				if( isset($wp_query->query['year'])
+				|| isset($wp_query->query['monthnum'])
+				|| isset($wp_query->query['day']) ){
+					$template = locate_template( 'date.php', false );
+				}
+				return $template;
+			}
+			add_filter( '404_template', 'wpd_date_404_template' );
+			
+			/* Imports */
+			
+			include("functions/admin_UI.php");
+			include("functions/shortcodes.php");?>
+			

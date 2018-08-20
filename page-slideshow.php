@@ -11,7 +11,8 @@
 ?>
 
 <head>
-<meta http-equiv="refresh" content="900">
+	<!-- Refresh interval in ms -->
+	<meta http-equiv="refresh" content="900">
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width">
@@ -24,21 +25,17 @@
 </head>
 
 <body <?php /*body_class();*/ ?>>
-	<div id="page">
+	<main role="main">
 
-	<section id="content" class="committee-page single-page">
-		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-			
-				<?php get_template_part( 'article', 'page' ); ?>
-			<?php endwhile; ?>
-			
-		<?php else : ?>
-			<?php get_template_part( 'article', 'none' ); ?>
-		<?php endif; ?>
+	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+		<?php get_template_part( 'article', get_post_type() ); ?>
+	<?php endwhile; ?>
+	<?php else : ?>
+		<?php get_template_part( 'article', 'none' ); ?>
+	<?php endif; ?>
 
-	</section><!-- #content -->
+	</main>
 
-</div><!-- #page -->
-	<?php wp_footer(); ?>
+<?php wp_footer(); ?>
 </body>
 </html>

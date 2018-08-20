@@ -33,8 +33,14 @@ function ftek_member_shortcode($atts, $content, $tag)
                         	. $email
 						. '</a>)';
     }
-    
+
     $user = get_user_by('login', $cid);
+
+    $userdata = get_user_meta( $user->ID );
+    $description = $userdata['description'][0];
+    if ($description !== '') {
+        $content2 = $description;
+    }
     
     return '<div class="member">'
     			. get_avatar( $user->ID, 75)

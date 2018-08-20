@@ -41,42 +41,12 @@
 			<?php endif; ?>
 		</div>
 
-
-		<aside class="side-meta course-meta">
-			<?php $links = course_pretty_links();
-					$representatives = course_pretty_representatives(); ?>
-
-			<?php if ($links) : ?>
-			<section class="course-links">
-				<h2><?= __('Links', 'ftek')?></h2>
-				<?= $links ?>
-			</section>
-			<?php endif; ?>
-
-			<?php if ($representatives) : ?>
-			<section class="course-representatives">
-				<h2><?= __('Course representatives', 'ftek') ?></h2>
-				<?= $representatives ?>
-			</section>
-			<?php endif; ?>
-		</aside>
+		<?php get_template_part('meta', get_post_type()) ?>
 
 	</div>
 
 	<footer>
-		<?php
-			$date_updated = get_the_modified_time("c");
-			$date_short = date_i18n( get_option('date_format'), strtotime($date_updated));
-			$date_long = date_i18n( 'j F, Y', strtotime($date_updated)).' '.date_i18n( get_option('time_format'), strtotime($date_updated));
-		?>
-		<div class="entry-meta">
-			<span class="entry-updated">
-				<?=__('Latest updated', 'ftek').' '?>
-				<time class="relative-time" datetime="<?=$date_updated?>" title="<?=$date_long?>">
-					<?= $date_short ?>
-				</time>.
-			</span>
-		</div>
+		<?= ftek_entry_meta() ?>
 	</footer>
 
 </article>

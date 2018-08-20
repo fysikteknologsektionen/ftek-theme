@@ -21,7 +21,7 @@
 			</ul>
 		</div>
 		<div id="footer-djungle-saying">
-			<p><a href="/sektionshelgon"><?= __(generate_footer_quote(), 'ftek') ?></a></p>
+			<p><a href="/dragos"><?= __(generate_footer_quote(), 'ftek') ?></a></p>
 		</div>
 		<div id="footer-chs-logo">
 			<a href="https://chalmersstudentkar.se"><img id="chs-logo" src="<?php bloginfo('stylesheet_directory'); ?>/images/chalmers.svg" /></a>

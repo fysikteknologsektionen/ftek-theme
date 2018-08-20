@@ -43,16 +43,17 @@ else
 }
 
 // On document finished loading
-
 jQuery(document).ready(function($) {
+  
+  // Remove attr to only style by CSS
+  $('article img').removeAttr('width').removeAttr('height');
 
-  $('a[href*="//"]:not([href*="ftek.se"])').attr("target","_blank");
+  // Remove external links styling from images with links
+  $('a[target="_blank"] img').parent().addClass("no-external");
+
+  $('a[href^="mailto:"]').attr("target","_blank").attr("rel","noopener");
 
   $("time.relative-time").timeago();
-  
-  $('a[href="#"]').click(function(event) {
-    event.preventDefault();
-  });
 
   $('button.close-button').click(function(event) {
     event.preventDefault();
@@ -73,6 +74,6 @@ jQuery(document).ready(function($) {
   $('ul.nav-menu > li:first-child').click(function(event) {
     event.stopPropagation();
     $(this).toggleClass('hovered');
-});
+  });
 
 });

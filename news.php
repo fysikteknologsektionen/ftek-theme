@@ -30,6 +30,11 @@
     $categories = array_intersect($categories, $all_categories);
     $sc_categories = join(',', $categories);
 
+    /* Dates */
+    $year = (int) $_GET['yearnum'];
+    $month = (int) $_GET['monthnum'];
+    $day = (int) $_GET['daynum'];
+
     /* Options */
     $sc_options = array(
         'post_type' => $sc_post_types,
@@ -48,15 +53,18 @@
         'button_loading_label' => '...',
     );
 
+    if ( $year !== 0 )
+        $sc_options['year'] = $year;
+
+    if ( $month !== 0 )
+        $sc_options['month'] = $month;
+
+    if ( $day !== 0 )
+        $sc_options['day'] = $day;
+
+
     if ($sc_options['category'] === '')
         unset($sc_options['category']);
-    /*
-    foreach ($sc_options as $key => &$value)
-        $value = '"' . $value . '"';
 
-    $sc_args = urldecode(http_build_query($sc_options, '', ' '));
-    $shortcode = $sc_prefix . $sc_args . $sc_suffix;
-
-    echo do_shortcode($shortcode);*/
     print_ajax_loader($sc_options);
 ?>

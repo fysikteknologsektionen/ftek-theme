@@ -6,18 +6,6 @@
  * @since ftek 2.0
  */
 
-get_header(); ?>
-
-	<main role="main">
-
-		<?php /* The loop */ ?>
-		<?php while ( have_posts() ) : the_post(); ?>
-
-			<?php get_template_part( 'article', get_post_type() ); ?>
-			<?php //ftek_post_nav(); ?>
-
-		<?php endwhile; ?>
-
-    </main>
-
-<?php get_footer(); ?>
+ get_template_part( 'page', get_post_type() ); 
+ 
+ ?>

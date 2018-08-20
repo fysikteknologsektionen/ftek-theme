@@ -13,10 +13,6 @@
 <main role="main">
 
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-            <?php /*
-            <nav id="committee" class="horizontal">
-                <?= committee_menu($post); ?>
-            </nav> */?>
             <?php get_template_part( 'article', 'group' ); ?>
         <?php endwhile; ?>
         <?php else : ?>
@@ -24,6 +20,5 @@
         <?php endif; ?>
 
 </main>
-
 
 <?php get_footer(); ?>

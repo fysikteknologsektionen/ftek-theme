@@ -8,21 +8,21 @@
 ?>
 
 
-<article id="post-<?= get_the_ID()?>" <?= post_class(!has_post_thumbnail() ? 'has-post-thumbnail' : '') ?>>
+<article id="post-<?= get_the_ID()?>" <?= post_class( (!has_post_thumbnail() ? 'has-post-thumbnail' : '') .'excerpt' ) ?>>
 	<header class="entry-header">
+        <?php if ( has_post_thumbnail() ) { ?>
+                <?php the_post_thumbnail('medium_large', array('class' => 'entry-thumbnail')); ?>
+        <?php }?>
         <h1 class="entry-title hyphenate">
             <?= the_title() ?>
         </h1>
-        <p class="entry-meta">
-            
+    </header>
+    
+    <div class="entry-content excerpt">
+        <p>
+        <?php // Get first two sentences of excerpt ?>
+        <?= preg_replace('/(.*?[?!.](?=\s|$).*?[?!.](?=\s|$)).*/', '\\1', strip_tags( get_the_excerpt() )); ?>
         </p>
-        <?php if ( has_post_thumbnail() ) { ?>
-            <p class="entry-thumbnail">
-                <?php the_post_thumbnail('medium_large'); ?>
-            </p>
-        <?php }?>
-	</header>
-    <section class="entry-content excerpt">
-        <?php the_excerpt(); ?>
-    </section>
+    </div>
+
 </article>

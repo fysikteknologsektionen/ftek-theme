@@ -16,7 +16,7 @@
 get_header(); ?>
 
 	<main role="main" class="home">
-		<div class="widget-container widget-top">
+		<div class="widget-container widget-single">
 		<?php if ( is_active_sidebar( 'home-top' ) ) {
 			dynamic_sidebar( 'home-top' );
 		} ?>
