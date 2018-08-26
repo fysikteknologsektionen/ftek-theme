@@ -11,9 +11,10 @@
 ?>
 
 <head>
-	<!-- Refresh interval in ms -->
+	<!-- Refresh interval in ms. More info: https://css-tricks.com/snippets/html/meta-refresh/ -->
 	<meta http-equiv="refresh" content="900">
-
+	<!-- Disable chrome translation dialog -->
+	<meta name="google" content="notranslate">
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width">
 	<title><?php wp_title( '|', true, 'right' ); ?><?= bloginfo('name')?></title>
@@ -28,7 +29,7 @@
 	<main role="main">
 
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-		<?php get_template_part( 'article', get_post_type() ); ?>
+		<?php the_content(); ?>
 	<?php endwhile; ?>
 	<?php else : ?>
 		<?php get_template_part( 'article', 'none' ); ?>

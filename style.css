@@ -1,6 +1,6 @@
 @import url('fonts/latin_modern_roman_17/stylesheet.css');
 /*
-Theme Name: ftek
+Theme Name: ftek development
 Author: Johan Winther
 Description: Theme for F-sektionen at Chalmers.
 Version: 2.0
@@ -64,7 +64,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 html, body {
   height: 100%;
-  background-color: white;
+  color: hsl(0, 0%, 20%);
 }
 
 
@@ -259,7 +259,7 @@ ol ol, ul ol {
   margin: 0 1em 0 0;
   border: 0;
   background: #8d0000;
-  color: white;
+  color: hsl(0, 0%, 100%);
   cursor: pointer;
   border: 1px solid rgba(0,0,0, 0.1);
 }
@@ -276,7 +276,7 @@ ol ol, ul ol {
 
 
 .button:disabled, input[type="button"]:disabled, input[type="submit"]:disabled {
-  color: white;
+  color: hsl(0, 0%, 100%);
   background: #cccccc;
   box-shadow: none;
   cursor: default;
@@ -342,7 +342,7 @@ header[role="banner"] {
   order: 1;
   z-index: 1000000;
   padding-left: 1em;
-  background: white;
+  background: hsl(0, 0%, 100%);
 }
 
 .top-bar > ul {
@@ -372,8 +372,8 @@ header[role="banner"] {
       font-size: 1.2em;
       display: block;
       position: relative;
-      background-color: black;
-      color: #777777;
+      background-color: hsl(0, 0%, 20%);
+      color: hsl(0, 0%, 80%);
       margin-left: 0;
       padding-left: 0;
     }
@@ -394,11 +394,11 @@ header[role="banner"] {
     }
 
     .top-bar a {
-      color: #bbbbbb;
+      color: inherit;
     }
     
  .top-bar a:hover {
-      color: #ffffff;
+      color: hsl(0, 0%, 100%);
     }
 
 }
@@ -476,11 +476,12 @@ header[role="banner"] .main-menu {
   padding-bottom: 0.5em;
   font-size: 0.8em;
   transition: all 0.5s ease;
+  background: hsl(0, 0%, 100%);
 }
 
 
 header[role="banner"] .main-menu a {
-  color: black;
+  color: initial;
 }
 
 header[role="banner"] li > a:not([href]) {
@@ -807,7 +808,7 @@ ul.sub-menu > li {
   border-width: 0px 1px 0px 1px;
   border-style: solid; 
   border-color: rgba(0,0,0,0.1);
-  background-color: white;
+  background-color: hsl(0, 0%, 100%);
 
 }
 
@@ -926,10 +927,15 @@ main {
   transition: all 0.2s ease, width 0.5s ease;
   width: 100%;
   margin: auto;
+  padding-bottom: 2rem;
   min-height: 50vh;
   overflow-wrap: break-word;
   word-wrap: break-word;
   overflow-y: visible;
+  background-color: hsl(0, 0%, 97%);
+  background-image: url(images/bg-site.png);
+  background-position: top left;
+  background-repeat: repeat;
 }
 
 main p {
@@ -950,8 +956,6 @@ main p {
   }
 }
 
-/* Home widgets */
-
 .screen-reader-text {
   display: none;
 }
@@ -959,9 +963,8 @@ main p {
 /* Footer */
 
 footer#page-footer {
-  background-color: black;
-  color: #777777;
-  margin-top: 2em;
+  background-color: hsl(0, 0%, 10%);
+  color: hsl(0, 0%, 60%);
   padding: 2em;
   display: flex;
   flex-direction: row;
@@ -983,11 +986,11 @@ footer#page-footer * {
 }
 
 footer#page-footer a {
-  color: #bbbbbb;
+  color: hsl(0, 0%, 80%);
 }
 
   footer#page-footer a:hover {
-  color: #ffffff;
+  color: hsl(0, 0%, 100%);
 }
 
 footer#page-footer > *:nth-child(-n+3) {
@@ -1050,6 +1053,17 @@ footer#page-footer > div:nth-child(n+4) {
   text-align: center;
 }
 
+#footer-contact dl > div {
+  margin-top: 0.5em;
+}
+
+#footer-contact dl > div > * {
+  display: inline;
+}
+
+#footer-contact dt::after {
+  content: ': ';
+}
 
 #footer-djungle-saying {
   font-family: "Latin Modern Roman", Georgia, Times, serif;
@@ -1058,12 +1072,12 @@ footer#page-footer > div:nth-child(n+4) {
 }
 
 #page-footer #footer-djungle-saying a {
-  color: #777777;
+  color: hsl(0, 0%, 80%);
 }
 
  #page-footer #footer-djungle-saying a:hover {
   text-decoration: none;
-  color: white;
+  color: hsl(0, 0%, 100%);
 }
 
 #footer-djungle-saying > p::after {
@@ -1074,7 +1088,7 @@ footer#page-footer > div:nth-child(n+4) {
   background: url(images/fantomen.svg) no-repeat;
   background-position: bottom center;
   background-size: contain;
-  filter: invert(20%);
+  /* filter: invert(20%); */
 }
 
 footer#page-footer > div#footer-djungle-saying > p {
@@ -1142,6 +1156,14 @@ footer#page-footer > div#footer-djungle-saying > p {
 .widget-container {
   margin-bottom: 1em;
 }
+.widget {
+  background-color: hsl(0, 0%, 100%);
+}
+
+.widget h1 a {
+  color: inherit;
+}
+
 
 /* Slider */
 
@@ -1158,10 +1180,11 @@ footer#page-footer > div#footer-djungle-saying > p {
 
 .wp1s-caption-title {
   font-size: 3.7vw !important;
-  /* display: block !important; */
+  padding: 0.5em !important;
 }
 
 .wp1s-caption-content {
+  font-size: 1.2rem !important;
   margin-top: 1rem !important;
   text-shadow: 0 0 0.2em black;
 }
@@ -1169,7 +1192,7 @@ footer#page-footer > div#footer-djungle-saying > p {
 .wps1-readmore-button {
   display: inline-block !important;
   background: rgba(141, 0, 0, 0.7);
-  color: white;
+  color: hsl(0, 0%, 100%);
   padding: 0.5em 0.5em;
   margin-top: 1rem;
 }
@@ -1185,6 +1208,7 @@ footer#page-footer > div#footer-djungle-saying > p {
 
 .widget-column .widget {
   break-inside: avoid;
+  page-break-inside: avoid;
   padding: 1rem;
   border: 1px solid rgba(0,0,0, 0.1);
   margin-bottom: 2rem;
@@ -1216,17 +1240,10 @@ footer#page-footer > div#footer-djungle-saying > p {
   list-style-position: outside;
 }
 
-/* Hide comment bubble and author in news widget */
-.rpc-post-meta, .rpc-post-comment {
+/* News widget */
+
+.recent-post-slider .wp-post-date > span {
   display: none;
-}
-
-.rpc-post-title {
-  margin-bottom: 5px !important;
-}
-
-.rpc-content {
-  margin-top: 5px !important;
 }
 
 /* Search page */
@@ -1309,7 +1326,7 @@ footer#page-footer > div#footer-djungle-saying > p {
 .post-page .main-post .entry-meta .post-categories > li > a {
   display: inherit;
   padding: 0.5em;
-  color: white;
+  color: hsl(0, 0%, 100%);
 }
 
 /* Related posts */
@@ -1371,7 +1388,7 @@ footer#page-footer > div#footer-djungle-saying > p {
   transition: background 0.2s ease, font-size 0.2s ease;
   margin-top: -3em;
   cursor: pointer;
-  background: white;
+  background: hsl(0, 0%, 100%);
   border: 1px solid rgba(0,0,0, 0.1);
   z-index: 500;
 }
@@ -1448,7 +1465,7 @@ footer#page-footer > div#footer-djungle-saying > p {
 #news-filter {
   display: none;
   padding: 1em;
-  background: white;
+  background: hsl(0, 0%, 100%);
   border: 1px solid rgba(0,0,0, 0.1);
 }
 
@@ -1626,7 +1643,7 @@ ul.alm-listing .lightbox article {
   padding: 3em;
   margin: auto;
   overflow-y: auto;
-  background: white;
+  background: hsl(0, 0%, 100%);
 }
 
 ul.alm-listing .entry-content {
@@ -1737,7 +1754,7 @@ article .entry-title.featured-image {
 }
 
 .entry-title.featured-image a {
-  color: white;
+  color: hsl(0, 0%, 100%);
 }
 
 
@@ -2058,7 +2075,7 @@ article .event-info {
 #course-table thead th,
 .tablepress thead th {
   border-bottom: 1px solid black;
-  background-color: white;
+  background-color: hsl(0, 0%, 100%);
   position: relative;
 }
 
@@ -2393,21 +2410,25 @@ article .event-info {
 }
 
 .size-thumbnail {
-  max-width: 150px;
-  width: 25%;
+  max-width: 25%;
 }
 
 .size-medium {
-  max-width: 300px;
-  width: 50%;
+  max-width: 50%;
 }
 
 .size-large {
-  max-width: 1024px;
-  width: 75%;
+  max-width: 75%;
 }
 
 .size-full {
-  max-width: 1500px;
-  width: 100%;
+  max-width: 100%;
+}
+
+/* Spinner */
+.spinner {
+  background: url('/wp-admin/images/wpspin_light-2x.gif') no-repeat;
+  background-size: 32px 32px;
+  background-position: center;
+  padding: 32px 0;
 }

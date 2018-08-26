@@ -107,7 +107,7 @@ function ftek_scripts_styles() {
 	$ftek_info = array('language' => get_bloginfo("language") );
 	wp_localize_script( 'ftek-script', 'ftek_info', $ftek_info );
 	wp_enqueue_script( 'ftek-hyphenator', get_template_directory_uri() . '/js/hyphenator.js', false, '2014-02-22', true);
-	wp_enqueue_style( 'ftek-style', get_stylesheet_uri(), array(), null, 'screen');
+	wp_enqueue_style( 'ftek-style', get_stylesheet_uri(), array(), null, 'all');
 	//wp_enqueue_style( 'ftek-style-print', get_stylesheet_directory_uri(), array(), null, 'print');
 	
 	// Calendar page
@@ -293,38 +293,38 @@ endif;
 
 function ftek_disable_profile_fields() {
 	global $pagenow;
-
+	
 	// Only show on profile page for non-admins
 	if ($pagenow == 'profile.php' && !current_user_can( 'manage_options' )) { ?>
 		<script>
-			jQuery(document).ready(function ($) {
-				if ($('input[name=email]').length) {
-					$('h2:nth-of-type(3), h2:nth-of-type(3) + table, \
-						h2:nth-of-type(2), \
-						h2:nth-of-type(4), \
-						tr.user-comment-shortcuts-wrap, \
-						tr.user-email-wrap, \
-						tr.user-admin-color-wrap, \
-						h3:nth-of-type(1), h3:nth-of-type(1) + ul, \
-						h3:nth-of-type(2), h3:nth-of-type(2) + table, \
-						div#screen-meta-links, \
-						div#wpfooter \
-					').css("display","none");
-				}
-			});
+		jQuery(document).ready(function ($) {
+			if ($('input[name=email]').length) {
+				$('h2:nth-of-type(3), h2:nth-of-type(3) + table, \
+				h2:nth-of-type(2), \
+				h2:nth-of-type(4), \
+				tr.user-comment-shortcuts-wrap, \
+				tr.user-email-wrap, \
+				tr.user-admin-color-wrap, \
+				h3:nth-of-type(1), h3:nth-of-type(1) + ul, \
+				h3:nth-of-type(2), h3:nth-of-type(2) + table, \
+				div#screen-meta-links, \
+				div#wpfooter \
+				').css("display","none");
+			}
+		});
 		</script>
-	<?php
+		<?php
 	}
 }
 add_action('admin_footer', 'ftek_disable_profile_fields');
 
 
 function set_default_admin_color($user_id) {
-    $args = array(
-            'ID' => $user_id,
-            'admin_color' => 'midnight'
-    );
-    wp_update_user( $args );
+	$args = array(
+		'ID' => $user_id,
+		'admin_color' => 'midnight'
+	);
+	wp_update_user( $args );
 }
 add_action('user_register', 'set_default_admin_color');
 
@@ -580,60 +580,53 @@ function my_login_logo() { ?>
 	
 	/* Ajax load more helper function */
 	// Prints ajax_load_more shortcode
-	function print_ajax_loader($sc_options = array(
-		'post_type' => 'any',
-		'posts_per_page' => '12',
-		'transition_container' => 'false',
-		'scroll' => 'true',
-		'scroll_distance' => '-250',
-		'progress_bar' => 'true',
-		'progress_bar_color' => '8d0000',
-		'button_label' => '...',
-		'button_loading_label' => '...',)) {
-			
-			$sc_prefix = '[ajax_load_more ';
-			$sc_suffix = ']';
-			
-			foreach ($sc_options as $key => &$value)
-			$value = '"' . $value . '"';
-			$sc_args = urldecode(http_build_query($sc_options, '', ' '));
-			$shortcode = $sc_prefix . $sc_args . $sc_suffix;
-			echo do_shortcode($shortcode);
-		}
+	function print_ajax_loader($sc_options = array( 'post_type' => 'any', 'posts_per_page' => '12', 'transition_container' => 'false', 'scroll' => 'true', 'scroll_distance' => '-250', 'progress_bar' => 'true', 'progress_bar_color' => '8d0000', 'button_label' => '...', 'button_loading_label' => '...',)) {
+		$sc_prefix = '[ajax_load_more ';
+		$sc_suffix = ']';
 		
-		/* Event Organiser calendar helper function */
-		// Prints eo_fullcalendar shortcode
-		function print_eo_calendar($sc_options = array(
-			'tooltip' => 'false',
-			'headerLeft' => 'today, prev, next, goto, title',
-			'headerCenter' => '',
-			'headerRight' => 'month, basicWeek, basicDay, category',
-			)) {
-				
-				$sc_prefix = '[eo_fullcalendar ';
-				$sc_suffix = ']';
-				
-				foreach ($sc_options as $key => &$value)
-				$value = '"' . $value . '"';
-				$sc_args = urldecode(http_build_query($sc_options, '', ' '));
-				$shortcode = $sc_prefix . $sc_args . $sc_suffix;
-				echo do_shortcode($shortcode);
-			}
-			
-			/* Redirect to date.php even when no posts */
-			function wpd_date_404_template( $template = '' ){
-				global $wp_query;
-				if( isset($wp_query->query['year'])
-				|| isset($wp_query->query['monthnum'])
-				|| isset($wp_query->query['day']) ){
-					$template = locate_template( 'date.php', false );
-				}
-				return $template;
-			}
-			add_filter( '404_template', 'wpd_date_404_template' );
-			
-			/* Imports */
-			
-			include("functions/admin_UI.php");
-			include("functions/shortcodes.php");?>
-			
+		foreach ($sc_options as $key => &$value)
+		$value = '"' . $value . '"';
+		$sc_args = urldecode(http_build_query($sc_options, '', ' '));
+		$shortcode = $sc_prefix . $sc_args . $sc_suffix;
+		echo do_shortcode($shortcode);
+	}
+	
+	/* Event Organiser calendar helper function */
+	// Prints eo_fullcalendar shortcode
+	function print_eo_calendar($sc_options = array( 'tooltip' => 'false', 'headerLeft' => 'today, prev, next, goto, title', 'headerCenter' => '', 'headerRight' => 'month, basicWeek, basicDay, category', ) ) {
+		
+		$sc_prefix = '[eo_fullcalendar ';
+		$sc_suffix = ']';
+		
+		foreach ($sc_options as $key => &$value)
+		$value = '"' . $value . '"';
+		$sc_args = urldecode(http_build_query($sc_options, '', ' '));
+		$shortcode = $sc_prefix . $sc_args . $sc_suffix;
+		echo do_shortcode($shortcode);
+	}
+	
+	/* Redirect to date.php even when no posts */
+	function wpd_date_404_template( $template = '' ){
+		global $wp_query;
+		if( isset($wp_query->query['year'])
+		|| isset($wp_query->query['monthnum'])
+		|| isset($wp_query->query['day']) ){
+			$template = locate_template( 'date.php', false );
+		}
+		return $template;
+	}
+	add_filter( '404_template', 'wpd_date_404_template' );
+	
+	/* Keep users logged in for 1 year */
+	function ftek_login_expiration( $expirein ) {
+		return 31556926; // 1 year in seconds
+	}
+	add_filter( 'auth_cookie_expiration', 'ftek_login_expiration' );
+	
+	/* Imports */
+	
+	include("functions/admin_UI.php");
+	include("functions/shortcodes.php");
+	
+?>
+	
