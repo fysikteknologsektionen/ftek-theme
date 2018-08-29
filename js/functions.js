@@ -75,5 +75,8 @@ jQuery(document).ready(function($) {
     event.stopPropagation();
     $(this).toggleClass('hovered');
   });
+  if (ftek_info.language === 'sv-SE') {
+    $(".recent-post-slider .readmorebtn").text("Läs mer");
+  }
 
 });

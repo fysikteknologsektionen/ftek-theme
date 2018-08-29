@@ -932,6 +932,8 @@ main {
   overflow-wrap: break-word;
   word-wrap: break-word;
   overflow-y: visible;
+}
+main.home {
   background-color: hsl(0, 0%, 97%);
   background-image: url(images/bg-site.png);
   background-position: top left;

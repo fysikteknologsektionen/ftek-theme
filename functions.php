@@ -540,6 +540,11 @@ function my_login_logo() { ?>
 		include_once('ldap_functions.php');
 		if ( class_exists('LDAPUser') ) {
 			$user = get_userdata($user_id);
+			if (explode('@', $user->user_email)[1] === 'ftek.se') {
+				global $wpdb;
+				$tablename = $wpdb->prefix . "users";
+				$wpdb->update( $tablename, array( 'user_login' => $user->user_email ), array( 'ID' => $user_id ) );
+			}
 			$ldap_user = new LDAPUser($user->user_login);
 			if ($ldap_user->cid != $ldap_user->given_name) {
 				update_user_meta($user_id, 'first_name', $ldap_user->given_name);
