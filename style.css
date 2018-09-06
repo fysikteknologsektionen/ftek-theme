@@ -1085,12 +1085,11 @@ footer#page-footer > div:nth-child(n+4) {
 #footer-djungle-saying > p::after {
   display: block;
   content: '';
-  height: 2em;
+  height: 2.5em;
   margin: 0.5em 0;
   background: url(images/fantomen.svg) no-repeat;
   background-position: bottom center;
   background-size: contain;
-  /* filter: invert(20%); */
 }
 
 footer#page-footer > div#footer-djungle-saying > p {

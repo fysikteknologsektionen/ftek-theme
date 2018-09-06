@@ -523,28 +523,33 @@ function my_login_logo() { ?>
 	
 	/*
 	* Make CID username
-	*/
+	
 	add_action('login_form_register', function(){
 		if(isset($_POST['user_email']) && !empty($_POST['user_email'])){
 			preg_match('/(.+)@.*chalmers.se/',$_POST['user_email'], $cid);
 			$_POST['user_login'] = $cid[1];
 		}
-	});
+	}); */
 	
 	/*
-	* Set first and last name
+	* Set first and last name and username
 	*/
 	
 	add_action( 'user_register', function($user_id){
+		$user = get_userdata($user_id);
+		global $wpdb;
+		$tablename = $wpdb->prefix . "users";
+		// Set username to full email if domain is ftek.se else set to part before @
+		if (explode('@', $user->user_email)[1] === 'ftek.se') {
+			$wpdb->update( $tablename, array( 'user_login' => $user->user_email ), array( 'ID' => $user_id ) );
+		} else {
+			$wpdb->update( $tablename, array( 'user_login' => explode('@', $user->user_email)[0] ), array( 'ID' => $user_id ) );
+		}
+
+		// Find names in LDAP directory
 		set_include_path(get_include_path().PATH_SEPARATOR.'/usr/local/spidera/php/');
 		include_once('ldap_functions.php');
 		if ( class_exists('LDAPUser') ) {
-			$user = get_userdata($user_id);
-			if (explode('@', $user->user_email)[1] === 'ftek.se') {
-				global $wpdb;
-				$tablename = $wpdb->prefix . "users";
-				$wpdb->update( $tablename, array( 'user_login' => $user->user_email ), array( 'ID' => $user_id ) );
-			}
 			$ldap_user = new LDAPUser($user->user_login);
 			if ($ldap_user->cid != $ldap_user->given_name) {
 				update_user_meta($user_id, 'first_name', $ldap_user->given_name);
@@ -627,11 +632,13 @@ function my_login_logo() { ?>
 		return 31556926; // 1 year in seconds
 	}
 	add_filter( 'auth_cookie_expiration', 'ftek_login_expiration' );
+
 	
 	/* Imports */
 	
 	include("functions/admin_UI.php");
 	include("functions/shortcodes.php");
 	
-?>
 	
+
+?>
