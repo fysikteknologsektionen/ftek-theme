@@ -24,4 +24,9 @@
         <?= $representatives ?>
     </section>
     <?php endif; ?>
+
+    <section class="course-contact">
+        <h2>Saknas något?</h2>
+        Kontakta <a href="mailto:snf@ftek.se" target="_blank" rel="noopener">SNF</a></li>
+    </section>
 </aside>
