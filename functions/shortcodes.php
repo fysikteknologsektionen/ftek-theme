@@ -39,7 +39,7 @@ function ftek_member_shortcode($atts, $content, $tag)
     $userdata = get_user_meta( $user->ID );
     $description = $userdata['description'][0];
     if ($description !== '') {
-        $content2 = $description;
+        $content = $description;
     }
     
     return '<div class="member">'

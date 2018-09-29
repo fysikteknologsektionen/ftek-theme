@@ -60,6 +60,16 @@ jQuery(document).ready(function($) {
     $('.extra-nav').css('top', 32);
   }
 
+  if ($('#wp-calendar').length > 0) {
+    let $title = $('#wp-calendar').parent().parent().find('.widget-title').eq(0);
+    $title.html('<a href="/kalender">'+$title.html()+'</a>');
+  }
+
+  if ($('.wppsac-slick-slider-wrp').length > 0) {
+    let $title = $('.wppsac-slick-slider-wrp').parent().parent().find('.widget-title').eq(0);
+    $title.html('<a href="/nyheter">'+$title.html()+'</a>');
+  }
+
   $('a[href="#allCategoriesList#"]').removeAttr('href');
 
   $('button.close-button').click(function(event) {
