@@ -470,12 +470,12 @@ ul.nav-menu > li:nth-child(n+2):hover {
   background-color: hsl(0, 0%, 95%);
 }
 
-ul.nav-menu > li:nth-child(n+2)::before {
+/*ul.nav-menu > li:nth-child(n+2)::before {
   content: "";
   display: inline-block;
   height: 100%;
   vertical-align: middle;
-}
+}*/
 
 @media
   (max-width: 960px) {
