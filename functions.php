@@ -479,166 +479,118 @@ function my_login_logo() { ?>
 		padding: 5% 0 0;
 	}
 	</style>
-	<?php }
-	add_action( 'login_enqueue_scripts', 'my_login_logo' );
+	<?php
+}
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+
+/*
+* Change top link on login page to homepage
+*/
+add_filter( 'login_headerurl', function(){return home_url();} );
+
+/*
+* Set username to CID in registration form
+*/
+add_action('register_form', function(){
+	?>
 	
-	
-	/*
-	* Change top link on login page to homepage
-	*/
-	
-	function my_login_logo_url() {
-		return home_url();
-	}
-	add_filter( 'login_headerurl', 'my_login_logo_url' );
-	
-	/*
-	* Remove username in registration form
-	*/
-	add_action('login_head', function(){
-		?>
-		
-		<script type="text/javascript" src="<?php echo site_url('/wp-includes/js/jquery/jquery.js'); ?>"></script>
-		<script type="text/javascript">
-		jQuery(document).ready(function($){
-			$('#registerform > p:first-child').remove();
+	<script type="text/javascript" src="<?php echo site_url('/wp-includes/js/jquery/jquery.js'); ?>"></script>
+	<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$('#registerform label[for="user_login"]').css('display','none');
+		$('#user_email').on('change',function(){
+			$('#user_login').val($(this).val().split('@')[0]);
 		});
-		</script>
-		<?php
+		
 	});
-	
-	/*
-	* Remove error for username, only show error for email only.
-	*/
-	add_filter('registration_errors', function($wp_error, $sanitized_user_login, $user_email){
-		if(isset($wp_error->errors['empty_username'])){
-			unset($wp_error->errors['empty_username']);
-		}
-		
-		if(isset($wp_error->errors['username_exists'])){
-			unset($wp_error->errors['username_exists']);
-		}
-		return $wp_error;
-	}, 10, 3);
-	
-	/*
-	* Make CID username
-	
-	add_action('login_form_register', function(){
-		if(isset($_POST['user_email']) && !empty($_POST['user_email'])){
-			preg_match('/(.+)@.*chalmers.se/',$_POST['user_email'], $cid);
-			$_POST['user_login'] = $cid[1];
-		}
-	}); */
-	
-	/*
-	* Set first and last name and username
-	*/
-	
-	add_action( 'user_register', function($user_id){
-		$user = get_userdata($user_id);
-		global $wpdb;
-		$tablename = $wpdb->prefix . "users";
-		// Set username to full email if domain is ftek.se else set to part before @
-		if (explode('@', $user->user_email)[1] === 'ftek.se') {
-			$wpdb->update( $tablename, array( 'user_login' => $user->user_email ), array( 'ID' => $user_id ) );
-		} else {
-			$wpdb->update( $tablename, array( 'user_login' => explode('@', $user->user_email)[0] ), array( 'ID' => $user_id ) );
-		}
+	</script>
+	<?php
+});
 
-		// Find names in LDAP directory
-		set_include_path(get_include_path().PATH_SEPARATOR.'/usr/local/spidera/php/');
-		include_once('ldap_functions.php');
-		if ( class_exists('LDAPUser') ) {
-			$ldap_user = new LDAPUser($user->user_login);
-			if ($ldap_user->cid != $ldap_user->given_name) {
-				update_user_meta($user_id, 'first_name', $ldap_user->given_name);
-				update_user_meta($user_id, 'last_name', $ldap_user->surname);
-			}
-		}
-	});
-	
-	
-	/*
-	* Shortcode for if user is logged in
-	*/
-	add_shortcode('not_logged_in', 'user_not_logged_in' );
-	
-	function user_not_logged_in ($params, $content = null){
-		if (is_user_logged_in()){
-			return;
-		} else {
-			return do_shortcode($content);
-		}
+/*
+* Remove error for username, only show error for email.
+*/
+add_filter('registration_errors', function($wp_error, $sanitized_user_login, $user_email){
+	if(isset($wp_error->errors['username_exists'])){
+		$wp_error->remove('username_exists');
 	}
-	
-	add_shortcode('logged_in', 'user_logged_in');
-	
-	function user_logged_in ($params, $content = null){
-		if (is_user_logged_in()){
-			return do_shortcode($content);
-		} else {
-			return;
-		}
+	if (!isset($wp_error->errors['invalid_email']) && explode('@',$user_email)[0] !== $sanitized_user_login) {
+		$wp_error->add( 'user_login_error', __('<strong>FEL</strong>: Användarnamn måste vara samma som CID. Aktivera JavaScript!' ) );
 	}
-	
-	/*
-	* Allow shortcodes in widgets, requested by wello
-	*/
-	add_filter('widget_html','do_shortcode');
-	
-	
-	/* Ajax load more helper function */
-	// Prints ajax_load_more shortcode
-	function print_ajax_loader($sc_options = array( 'post_type' => 'any', 'posts_per_page' => '12', 'transition_container' => 'false', 'scroll' => 'true', 'scroll_distance' => '-250', 'progress_bar' => 'true', 'progress_bar_color' => '8d0000', 'button_label' => '...', 'button_loading_label' => '...',)) {
-		$sc_prefix = '[ajax_load_more ';
-		$sc_suffix = ']';
-		
-		foreach ($sc_options as $key => &$value)
-		$value = '"' . $value . '"';
-		$sc_args = urldecode(http_build_query($sc_options, '', ' '));
-		$shortcode = $sc_prefix . $sc_args . $sc_suffix;
-		echo do_shortcode($shortcode);
-	}
-	
-	/* Event Organiser calendar helper function */
-	// Prints eo_fullcalendar shortcode
-	function print_eo_calendar($sc_options = array( 'tooltip' => 'false', 'headerLeft' => 'today, prev, next, goto, title', 'headerCenter' => '', 'headerRight' => 'month, basicWeek, basicDay, category', ) ) {
-		
-		$sc_prefix = '[eo_fullcalendar ';
-		$sc_suffix = ']';
-		
-		foreach ($sc_options as $key => &$value)
-		$value = '"' . $value . '"';
-		$sc_args = urldecode(http_build_query($sc_options, '', ' '));
-		$shortcode = $sc_prefix . $sc_args . $sc_suffix;
-		echo do_shortcode($shortcode);
-	}
-	
-	/* Redirect to date.php even when no posts */
-	function wpd_date_404_template( $template = '' ){
-		global $wp_query;
-		if( isset($wp_query->query['year'])
-		|| isset($wp_query->query['monthnum'])
-		|| isset($wp_query->query['day']) ){
-			$template = locate_template( 'date.php', false );
-		}
-		return $template;
-	}
-	add_filter( '404_template', 'wpd_date_404_template' );
-	
-	/* Keep users logged in for 1 year */
-	function ftek_login_expiration( $expirein ) {
-		return 31556926; // 1 year in seconds
-	}
-	add_filter( 'auth_cookie_expiration', 'ftek_login_expiration' );
+	return $wp_error;
+}, 10, 3);
 
+/*
+* Set first and last name and username
+*/
+add_action( 'user_register', function($user_id){
 	
-	/* Imports */
+	// Find names in LDAP directory
+	$user = get_userdata($user_id);
+	include_once('/usr/local/spidera/php/ldap_functions.php');
+	if ( class_exists('LDAPUser') ) {
+		$ldap_user = new LDAPUser($user->user_login);
+		if ($ldap_user->cid != $ldap_user->given_name) {
+			update_user_meta($user_id, 'first_name', $ldap_user->given_name);
+			update_user_meta($user_id, 'last_name', $ldap_user->surname);
+		}
+	}
+}, 10, 1 );
+
+
+
+/* Ajax load more helper function */
+// Prints ajax_load_more shortcode
+function print_ajax_loader($sc_options = array( 'post_type' => 'any', 'posts_per_page' => '12', 'transition_container' => 'false', 'scroll' => 'true', 'scroll_distance' => '-250', 'progress_bar' => 'true', 'progress_bar_color' => '8d0000', 'button_label' => '...', 'button_loading_label' => '...',)) {
+	$sc_prefix = '[ajax_load_more ';
+	$sc_suffix = ']';
 	
-	include("functions/admin_UI.php");
-	include("functions/shortcodes.php");
+	foreach ($sc_options as $key => &$value)
+	$value = '"' . $value . '"';
+	$sc_args = urldecode(http_build_query($sc_options, '', ' '));
+	$shortcode = $sc_prefix . $sc_args . $sc_suffix;
+	echo do_shortcode($shortcode);
+}
+
+/* Event Organiser calendar helper function */
+// Prints eo_fullcalendar shortcode
+function print_eo_calendar($sc_options = array( 'tooltip' => 'false', 'headerLeft' => 'today, prev, next, goto, title', 'headerCenter' => '', 'headerRight' => 'month, basicWeek, basicDay, category', ) ) {
 	
+	$sc_prefix = '[eo_fullcalendar ';
+	$sc_suffix = ']';
 	
+	foreach ($sc_options as $key => &$value)
+	$value = '"' . $value . '"';
+	$sc_args = urldecode(http_build_query($sc_options, '', ' '));
+	$shortcode = $sc_prefix . $sc_args . $sc_suffix;
+	echo do_shortcode($shortcode);
+}
+
+/* Redirect to date.php even when no posts */
+function wpd_date_404_template( $template = '' ){
+	global $wp_query;
+	if( isset($wp_query->query['year'])
+	|| isset($wp_query->query['monthnum'])
+	|| isset($wp_query->query['day']) ){
+		$template = locate_template( 'date.php', false );
+	}
+	return $template;
+}
+add_filter( '404_template', 'wpd_date_404_template' );
+
+/* Keep users logged in for 1 year */
+function ftek_login_expiration( $expirein ) {
+	return 31556926; // 1 year in seconds
+}
+add_filter( 'auth_cookie_expiration', 'ftek_login_expiration' );
+
+
+/* Imports */
+
+include("functions/admin_UI.php");
+include("functions/shortcodes.php");
+
+
 
 ?>
