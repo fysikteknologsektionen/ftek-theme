@@ -1,6 +1,13 @@
 <?php
 
 
+
+/*
+* Allow shortcodes in widgets
+*/
+add_filter('widget_html','do_shortcode');
+
+
 // Trim whitespace inside shortcodes
 remove_filter( 'the_content', 'wpautop' );
 add_filter( 'the_content', 'wpautop' , 99);
@@ -197,3 +204,27 @@ function ftek_menu_shortcode($atts, $content, $tag)
 		'theme_location'  => $theme_location));
 }
 add_shortcode('ftek_menu', 'ftek_menu_shortcode');
+
+
+/*
+* Shortcode for if user is logged in
+*/
+add_shortcode('not_logged_in', 'user_not_logged_in' );
+
+function user_not_logged_in ($params, $content = null){
+	if (is_user_logged_in()){
+		return;
+	} else {
+		return do_shortcode($content);
+	}
+}
+
+add_shortcode('logged_in', 'user_logged_in');
+
+function user_logged_in ($params, $content = null){
+	if (is_user_logged_in()){
+		return do_shortcode($content);
+	} else {
+		return;
+	}
+}
