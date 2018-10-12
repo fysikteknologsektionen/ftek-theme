@@ -22,6 +22,9 @@
 	<div class="entry-main">
 		
 		<div class="entry-content">
+			<div class="event-info">
+				<?= ftek_event_info(); ?>
+			</div>
 			<?php the_content(); ?>
 		</div>
 

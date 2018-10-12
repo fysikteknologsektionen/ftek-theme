@@ -16,13 +16,36 @@
         <h1 class="entry-title hyphenate">
             <?= the_title() ?>
         </h1>
+        <div class="entry-meta">
+            <p class='entry-published'>
+                <?= __('Published', 'ftek').' ' ?>
+                <time class='relative-time' datetime='<?= get_the_time("c") ?>' >
+                    <?= date_i18n( get_option('date_format'), strtotime(get_the_time("c"))) ?>
+                </time>
+            </p>
+            <?php 
+                if ( get_post_type() === 'post' ) {
+                    echo '<ul class="post-categories">';
+                    foreach((get_the_category()) as $category) {
+                        echo '<li>'.$category->cat_name.'</li>';
+                    }
+                    echo '</ul>';
+                }
+            ?>
+        </div>
     </header>
     
     <div class="entry-content excerpt">
-        <p>
-        <?php // Get first two sentences of excerpt ?>
-        <?= preg_replace('/(.*?[?!.](?=\s|$).*?[?!.](?=\s|$)).*/', '\\1', strip_tags( get_the_excerpt() )); ?>
-        </p>
+        <?php 
+        if (get_post_type() === 'event') { ?>
+            <div class="event-info">
+                <?= ftek_event_info(true); ?>
+            </div>
+        <?php
+        } else {
+            the_excerpt();
+        }
+        ?>
     </div>
 
 </article>

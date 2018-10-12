@@ -218,7 +218,7 @@ if ( ! function_exists( 'ftek_entry_meta' ) ) :
 	*/
 	function ftek_entry_meta( $post_type ) {
 		echo "<div class='entry-meta'>";
-		if ( $post_type == 'post' ) {
+		if ( $post_type === 'post' ) {
 			$categories_list = get_the_category_list();
 			if ( $categories_list ) {
 				echo $categories_list;
@@ -354,30 +354,76 @@ function generate_footer_quote()
 * Pretty printing for event stuff
 */
 
-function ftek_event_info() {
-	$result = ftek_event_date();
-	$venue = eo_get_venue_name();
-	if ($venue != '') {
-		$result .= ' @ <a href="/evenemang/plats/'. eo_get_venue_slug() .'" title="Evenemang på '. $venue .'">'. $venue . '</a>';
+function ftek_event_info($is_excerpt) {
+	$date = ftek_event_date();
+	$datetime = ftek_event_date(true);
+	$result = "<table><tbody>";
+	if ( get_the_terms( get_the_ID(), 'event-category' ) && ! is_wp_error( get_the_terms( get_the_ID(), 'event-category' ) ) ) {
+		$result .= "<tr><td>📅</td><td>".strip_tags(get_the_term_list( get_the_ID(),'event-category', '', ', ', '' ))."</td></tr>";
 	}
+	if (!eo_recurs()) {
+		$relative_time = isset($is_excerpt) ? 'relative-time' : '';
+		$result .= "<tr><td>🕒</td><td><time class='$relative_time' datetime='$datetime'>$date</time></td></tr>";
+	}
+	if ( eo_get_venue() ) {
+		$slug = eo_get_venue_slug();
+		$venue = eo_get_venue_name();
+		$venue_details = eo_get_venue_address();
+		$address = $venue_details['address'].', '.$venue_details['postcode'].' '.$venue_details['city'];
+		$map = eo_get_venue_map();
+		$result .= "<tr><td>📍</td><td>";
+		$result .= "<p>";
+		$venue_string = "<a href='/evenemang/plats/$slug' title='Evenemang vid $venue'>$venue</a>";
+		if (isset($is_excerpt)) { $venue_string = strip_tags($venue_string); }
+		$result .= $venue_string;
+		$result .= "<br>";
+		$result .= "<span class='address'>$address</span>";
+		if ( eo_venue_has_latlng(eo_get_venue()) && !isset($is_excerpt) ) {
+			$result .= "<a href='#' id='map-button' title='Visa karta'>Visa karta</a>";
+			$result .= "</p>";
+			$result .= $map;
+		} else {
+			$result .= "</p>";
+		}
+		$result .= "</td></tr>";
+	}
+	$result .= "</tbody></table>";
 	return $result;
 }
 
-function ftek_event_date() {
+function ftek_event_date($raw) {
+	$start_date_fallback = get_post_meta(get_the_id(), '_eventorganiser_schedule_start_start', true);
+	$start_date_fallback = DateTime::createFromFormat('Y-m-d H:i:s', $start_date_fallback);
+	$end_date_fallback = get_post_meta(get_the_id(), '_eventorganiser_schedule_start_finish', true);
+	$end_date_fallback = DateTime::createFromFormat('Y-m-d H:i:s', $end_date_fallback);
+	if (isset($raw)) {
+		if (eo_get_the_start('c')) {
+			return eo_get_the_start('c');
+		} else {
+			return $start_date_fallback->format('c');
+		}
+	}
 	$date_format = get_option('date_format');
 	$time_format = get_option('time_format');
 	if ( eo_is_all_day() ) {
-		$start_date = eo_get_the_start($date_format);
-		$end_date = eo_get_the_end($date_format);
+		if (eo_get_the_start('c')) {
+			$start_date = eo_get_the_start($date_format);
+			$end_date = eo_get_the_end($date_format);
+		} else {
+			$start_date = $start_date_fallback->format($date_format);
+			$end_date = $end_date_fallback->format($date_format);
+		}
 		if ($start_date == $end_date) {
 			return $start_date;
+		} else {
+			return $start_date.' – '.$end_date;
 		}
-		else {
-			return $start_date.'–'.$end_date;
+	} else {
+		if (eo_get_the_start('c')) {
+			return eo_get_the_start('l, '.$date_format.' '.$time_format).' – '.eo_get_the_end($time_format);
+		} else {
+			return date_i18n('l, '.$date_format.' '.$time_format, $start_date_fallback->format('U')) .' – '. date_i18n($time_format, $start_date_fallback->format('U'));
 		}
-	}
-	else {
-		return eo_get_the_start($date_format.' '.$time_format);
 	}
 }
 
@@ -396,7 +442,7 @@ function ftek_updated_meta( $post_type ) {
 		// Published
 		$html .= "<p class='entry-published'>";
 		$html .= __('Published').' ';
-		$html .= "<time class='relative-time' datetime='$date_updated'>";
+		$html .= "<time class='relative-time' datetime='".get_the_time("c")."'>";
 		$html .= $date;
 		$html .= '</time></p>';
 	}
