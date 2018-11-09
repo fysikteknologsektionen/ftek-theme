@@ -35,7 +35,7 @@
 		<?php /* Contact page and privacy policy page */ ?>
 			<p><a href="<?= get_page_link(23) ?>"><?= get_the_title(23) ?></a> | <a href="<?= get_page_link(6122) ?>"><?= get_the_title(6122) ?></a></p>
 			<p><a href="/support">Support</a></p>
-			<p>© 2018 Fysikteknologsektionen<p>
+			<p>© <?= date("Y") ?> Fysikteknologsektionen<p>
 		</div>
 	</footer>
 	<?php wp_footer(); ?>

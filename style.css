@@ -1115,7 +1115,7 @@ footer#page-footer > div:nth-child(n+4) {
   display: inline;
 }
 
-#footer-contact dt::after {
+#footer-contact dt~dd::before {
   content: ': ';
 }
 
@@ -1208,7 +1208,7 @@ footer#page-footer > div#footer-djungle-saying > p {
 
 /* Home page widgets */
 
-.widget-container {
+.widget-single .widget {
   margin-bottom: 1em;
 }
 .widget {
@@ -1256,6 +1256,7 @@ footer#page-footer > div#footer-djungle-saying > p {
 
 .widget-column {
   width: 80%;
+  padding-top: 2rem;
   margin: auto;
   column-count: 3;
   column-gap: 2em;
