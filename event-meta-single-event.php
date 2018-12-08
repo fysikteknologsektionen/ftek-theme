@@ -1,6 +1,6 @@
 <?php
 /**
- * Default template for displaying the meta sidebar.
+ * Template for displaying the event info.
  *
  * @package ftek
  * @since ftek 2.0

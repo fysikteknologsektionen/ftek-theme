@@ -5,9 +5,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php wp_title( '|', true, 'right' ); ?> <?= bloginfo('name')?></title>
     <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/images/favicon.png" />
-	<?php if (is_home()) { ?>
- 	<meta name="description" content="<?php bloginfo('description');?>" />
-	<?php } ?>
   	<!--[if lt IE 9]>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
 	<![endif]-->
