@@ -1220,6 +1220,17 @@ footer#page-footer > div#footer-djungle-saying > p {
   color: inherit;
 }
 
+a.rsswidget {
+    display: block;
+}
+
+span.rss-date {
+    display: block;
+    margin-bottom: 0.8em;
+    margin-top: 0.2em;
+    font-size: 0.8rem;
+    color: #888;
+}
 
 /* Slider */
 
