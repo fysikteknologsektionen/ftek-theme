@@ -26,6 +26,7 @@ $category = get_category_by_slug(get_post_field('post_name'));
                     <?php }
                 } ?>
             <?php the_content(); ?>
+            <?= do_shortcode('[ftek_gsuite_members group="'.wp_get_terms_meta($category->cat_ID, 'email' , true).'"]') ?>
         </div>
 
         <?php get_template_part('meta', 'group'); ?>
