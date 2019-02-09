@@ -17,58 +17,40 @@ add_action('wp_dashboard_setup', 'ftek_remove_all_dashboard_meta_boxes', 9999 );
 function add_dashboard_tutorial_widgets() {
     $widgets = array(
         array(
-            'slug' => 'ftek_welcome',
-            'title' => __('Welcome to the ftek admin!', 'ftek'),
-            'position' => 'normal',
-        ),
-        array(
             'slug' => 'ftek_guidelines',
-            'title' => __('Guidelines – read before posting!', 'ftek'),
+            'title' => 'Riktlinjer – läs innan du skriver!',
             'position' => 'side',
         ),
         array(
             'slug' => 'howto_news',
-            'title' => __('How to write a news item', 'ftek'), 
+            'title' => 'Att skriva en nyhet', 
             'position' => 'normal',
         ),
         array(
             'slug' => 'howto_event',
-            'title' => __("How to create an event", 'ftek'),
+            'title' => 'Att skapa ett evenemang',
+            'position' => 'normal',
+        ),
+        array(
+            'slug' => 'howto_slideshow',
+            'title' => 'Att lägga till bilder på TV:n på Focus',
             'position' => 'normal',
         ),
         array(
             'slug' => 'howto_edit_page',
-            'title' => __("How to edit your club's page", 'ftek'),
+            'title' => 'Att redigera en sida',
             'position' => 'normal',
         ),
         array(
             'slug' => 'howto_subpage',
-            'title' => __("How to add a subpage to your club's page", 'ftek'),
+            'title' => 'Att lägga till en undersida',
             'position' => 'normal',
         ),
         array(
             'slug' => 'howto_course_pages',
-            'title' => __("How to edit course pages", 'ftek'),
+            'title' => 'Add redigera en kurssida',
             'position' => 'normal',
             'capability' => 'edit_others_course_pages',
-        ),
-        array(
-            'slug' => 'howto_menus',
-            'title' => __('How to edit the menus', 'ftek'),
-            'position' => 'side',
-            'capability' => 'edit_theme_options',
-        ),
-        array(
-            'slug' => 'howto_widgets',
-            'title' => __('How to edit widgets', 'ftek'),
-            'position' => 'side',
-            'capability' => 'edit_theme_options',
-        ),
-        array(
-            'slug' => 'howto_change_roles',
-            'title' => __('How to change users roles', 'ftek'),
-            'position' => 'side',
-            'capability' => 'promote_users',
         ),
     );
         foreach ($widgets as $widget) {
@@ -89,31 +71,6 @@ add_action( 'wp_dashboard_setup', 'add_dashboard_tutorial_widgets', 10000);
 /**
  * Tutorial widgets
  */
-function ftek_welcome() {
-    ?>
-    <p>Här kan du:</p>
-    <ul style="list-style: disc; margin-left: 1.5em;">
-        <li>Skriva nyheter (inlägg)</li>
-        <li>Skapa evenemang i kalendern</li>
-        <li>Redigera din förenings sida</li>
-        <li>Redigera din profil (namn, smeknamn, bild)</li>
-        <?php if (current_user_can('edit_others_course_pages')):?>
-        <li>Uppdatera kurssidor (fixa länkar, ladda upp tentor)</li>
-        <?php endif;?>
-        <?php if (current_user_can('promote_users')):?>
-        <li>Ställa in roller (och därmed befogenheter) för andra användare</li>
-        <?php endif;?>
-        <?php if (current_user_can('edit_theme_options')):?>
-        <li>Redigera menyer och widgets</li>
-        <?php endif;?>
-        <?php if (current_user_can('manage_options')):?>
-        <li>Ändra inställningar för hemsidan (var försiktig!)</li>
-        <?php endif;?>
-    </ul>
-    <p>På den här sidan finns guider som hjälper dig göra detta, även om det mesta borde gå lätt. Gå tillbaka hit om du undrar något. Lycka till!</p>
-    <?php
-}
-
 function ftek_guidelines()
 {   
     ?>
@@ -133,13 +90,11 @@ function ftek_guidelines()
 function howto_news() {
     ?>
     <ol>
-        <li>Gå in på <em>Inlägg &rarr; Skapa nytt</em></li>
+        <li>Gå in på <a href="/wp-admin/edit.php"><em>Inlägg</em></a> &rarr; <a href="/wp-admin/post-new.php"><em>Skapa nytt</em></a></li>
         <li>Fyll i rubrik och text.</li>
-        <li>Om nyheten är lång, sammanfatta den i första stycket och lägg sedan en <em>läs mer</em>-länk innan resten av texten.</li> 
-        <li>Välj relevanta kategorier. Ska nyheten synas på framsidan, välj kategorin <em>Framsida</em>.</li>
-        <li>Välj en <em>utvald bild</em> och beskär den vettigt.</li>
-        <li>Om det är relevant, välj ett evenemang att koppla nyheten till.</li>
-        <li>Om det är relevant, fyll i engelsk rubrik och text.</li>
+        <li>Lägg till relevanta kategorier.</li>
+        <li>Välj en <em>utvald bild</em> (helst en som är bredare än hög).</li>
+        <li>Om det är relevant, fyll i engelsk rubrik och text genom att använda flaggorna högst upp på sidan.</li>
     </ol>
     <?php
 } 
@@ -147,12 +102,25 @@ function howto_news() {
 function howto_event() {
     ?>
     <ol>
-        <li>Gå in på <em>Evenemang &rarr; Skapa nytt</em></li>
-        <li>Fyll i rubrik och en kort beskrivning.</li>
+        <li>Gå in på <a href="/wp-admin/edit.php?post_type=event"><em>Evenemang</em></a> &rarr; <a href="/wp-admin/post-new.php?post_type=event"><em>Lägg till nytt</em></a></li>
+        <li>Fyll i rubrik och beskrivning.</li>
         <li>Välj tid och plats. Finns inte platsen bland de befintliga, skapa en ny.</li>
-        <li>Välj relevanta kategorier. Spamma inte.</li>
-        <li>Om du vill, välj en <em>utvald bild</em> och beskär den vettigt.</li>
+        <li>Välj relevanta kategorier.</li>
+        <li>Välj en <em>utvald bild</em>. Om den är i formatet 16:9 (t.ex. 1366×768 eller 1920×1080) så läggs den automatiskt upp på TV:n på Focus.</li>
         <li>Om det är relevant, fyll i engelsk rubrik och beskrivning.</li>
+    </ol>
+    <?php
+}
+
+function howto_slideshow() {
+    ?>
+    <ol>
+        <li>Gå in på <a href="/wp-admin/edit.php?post_type=vegas"><em>WP Vegas</em></a>.</li>
+        <li>Klicka in på <a href="/wp-admin/post.php?post=1570&action=edit"><em>Default 16:9 1366x768</em></a>.</li>
+        <li>Klicka på <em>Add Slides</em> och ladda upp din bild som måste vara i 16:9 format.</li>
+        <li>Lägg till kategorin <em>Slideshow</em> till bilden när du har laddat upp den.</li>
+        <li>Klicka på <em>Uppdatera</em> till höger.</li>
+        <li>TV:n uppdaterar med 15 minuters mellanrum, men du kan <a href="/slideshow/">förhandvisa här</a>.</li>
     </ol>
     <?php
 }
@@ -160,8 +128,8 @@ function howto_event() {
 function howto_edit_page() {
     ?>
     <ol>
-        <li>Gå in på <em>Sidor</em> och hitta din förenings sida eller relevant undersida.</li>
-        <li>Titta på hur tidigare år har gjort och uppdatera det som är relevant.</li>
+        <li>Gå in på <a href="/wp-admin/edit.php?post_type=page"><em>Sidor</em></a> och hitta den sida du vill redigera.</li>
+        <li>Titta på hur andra sidor har skrivits annars fråga Spidera om hjälp.</li>
     </ol>
     <?php
 }
@@ -169,7 +137,7 @@ function howto_edit_page() {
 function howto_subpage() {
     ?>
     <ol>
-        <li>Gå in på <em>Sidor &rarr; Skapa ny</em></li>
+        <li>Gå in på <a href="/wp-admin/edit.php?post_type=page"><em>Sidor</em></a> &rarr; <a href="/wp-admin/post-new.php?post_type=page"><em>Skapa ny</em></a></li>
         <li>Fyll i sidnamn och innehåll på både svenska och engelska.</li>
         <li>Välj din förenings huvudsida som föräldersida.</li>
         <li>Om du vill, välj en specifik <em>utvald bild</em> för undersidan och beskär den vettigt. Om du inte väljer en specifik bild används samma som på föreningens huvudsida.</li>
@@ -180,52 +148,9 @@ function howto_subpage() {
 function howto_course_pages() {
     ?>
     <ol>
-        <li>Gå in på Kurssidor och välj kursens sida. Finns den inte, välj <em>skapa ny</em>.</li>
+        <li>Gå in på <a href="/wp-admin/edit.php?post_type=ftek_course_page"><em>Kurssidor</em></a> och välj kursens sida. Finns den inte, välj <a href="/wp-admin/post-new.php?post_type=ftek_course_page"><em>skapa ny</em></a>.</li>
         <li>Uppdatera och fyll i så mycket information du kan.</li>
-        <li>Om startsidan visar fel kurser, uppdatera läsperiodtiderna under <em>Inställningar &rarr; Ftek kurssidor</em>.</li>
-    </ol>
-    <?php
-}
-
-function howto_menus()
-{
-    ?>
-    <ol>
-        <li>Gå in på: <em>Utseende &rarr; Menyer</em></li>
-        <li>Välj den meny du vill redigera högst upp.</li>
-        <li>Lägg till menyelement till vänster, redigera till höger.</li>
-        <li>För att redigera detaljerna för ett menyelement, klicka på den lilla triangeln till höger på elementets "låda".</li>
-        <li>För att ge ett menyelement en beskrivande text, använd <em>titelattribut</em>-fältet såhär: <br/><code>[:sv]Svensk text[:en]English text</code></li>
-    </ol>
-    <?php
-}
-
-function howto_widgets()
-{
-    ?>
-    <ol>
-        <li>Gå in på: <em>Utseende &rarr; Widgets</em></li>
-        <li>Redigera widgets till höger genom att klicka på dem.</li>
-        <li>Lägg till nya widgets tillvänster genom att klicka på dem.</li>
-        <li>För att det du skriver ska vara tillgängligt på både svenska och engelska, fyll i alla textfält såhär: <br/><code>[:sv]Svensk text[:en]English text</code></li>
-    </ol>
-    <?php
-}
-
-function howto_change_roles()
-{
-    ?>
-    <ol>
-        <li>Gå in på: <em>Användare &rarr; Alla användare</em>.</li>
-        <li>Markera de användare vars roll du vill ändra.</li>
-        <li>Välj roll från listan <em>Ändra roll till</em> och klicka på ändra.</li>
-    </ol>
-    <p>I ordning från mest befogenheter till minst:</p>
-    <ol>
-        <li>Styret</li>
-        <li>SNF</li>
-        <li>Sektionsaktiv</li>
-        <li>Sektionsmedlem</li>
+        <li>Om startsidan visar fel kurser, uppdatera läsperiodtiderna under <em>Inställningar</em> &rarr; <a href="/wp-admin/options-general.php?page=ftekcp_settings"><em>Ftek kurssidor</em></a>.</li>
     </ol>
     <?php
 }
