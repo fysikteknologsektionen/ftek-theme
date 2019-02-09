@@ -4,13 +4,15 @@
 
 /* Remove other dashboard widgets */
 
-function wpse_73561_remove_all_dashboard_meta_boxes()
+function ftek_remove_all_dashboard_meta_boxes()
 {
     global $wp_meta_boxes;
-    $wp_meta_boxes['dashboard']['normal']['core'] = array();
-    $wp_meta_boxes['dashboard']['side']['core'] = array();
+        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+        unset($wp_meta_boxes['dashboard']['normal']['core']['wordfence_activity_report_widget']);
+        unset($wp_meta_boxes['dashboard']['normal']['core']['booked_upcoming_appointments']);
+        $wp_meta_boxes['dashboard']['side']['core'] = array();
 }
-add_action('wp_dashboard_setup', 'wpse_73561_remove_all_dashboard_meta_boxes', 9999 );
+add_action('wp_dashboard_setup', 'ftek_remove_all_dashboard_meta_boxes', 9999 );
 
 function add_dashboard_tutorial_widgets() {
     $widgets = array(
