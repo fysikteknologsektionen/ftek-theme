@@ -305,11 +305,11 @@ function ftek_disable_profile_fields() {
 				tr.user-comment-shortcuts-wrap, \
 				tr.user-email-wrap, \
 				tr.user-admin-color-wrap, \
-				tr.user-profile-picture \
+				tr.user-profile-picture, \
 				h3:nth-of-type(1), h3:nth-of-type(1) + ul, \
 				h3:nth-of-type(2), h3:nth-of-type(2) + table, \
 				div#screen-meta-links, \
-				div#wpfooter \
+				div#wpfooter, \
 				').css("display","none");
 			}
 		});
