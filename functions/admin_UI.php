@@ -48,7 +48,7 @@ function add_dashboard_tutorial_widgets() {
         ),
         array(
             'slug' => 'howto_course_pages',
-            'title' => 'Add redigera en kurssida',
+            'title' => 'Att redigera en kurssida',
             'position' => 'normal',
             'capability' => 'edit_others_course_pages',
         ),
