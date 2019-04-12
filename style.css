@@ -2099,6 +2099,17 @@ article .event-info #map-button {
   margin-top: 0.5em;
 }
 
+.member-vacancy {
+  clear: both;
+  margin-top: 2em;
+  border-top: 1px dotted #666666;
+  margin-left: 95px;
+}
+
+.member-vacancy .vacant-count {
+  margin-top: 1em;
+}
+
 /* Event page */
 
 .single-event .googlemap {

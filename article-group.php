@@ -25,8 +25,12 @@ $category = get_category_by_slug(get_post_field('post_name'));
                         <a class="group-logo-content" href="<?=$logo?>"><img src="<?=$logo?>" alt="logo" /></a>
                     <?php }
                 } ?>
-            <?php the_content(); ?>
-            <?= do_shortcode('[ftek_gsuite_members group="'.wp_get_terms_meta($category->cat_ID, 'email' , true).'"]') ?>
+            <?php
+		the_content();
+		$group_identifier = wp_get_terms_meta($category->cat_ID, 'email' , true);
+                echo do_shortcode('[ftek_gsuite_members group="'.$group_identifier.'"]');
+		echo do_shortcode('[ftek_gsuite_vacants group="'.$group_identifier.'"]');
+	    ?>
         </div>
 
         <?php get_template_part('meta', 'group'); ?>
