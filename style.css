@@ -329,6 +329,18 @@ sup {
   margin: 0 0.25em;
 }
 
+/* Wordpress Contact Forms 7 custom styling */
+.wpcf7-form-control {
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px #ddd;
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+
+.wpcf7-form-control:focus {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
 /*
  * BEGIN header
  */
