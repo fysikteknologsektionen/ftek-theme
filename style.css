@@ -3,7 +3,7 @@
 Theme Name: ftek
 Author: Johan Winther
 Description: Theme for F-sektionen at Chalmers.
-Version: 2.3.5
+Version: 2.3.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 GitHub Theme URI: fysikteknologsektionen/ftek-theme
@@ -96,7 +96,7 @@ body {
 body {
   -webkit-text-size-adjust: 100%;
   font-size: 12pt;
-  font-family: sans-serif;
+  font-family: 'Roboto', Helvetica, sans-serif;
 }
 
 p {
