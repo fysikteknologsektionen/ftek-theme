@@ -479,6 +479,10 @@ ul.nav-menu > li {
 }
 
 
+ul.nav-menu > li:nth-child(n+2) {
+  cursor: pointer;
+}
+
 ul.nav-menu > li:nth-child(n+2):hover {
   background-color: hsl(0, 0%, 95%);
 }
