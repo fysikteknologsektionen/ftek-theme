@@ -356,7 +356,7 @@ function generate_footer_quote()
 */
 
 function ftek_event_info($is_excerpt) {
-	$date = ftek_event_date();
+	$date = ftek_event_date(false);
 	$datetime = ftek_event_date(true);
 	$result = "<table><tbody>";
 	if ( get_the_terms( get_the_ID(), 'event-category' ) && ! is_wp_error( get_the_terms( get_the_ID(), 'event-category' ) ) ) {
@@ -397,7 +397,7 @@ function ftek_event_date($raw) {
 	$start_date_fallback = DateTime::createFromFormat('Y-m-d H:i:s', $start_date_fallback);
 	$end_date_fallback = get_post_meta(get_the_id(), '_eventorganiser_schedule_start_finish', true);
 	$end_date_fallback = DateTime::createFromFormat('Y-m-d H:i:s', $end_date_fallback);
-	if (isset($raw)) {
+	if (isset($raw) && $raw) {
 		if (eo_get_the_start('c')) {
 			return eo_get_the_start('c');
 		} else {
