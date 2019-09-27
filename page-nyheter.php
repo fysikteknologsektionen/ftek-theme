@@ -97,7 +97,7 @@ get_header();?>
                     }
                 }
                 echo '.</span><button class="close-button" >×</button></p>';
-            } elseif ($_GET['yearnum'] || $_GET['monthnum'] || $_GET['daynum']) {
+            } elseif (isset($_GET['yearnum']) || isset($_GET['monthnum']) || isset($_GET['daynum'])) {
                 echo '<p class="info-bar"><span>' . 
                 __('Showing news from', 'ftek') . ' ';
                 $date_str = '';

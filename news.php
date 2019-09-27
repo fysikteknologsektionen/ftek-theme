@@ -14,8 +14,9 @@
 
     /* Post types */
     $all_post_types = array('post', 'event');
-    $post_types = $_GET['post_types'];
-    if (!$post_types) {
+    if (isset($_GET['post_types']) && $_GET['post_types']) {
+        $post_types = $_GET['post_types'];
+    } else {
         $post_types = $all_post_types;
     }
     $post_types = array_intersect($post_types, $all_post_types);
@@ -23,9 +24,10 @@
 
     /* Categories */
     $all_categories = array_map(function($o) { return $o->slug; }, get_categories());
-    $categories = $_GET['category'];
-    if (!$categories) {
-        $sc_categories = $all_categories;
+    if (isset($_GET['category']) && $_GET['category']) {
+        $categories = $_GET['category'];
+    } else {
+        $categories = $all_categories;
     }
     $categories = array_intersect($categories, $all_categories);
     $sc_categories = join(',', $categories);
@@ -61,7 +63,6 @@
 
     if ( $day !== 0 )
         $sc_options['day'] = $day;
-
 
     if ($sc_options['category'] === '')
         unset($sc_options['category']);
