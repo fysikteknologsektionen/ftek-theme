@@ -33,7 +33,7 @@ $category = get_category_by_slug(get_post_field('post_name'));
 
     </div>
 
-	<footer>
-		<?= ftek_entry_meta() ?>
-	</footer>
+	<footer class="entry-footer">
+		<?= ftek_entry_meta( get_post_type() ); ?>
+    </footer>
 </article>
