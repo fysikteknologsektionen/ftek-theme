@@ -25,6 +25,6 @@
 	</div>
 
 	<footer>
-		<?= ftek_entry_meta() ?>
+		<?= ftek_entry_meta( get_post_type() ); ?>
 	</footer>
 </article>
