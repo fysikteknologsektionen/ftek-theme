@@ -23,7 +23,7 @@
 		
 		<div class="entry-content">
 			<div class="event-info">
-				<?= ftek_event_info(); ?>
+				<?= ftek_event_info(false); ?>
 			</div>
 			<?php the_content(); ?>
 		</div>
