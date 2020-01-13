@@ -42,6 +42,9 @@ msgstr "Switch to English"
 msgid "Org. no"
 msgstr "Org. nr"
 
+msgid "Publisher"
+msgstr "Ansvarig utgivare"
+
 msgid "Visitor address"
 msgstr "Besöksadress"
 
