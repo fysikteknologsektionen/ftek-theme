@@ -2370,8 +2370,8 @@ article .event-info #map-button {
   content: '🏠';
 }
 
-.ftek_course_page .course-meta .course-links #course-pingpong::before {
-  content: '🏓';
+.ftek_course_page .course-meta .course-links #course-canvas::before {
+  content: '🖼️';
 }
 
 .ftek_course_page .course-meta .course-links #course-evaluation::before {
