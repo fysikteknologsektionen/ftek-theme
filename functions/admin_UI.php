@@ -57,6 +57,11 @@ function add_dashboard_tutorial_widgets() {
             'title' => 'Att ändra föreningsbild',
             'position' => 'normal',
         ),
+        array(
+            'slug' => 'howto_profile_picture',
+            'title' => 'Att ändra profilbild',
+            'position' => 'normal',
+        ),
     );
         foreach ($widgets as $widget) {
             $cap = $widget['capability'];
@@ -169,6 +174,16 @@ function howto_committee_picture() {
         <li>Ladda upp den nya bilden under <em>Choose Replacement Image</em>.</li>
         <li>Se till att <em>Ersätt bara filen</em> är markerat och klicka på <em>Ladda upp</em>.</li>
         <li>Besök föreningssidan och kontrollera att det ser ut som det ska.</li>
+    </ol>
+    <?php
+}
+
+function howto_profile_picture() {
+    ?>
+    <ol>
+        <li>Gå in på googles <a href="https://aboutme.google.com/"><em>Om mig</em></a> och byt profilbild där.</li>
+        <li>Att byta profilbild någon annanstans fungerar inte.</li>
+        <li>Ftek hämtar automatiskt profilbilder från google en gång per dygn.</li>
     </ol>
     <?php
 }
