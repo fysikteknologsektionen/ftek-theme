@@ -52,6 +52,16 @@ function add_dashboard_tutorial_widgets() {
             'position' => 'normal',
             'capability' => 'edit_others_course_pages',
         ),
+        array(
+            'slug' => 'howto_committee_picture',
+            'title' => 'Att ändra föreningsbild',
+            'position' => 'normal',
+        ),
+        array(
+            'slug' => 'howto_profile_picture',
+            'title' => 'Att ändra profilbild',
+            'position' => 'normal',
+        ),
     );
         foreach ($widgets as $widget) {
             $cap = $widget['capability'];
@@ -151,6 +161,29 @@ function howto_course_pages() {
         <li>Gå in på <a href="/wp-admin/edit.php?post_type=ftek_course_page"><em>Kurssidor</em></a> och välj kursens sida. Finns den inte, välj <a href="/wp-admin/post-new.php?post_type=ftek_course_page"><em>skapa ny</em></a>.</li>
         <li>Uppdatera och fyll i så mycket information du kan.</li>
         <li>Om startsidan visar fel kurser, uppdatera läsperiodtiderna under <em>Inställningar</em> &rarr; <a href="/wp-admin/options-general.php?page=ftekcp_settings"><em>Ftek kurssidor</em></a>.</li>
+    </ol>
+    <?php
+}
+
+function howto_committee_picture() {
+    ?>
+    <ol>
+        <li>Gå in på <a href="/wp-admin/edit.php?post_type=page"><em>Sidor</em></a> och hitta den föreningssida du vill redigera.</li>
+        <li>Hitta rutan <em>Utvald bild</em> nere till höger och klicka på den nuvarande bilden. Om ingen nuvarande bild finns angiven använder sidan bilden från föreningens huvudsida.</li>
+        <li>Hitta fältet <em>Ersätt media</em> till höger och klicka på <em>Ladda upp en ny fil</em>.</li>
+        <li>Ladda upp den nya bilden under <em>Choose Replacement Image</em>.</li>
+        <li>Se till att <em>Ersätt bara filen</em> är markerat och klicka på <em>Ladda upp</em>.</li>
+        <li>Besök föreningssidan och kontrollera att det ser ut som det ska.</li>
+    </ol>
+    <?php
+}
+
+function howto_profile_picture() {
+    ?>
+    <ol>
+        <li>Gå in på googles <a href="https://aboutme.google.com/"><em>Om mig</em></a> och byt profilbild där.</li>
+        <li>Att byta profilbild någon annanstans fungerar inte.</li>
+        <li>Ftek hämtar automatiskt profilbilder från google en gång per dygn.</li>
     </ol>
     <?php
 }
