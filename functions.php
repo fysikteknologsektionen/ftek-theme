@@ -23,9 +23,6 @@
 * @since ftek 1.0
 */
 
-// set the default timezone to use. Available since PHP 5.1 03
-date_default_timezone_set('Europe/Stockholm');
-
 /**
 * ftek theme only works in WordPress 3.6 or later.
 */
