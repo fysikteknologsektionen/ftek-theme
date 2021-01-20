@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 	<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/images/favicon.ico" />
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/latin_modern_roman_17/stylesheet.css" media="none" onload="if(media!='all')media='all'">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/roboto/stylesheet.css" media="none" onload="if(media!='all')media='all'">
   	<!--[if lt IE 9]>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
 	<![endif]-->
