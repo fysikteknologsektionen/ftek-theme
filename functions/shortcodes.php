@@ -74,22 +74,8 @@ function get_name_by_cid($cid) {
     $user = get_user_by('login', $cid);
     
     if ($user) {
-            $first = $user->user_firstname;
-            $last  = $user->user_lastname;
-    } 
-    else {
-        include_once('ldap_functions.php');
-        if ( class_exists('LDAPUser') ) {
-            $ldap_user = new LDAPUser($cid);
-            $first = $ldap_user->given_name;
-            $last = $ldap_user->surname;
-        }
-        else {
-            return '';
-        }
-    }
-    
-    if ($user) {
+        $first = $user->user_firstname;
+        $last  = $user->user_lastname;
         $nick = $user->nickname;
     
         // Only display nick if explicitly stated
