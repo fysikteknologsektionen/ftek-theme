@@ -509,7 +509,7 @@ function my_login_logo() { ?>
 		padding-bottom: 0px;
 		filter: invert(1);
 	}
-	#login a, #login #nav a, #login #backtoblog a {
+	#login #privacy-policy-page-link a, #login #nav a, #login #backtoblog a {
 		color: white;
 	}
 	body.login {
