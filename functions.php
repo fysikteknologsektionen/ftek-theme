@@ -436,6 +436,7 @@ function ftek_group_logo($slug) {
 function ftek_updated_meta( $post_type ) {
 	$date_updated = get_the_modified_time("c");
 	$date = date_i18n( get_option('date_format'), strtotime($date_updated)).' '.date_i18n( get_option('time_format'), strtotime($date_updated));
+	$html = '';
 	if ($post_type == 'post') {
 		// Published
 		$html .= "<p class='entry-published'>";
@@ -462,6 +463,7 @@ function ftek_page_menu($post)
 		$main_ID = $post->ID;
 	}
 	$main = get_post( $main_ID );
+	$menu_items = '';
 	$menu_items .= wp_list_pages("title_li=&child_of=".$main_ID."&depth=1&echo=0");
 	if ($menu_items) {
 		return '<ul>'. $menu_items . '</ul>';

@@ -33,9 +33,9 @@
     $sc_categories = join(',', $categories);
 
     /* Dates */
-    $year = (int) $_GET['yearnum'];
-    $month = (int) $_GET['monthnum'];
-    $day = (int) $_GET['daynum'];
+    $year = isset( $_GET['yearnum'] ) ? $_GET['yearnum'] : 0;
+    $month = isset( $_GET['monthnum'] ) ? $_GET['monthnum'] : 0;
+    $day = isset( $_GET['daynum'] ) ? $_GET['daynum'] : 0;
 
     /* Options */
     $sc_options = array(
