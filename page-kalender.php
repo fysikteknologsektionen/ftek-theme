@@ -14,7 +14,7 @@ $category = get_category_by_slug($cat);
 $category_active = in_array($cat, $all_categories);
 
 // Venues
-$venue = sanitize_title_with_dashes( $_GET['place'] ) ? $_GET['place'] : '' ); // $_GET['venue'] will redirect to default EO venue page 
+$venue = sanitize_title_with_dashes( $_GET['place'] ? $_GET['place'] : '' ); // $_GET['venue'] will redirect to default EO venue page 
 $venue = eo_get_venue_by('slug', $venue);
 
 get_header();?>
