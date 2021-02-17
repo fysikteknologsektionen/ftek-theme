@@ -25,7 +25,7 @@
 			<p><a href="/dragos"><?= __(generate_footer_quote(), 'ftek') ?></a></p>
 		</div>
 		<div id="footer-chs-logo">
-			<a href="https://chalmersstudentkar.se"><img id="chs-logo" src="<?php bloginfo('stylesheet_directory'); ?>/images/chalmers.svg" /></a>
+			<a href="https://chalmersstudentkar.se"><img id="chs-logo" alt="Chalmers Studentkår" src="<?php bloginfo('stylesheet_directory'); ?>/images/chalmers.svg" /></a>
 		</div>
 		<div id="footer-development">
 			<p><?=__('Development', 'ftek')?>: Pontus Granström</p>

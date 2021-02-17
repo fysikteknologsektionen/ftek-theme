@@ -20,8 +20,9 @@ get_header(); ?>
 						<?php
 							$published_text = __( '<span class="attachment-meta">Published on <time class="entry-date" datetime="%1$s">%2$s</time> in <a href="%3$s" title="Return to %4$s" rel="gallery">%5$s</a></span>', 'ftek' );
 							$post_title = get_the_title( $post->post_parent );
-							if ( empty( $post_title ) || 0 == $post->post_parent )
+							if ( empty( $post_title ) || 0 == $post->post_parent ) {
 								$published_text = '<span class="attachment-meta"><time class="entry-date" datetime="%1$s">%2$s</time></span>';
+							}
 
 							printf( $published_text,
 								esc_attr( get_the_date( 'c' ) ),

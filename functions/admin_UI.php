@@ -65,7 +65,7 @@ function add_dashboard_tutorial_widgets() {
     );
         foreach ($widgets as $widget) {
             $cap = $widget['capability'];
-            if( !$cap or current_user_can($cap) ) {
+            if( !$cap || current_user_can($cap) ) {
                 add_meta_box(
                     $widget['slug'] . '_widget', // Widget slug
                     $widget['title'], // Title (duh)
@@ -190,43 +190,43 @@ function howto_profile_picture() {
 
 /* Simplify editing interface */
 
-if (is_admin()) :
-function ftek_remove_meta_boxes() {
-  remove_meta_box('linktargetdiv', 'link', 'normal');
-  remove_meta_box('linkxfndiv', 'link', 'normal');
-  remove_meta_box('linkadvanceddiv', 'link', 'normal');
-  
-  remove_meta_box('postexcerpt', 'post', 'normal');
-  remove_meta_box('trackbacksdiv', 'post', 'normal');
-  remove_meta_box('postcustom', 'post', 'normal');
-  remove_meta_box('slugdiv', 'post', 'normal');
-  remove_meta_box('commentstatusdiv', 'post', 'normal');
-  remove_meta_box('commentsdiv', 'post', 'normal');
-  remove_meta_box('revisionsdiv', 'post', 'normal');
-  remove_meta_box('authordiv', 'post', 'normal');
-  remove_meta_box('sqpt-meta-tags', 'post', 'normal');
-  remove_meta_box('tagsdiv-post_tag', 'post', 'normal');
-  
-  remove_meta_box('authordiv', 'page', 'normal');
-  remove_meta_box('postcustom', 'page', 'normal');
-  remove_meta_box('commentstatusdiv', 'page', 'normal');
-  remove_meta_box('permalinkdiv', 'page', 'normal');
-  
-  remove_meta_box('postexcerpt', 'event', 'normal');
-  remove_meta_box('trackbacksdiv', 'event', 'normal');
-  remove_meta_box('postcustom', 'event', 'normal');
-  remove_meta_box('slugdiv', 'event', 'normal');
-  remove_meta_box('commentstatusdiv', 'event', 'normal');
-  remove_meta_box('commentsdiv', 'event', 'normal');
-  remove_meta_box('revisionsdiv', 'event', 'normal');
-  remove_meta_box('authordiv', 'event', 'normal');
-  remove_meta_box('sqpt-meta-tags', 'event', 'normal');
-  remove_meta_box('tagsdiv-post_tag', 'event', 'normal');
-  
-  remove_meta_box('qts_sectionid', 'post', 'side');
-  remove_meta_box('qts_sectionid', 'page', 'side');
-  remove_meta_box('qts_sectionid', 'event', 'side');
-  remove_meta_box('qts_sectionid', 'ftek_course_page', 'side');
+if (is_admin()) {
+    function ftek_remove_meta_boxes() {
+    remove_meta_box('linktargetdiv', 'link', 'normal');
+    remove_meta_box('linkxfndiv', 'link', 'normal');
+    remove_meta_box('linkadvanceddiv', 'link', 'normal');
+    
+    remove_meta_box('postexcerpt', 'post', 'normal');
+    remove_meta_box('trackbacksdiv', 'post', 'normal');
+    remove_meta_box('postcustom', 'post', 'normal');
+    remove_meta_box('slugdiv', 'post', 'normal');
+    remove_meta_box('commentstatusdiv', 'post', 'normal');
+    remove_meta_box('commentsdiv', 'post', 'normal');
+    remove_meta_box('revisionsdiv', 'post', 'normal');
+    remove_meta_box('authordiv', 'post', 'normal');
+    remove_meta_box('sqpt-meta-tags', 'post', 'normal');
+    remove_meta_box('tagsdiv-post_tag', 'post', 'normal');
+    
+    remove_meta_box('authordiv', 'page', 'normal');
+    remove_meta_box('postcustom', 'page', 'normal');
+    remove_meta_box('commentstatusdiv', 'page', 'normal');
+    remove_meta_box('permalinkdiv', 'page', 'normal');
+    
+    remove_meta_box('postexcerpt', 'event', 'normal');
+    remove_meta_box('trackbacksdiv', 'event', 'normal');
+    remove_meta_box('postcustom', 'event', 'normal');
+    remove_meta_box('slugdiv', 'event', 'normal');
+    remove_meta_box('commentstatusdiv', 'event', 'normal');
+    remove_meta_box('commentsdiv', 'event', 'normal');
+    remove_meta_box('revisionsdiv', 'event', 'normal');
+    remove_meta_box('authordiv', 'event', 'normal');
+    remove_meta_box('sqpt-meta-tags', 'event', 'normal');
+    remove_meta_box('tagsdiv-post_tag', 'event', 'normal');
+    
+    remove_meta_box('qts_sectionid', 'post', 'side');
+    remove_meta_box('qts_sectionid', 'page', 'side');
+    remove_meta_box('qts_sectionid', 'event', 'side');
+    remove_meta_box('qts_sectionid', 'ftek_course_page', 'side');
+    }
+    add_action( 'admin_menu', 'ftek_remove_meta_boxes');
 }
-add_action( 'admin_menu', 'ftek_remove_meta_boxes');
-endif;

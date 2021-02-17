@@ -55,17 +55,17 @@
         'button_loading_label' => '...',
     );
 
-    if ( $year !== 0 )
+    if ( $year !== 0 ) {
         $sc_options['year'] = $year;
-
-    if ( $month !== 0 )
+    }
+    if ( $month !== 0 ) {
         $sc_options['month'] = $month;
-
-    if ( $day !== 0 )
+    }
+    if ( $day !== 0 ) {
         $sc_options['day'] = $day;
-
-    if ($sc_options['category'] === '')
+    }
+    if ($sc_options['category'] === '') {
         unset($sc_options['category']);
-
+    }
     print_ajax_loader($sc_options);
 ?>

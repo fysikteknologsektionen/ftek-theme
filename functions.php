@@ -26,8 +26,9 @@
 /**
 * ftek theme only works in WordPress 3.6 or later.
 */
-if ( version_compare( $GLOBALS['wp_version'], '3.6-alpha', '<' ) )
-require get_template_directory() . '/inc/back-compat.php';
+if ( version_compare( $GLOBALS['wp_version'], '3.6-alpha', '<' ) ) {
+	require get_template_directory() . '/inc/back-compat.php';
+}
 
 /**
 * Sets up theme defaults and registers the various WordPress features that
@@ -156,8 +157,9 @@ if ( ! function_exists( 'ftek_paging_nav' ) ) :
 		global $wp_query;
 		
 		// Don't print empty markup if there's only one page.
-		if ( $wp_query->max_num_pages < 2 )
-		return;
+		if ( $wp_query->max_num_pages < 2 ) {
+			return;
+		}
 		?>
 		<nav class="navigation paging-navigation" role="navigation">
 		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'ftek' ); ?></h1>
@@ -189,8 +191,9 @@ if ( ! function_exists( 'ftek_post_nav' ) ) :
 		$previous = ( is_attachment() ) ? get_post( $post->post_parent ) : get_adjacent_post( false, '', true );
 		$next     = get_adjacent_post( false, '', false );
 		
-		if ( ! $next && ! $previous )
-		return;
+		if ( ! $next && ! $previous ) {
+			return;
+		}
 		?>
 		<nav class="navigation post-navigation" role="navigation">
 		<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'ftek' ); ?></h1>
@@ -266,12 +269,13 @@ if ( ! function_exists( 'ftek_the_attached_image' ) ) :
 				}
 				
 				// get the URL of the next image attachment...
-				if ( $next_id )
-				$next_attachment_url = get_attachment_link( $next_id );
-				
+				if ( $next_id ) {
+					$next_attachment_url = get_attachment_link( $next_id );
+				}
 				// or get the URL of the first image attachment.
-				else
-				$next_attachment_url = get_attachment_link( array_shift( $attachment_ids ) );
+				else {
+					$next_attachment_url = get_attachment_link( array_shift( $attachment_ids ) );
+				}
 			}
 			
 			printf( '<a href="%1$s" title="%2$s" rel="attachment">%3$s</a>',
@@ -491,7 +495,9 @@ if( !function_exists('ftek_add_allowed_tags') ) {
 */
 if ( function_exists('qtrans_convertURL') ) {
 	function qtrans_convertHomeURL($url, $what) {
-		if($what=='/') return qtrans_convertURL($url);
+		if($what=='/') {
+			return qtrans_convertURL($url);
+		}
 		return $url;
 	}
 	add_filter('home_url', 'qtrans_convertHomeURL', 10, 2);
@@ -592,8 +598,9 @@ function print_ajax_loader($sc_options = array( 'post_type' => 'any', 'posts_per
 	$sc_prefix = '[ajax_load_more ';
 	$sc_suffix = ']';
 	
-	foreach ($sc_options as $key => &$value)
-	$value = '"' . $value . '"';
+	foreach ($sc_options => &$value) {
+		$value = '"' . $value . '"';
+	}
 	$sc_args = urldecode(http_build_query($sc_options, '', ' '));
 	$shortcode = $sc_prefix . $sc_args . $sc_suffix;
 	echo do_shortcode($shortcode);
@@ -606,8 +613,9 @@ function print_eo_calendar($sc_options = array( 'tooltip' => 'false', 'headerLef
 	$sc_prefix = '[eo_fullcalendar ';
 	$sc_suffix = ']';
 	
-	foreach ($sc_options as $key => &$value)
-	$value = '"' . $value . '"';
+	foreach ($sc_options => &$value) {
+		$value = '"' . $value . '"';
+	}
 	$sc_args = urldecode(http_build_query($sc_options, '', ' '));
 	$shortcode = $sc_prefix . $sc_args . $sc_suffix;
 	echo do_shortcode($shortcode);

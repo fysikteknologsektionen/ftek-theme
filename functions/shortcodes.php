@@ -25,7 +25,9 @@ function ftek_member_shortcode($atts, $content, $tag)
         'email' => ''
 	), $atts ) );
     
-    if ($cid == '') return '';
+    if ($cid == '') {
+        return '';
+    }
     
     
     if (!$name) {
@@ -79,8 +81,8 @@ function get_name_by_cid($cid) {
         $nick = $user->nickname;
     
         // Only display nick if explicitly stated
-        if (strcasecmp($nick, $cid) == 0 or 
-            strcasecmp($nick, $first) == 0 or 
+        if (strcasecmp($nick, $cid) == 0 || 
+            strcasecmp($nick, $first) == 0 || 
             strcasecmp($nick, $last) == 0) // Case insensitive compare
         {
             $nick = '';
@@ -112,7 +114,9 @@ function ftek_cal_subscription_shortcode($atts, $content, $tag)
     $webcal = replace_http(eo_get_events_feed(), $protocol);
     $output .= "<li><a href='$webcal'>" . __('All', 'ftek') . "</a></li>";
     foreach ( $categories as $category ) {
-        if ( in_array($category->slug, $excludes) ) continue;
+        if ( in_array($category->slug, $excludes) ) {
+            continue;
+        }
         $url = eo_get_event_category_feed($category->slug);
         $webcal = replace_http($url, $protocol);
         $output .= "<li><a href='$webcal'>{$category->name}</a></li>";
@@ -135,7 +139,9 @@ function ftek_news_subscription_shortcode($atts, $content, $tag)
     $feed = replace_http(get_feed_link(), $protocol);
     $output .= "<li><a href='$feed'>" . __('All', 'ftek') . "</a></li>";
     foreach ( $categories as $category ) {
-        if ( in_array($category->slug, $excludes) ) continue;
+        if ( in_array($category->slug, $excludes) ) {
+            continue;
+        }
         $url = get_category_feed_link( $category->cat_ID );
         $feed = replace_http($url, $protocol);
         $output .= "<li><a href='$feed'>{$category->cat_name}</a></li>";
@@ -198,7 +204,7 @@ add_shortcode('ftek_menu', 'ftek_menu_shortcode');
 add_shortcode('not_logged_in', 'user_not_logged_in' );
 
 function user_not_logged_in ($params, $content = null){
-	if (is_user_logged_in()){
+	if (!is_user_logged_in()){
 		return;
 	} else {
 		return do_shortcode($content);

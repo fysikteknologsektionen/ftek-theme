@@ -100,7 +100,6 @@ function toggleDropdownMenu($moreButton, $extraNav, show){
 function positionMenus() {
   if (screen.width > 960) {
     jQuery('ul.nav-menu > li.menu-item-has-children').each(function(){
-      let liXPos = jQuery(this).offset().left;
       let liWidth = jQuery(this).width();
 
       let subMenu = jQuery(this).children('ul.sub-menu');
