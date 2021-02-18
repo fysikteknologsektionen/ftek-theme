@@ -598,7 +598,7 @@ function print_ajax_loader($sc_options = array( 'post_type' => 'any', 'posts_per
 	$sc_prefix = '[ajax_load_more ';
 	$sc_suffix = ']';
 	
-	foreach ($sc_options => &$value) {
+	foreach ($sc_options as $key => &$value) {
 		$value = '"' . $value . '"';
 	}
 	$sc_args = urldecode(http_build_query($sc_options, '', ' '));
@@ -613,7 +613,7 @@ function print_eo_calendar($sc_options = array( 'tooltip' => 'false', 'headerLef
 	$sc_prefix = '[eo_fullcalendar ';
 	$sc_suffix = ']';
 	
-	foreach ($sc_options => &$value) {
+	foreach ($sc_options as $key => &$value) {
 		$value = '"' . $value . '"';
 	}
 	$sc_args = urldecode(http_build_query($sc_options, '', ' '));
