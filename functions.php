@@ -573,24 +573,6 @@ add_filter('registration_errors', function($wp_error, $sanitized_user_login, $us
 	return $wp_error;
 }, 10, 3);
 
-/*
-* Set first and last name and username
-*/
-add_action( 'user_register', function($user_id){
-	
-	// Find names in LDAP directory
-	$user = get_userdata($user_id);
-	include_once('/usr/local/spidera/php/ldap_functions.php');
-	if ( class_exists('LDAPUser') ) {
-		$ldap_user = new LDAPUser($user->user_login);
-		if ($ldap_user->cid != $ldap_user->given_name) {
-			update_user_meta($user_id, 'first_name', $ldap_user->given_name);
-			update_user_meta($user_id, 'last_name', $ldap_user->surname);
-		}
-	}
-}, 10, 1 );
-
-
 
 /* Ajax load more helper function */
 // Prints ajax_load_more shortcode
