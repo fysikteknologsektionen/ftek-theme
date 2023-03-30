@@ -29,4 +29,9 @@
         <h2>Saknas något?</h2>
         Kontakta <a href="mailto:snf@ftek.se" target="_blank" rel="noopener">SNF</a></li>
     </section>
+
+    <section class="course-contact">
+        <h2>Är du examinator?</h2>
+        Vill du inte att dina tentor ligger här? Maila då <a href="mailto:snf@ftek.se" target="_blank" rel="noopener">SNF</a> så tar vi ner dem.
+    </section>
 </aside>
