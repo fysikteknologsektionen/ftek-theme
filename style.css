@@ -2,7 +2,7 @@
 Theme Name: ftek
 Author: Johan Winther
 Description: Theme for F-sektionen at Chalmers.
-Version: 2.3.26
+Version: 2.4.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 GitHub Theme URI: fysikteknologsektionen/ftek-theme
@@ -112,6 +112,10 @@ blockquote {
   line-height: 1em;
   float: right;
   width: 30%;
+}
+
+@media (prefers-color-scheme: dark) {
+  background: #262730;
 }
 
 blockquote::before {
@@ -224,10 +228,13 @@ strong {
   font-weight: bold;
 }
 
+@media (prefers-color-scheme: dark) {
+  color: #fffcfc;
+}
+
 /*
  * END fonts
  */
-
 
 ul {
   list-style-type: disc;
@@ -315,6 +322,10 @@ sup {
   margin: auto;
 }
 
+@media (prefers-color-scheme: dark) {
+  background: #262730;
+}
+
 .info-bar > .close-button {
   border: 0;
   background: 0;
@@ -352,6 +363,12 @@ header[role="banner"] {
   display: flex;
   flex-direction: column-reverse;
   background-color: hsl(0, 0%, 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  header[role="banner"] {
+    background-color: #262730;
+  }
 }
 
 @media
@@ -406,6 +423,10 @@ input[type="search"] {
   background-color: hsl(0, 0%, 100%);
 }
 
+@media (prefers-color-scheme: dark) {
+  background-color: #262730;
+}
+
 /* Navigation */
 
 
@@ -418,6 +439,12 @@ header[role="banner"] .main-menu {
   font-size: 0.8em;
   transition: all 0.5s ease;
   background: hsl(0, 0%, 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  header[role="banner"] .main-menu {
+    background-color: #262730;
+  }
 }
 
 @media
@@ -485,6 +512,12 @@ ul.nav-menu > li:nth-child(n+2) {
 
 ul.nav-menu > li:nth-child(n+2):hover {
   background-color: hsl(0, 0%, 95%);
+}
+
+@media (prefers-color-scheme: dark) {
+  ul.nav-menu > li:nth-child(n+2):hover {
+    background-color: #31323d;
+  }
 }
 
 /*ul.nav-menu > li:nth-child(n+2)::before {
@@ -562,6 +595,13 @@ ul.nav-menu > li.menu-item-has-children > a.menu-dropdown-button {
   vertical-align: middle;
 }
 
+@media (prefers-color-scheme: dark) {
+  ul.nav-menu > li.menu-item-has-children > a.menu-dropdown-button {
+    color: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+}
+
 ul.nav-menu > li.menu-item-has-children.hovered > a.menu-dropdown-button {
   filter: invert(100%);
 }
@@ -570,6 +610,13 @@ ul.nav-menu > li.menu-item-has-children > a.menu-dropdown-button:hover{
   background-color: rgba(0,0,0,0.1);
   box-shadow: 0 0 0 0.2rem rgba(0,0,0,0.1);
   cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+  ul.nav-menu > li.menu-item-has-children > a.menu-dropdown-button:hover{
+    background-color: rgba(255,255,255,0.1);
+    box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.1);
+  }
 }
 
 
@@ -589,8 +636,10 @@ ul.nav-menu > li.hovered > a {
   color: hsl(0, 0%, 100%);
 }
 
-.current_page_item > a {
-  font-weight: bold;
+@media (prefers-color-scheme: dark) {
+  ul.nav-menu > li.hovered > a {
+    color: #262730;
+  }
 }
 
 /* Top Logo */
@@ -687,6 +736,12 @@ ul.nav-menu > li > ul.sub-menu > li:hover {
   background: hsl(0, 0%, 95%);
 }
 
+@media (prefers-color-scheme: dark) {
+  ul.nav-menu > li > ul.sub-menu > li:hover {
+    background: #31323d;
+  }
+}
+
 ul.nav-menu > li > ul.sub-menu > li:first-child {
   border-top: 1px solid rgba(141, 0, 0, 0);
 }
@@ -703,6 +758,12 @@ ul.nav-menu > li > ul.sub-menu > li:first-child::before {
   left: 50%;
   transform: translateX(-50%);
   top: -0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  ul.nav-menu > li > ul.sub-menu > li:first-child::before {
+    border-bottom: 0.5rem solid #262730;
+  }
 }
 
 @media
@@ -735,6 +796,12 @@ ul.nav-menu > li > ul.sub-menu {
   border-right: 1px solid rgba(0,0,0, 0.1);
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
   background-color: hsl(0, 0%, 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  ul.nav-menu > li > ul.sub-menu {
+    background-color: #262730;
+  }
 }
 
 ul.nav-menu > li.hovered > ul.sub-menu {
@@ -1009,6 +1076,12 @@ main.home {
   background-repeat: repeat;
 }
 
+@media (prefers-color-scheme: dark) {
+  main.home {
+    background-color: #31323d;
+  }
+}
+
 main p {
   transition: all 0.2s ease;
   font-size: 1em;
@@ -1060,8 +1133,14 @@ footer#page-footer a {
   color: hsl(0, 0%, 80%);
 }
 
-  footer#page-footer a:hover {
+footer#page-footer a:hover {
   color: hsl(0, 0%, 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  footer#page-footer a:hover {
+    color: #262730;
+  }
 }
 
 footer#page-footer > *:nth-child(-n+3) {
@@ -1232,6 +1311,12 @@ footer#page-footer > div#footer-djungle-saying > p {
   background-color: hsl(0, 0%, 100%);
 }
 
+@media (prefers-color-scheme: dark) {
+  .widget {
+    background-color: #262730;
+  }
+}
+
 .widget h1 a {
   color: inherit;
 }
@@ -1246,6 +1331,12 @@ span.rss-date {
     margin-top: 0.2em;
     font-size: 0.8rem;
     color: #888;
+}
+
+@media (prefers-color-scheme: dark) {
+  span.rss-date {
+    color: #cccccc;
+  }
 }
 
 /* Slider */
@@ -1278,6 +1369,12 @@ span.rss-date {
   color: hsl(0, 0%, 100%);
   padding: 0.5em 0.5em;
   margin-top: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .wps1-readmore-button {
+    color: #262730;
+  }
 }
 
 /* Column widget */
@@ -1482,6 +1579,12 @@ span.rss-date {
   box-shadow: 0 0.5em 1em rgba(0,0,0,0.1);
 }
 
+@media (prefers-color-scheme: dark) {
+  #filter_button {
+    background: #262730;
+  }
+}
+
 @media
   (min-width: 546px) and (max-width: 768px) {
     #filter-button {
@@ -1505,8 +1608,20 @@ span.rss-date {
   background: #f7f7f7;
 }
 
+ @media (prefers-color-scheme: dark) {
+   #filter-button:hover {
+     background: #31323d;
+   }
+ }
+
 #filter-checkbox:checked + #filter-button {
   background: #e6e6e6;
+}
+
+@media (prefers-color-scheme: dark) {
+  #filter-checkbox:checked + #filter-button {
+    background: #31323d;
+  }
 }
 
 #filter-button::before {
@@ -1558,6 +1673,12 @@ span.rss-date {
   padding: 1em;
   background: hsl(0, 0%, 100%);
   border: 1px solid rgba(0,0,0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  #news-filter {
+     background: #31323d;
+  }
 }
 
 #news-filter.filter-active {
@@ -1650,6 +1771,7 @@ ul.alm-listing {
   display: grid;
   grid-template-columns: 32% 32% 32% ;
   grid-gap: 0 2%;
+  list-style-type: none;
 }
 
 @media
@@ -1801,6 +1923,12 @@ article .entry-title.featured-image {
 
 .entry-title.featured-image a {
   color: hsl(0, 0%, 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .entry-title.featured-image a {
+    color: #262730;
+  }
 }
 
 
@@ -2149,12 +2277,23 @@ article .event-info #map-button {
   position: relative;
 }
 
+@media (prefers-color-scheme: dark) {
+  #course-table thead th,
+  .tablepress thead th {
+    background-color: #262730;
+  }
+}
+
 #course-table thead th.sorting:hover, #course-table thead th.sorting_asc, #course-table thead th.sorting_desc,
 .tablepress thead th.sorting:hover,
 .tablepress thead th.sorting_asc,
 .tablepress thead th.sorting_desc {
   background-color: #e6e6e6;
   /* The following is for sorting arrows */
+}
+
+@media (prefers-color-scheme: dark) {
+  background-color: #31323d;
 }
 
 #course-table thead th.sorting:hover::after, #course-table thead th.sorting_asc::after, #course-table thead th.sorting_desc::after,
@@ -2283,6 +2422,12 @@ article .event-info #map-button {
   border: 3px solid hsl(0, 0%, 100%);
 }
 
+@media (prefers-color-scheme: dark) {
+  #wp-calendar tbody td {
+    border: 3px solid #262730;
+  }
+}
+
 #wp-calendar tbody td.event {
   background: #8d0000;
 }
@@ -2296,11 +2441,24 @@ article .event-info #map-button {
   color: hsl(0, 0%, 75%);
 }
 
+@media (prefers-color-scheme: dark) {
+  #wp-calendar tbody td.eo-past-date {
+    background: #262730;
+    color: #31323d;
+  }
+}
+
 #wp-calendar tbody td a {
   color: hsl(0, 0%, 100%);
   display: inline-block;
   width: 100%;
   line-height: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+  #wp-calendar tbody td a {
+    color: #262730;
+  }
 }
 
 #wp-calendar .today {
