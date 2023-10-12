@@ -142,6 +142,12 @@ a {
   color: #8d0000;
 }
 
+@media (prefers-color-scheme: dark) {
+  a {
+    color: #a40000;
+  }
+}
+
 a:hover {
   text-decoration: underline;
 }
@@ -461,6 +467,12 @@ header[role="banner"] .main-menu {
 
 header[role="banner"] .main-menu a {
   color: initial;
+}
+
+@media (prefers-color-scheme: dark) {
+  header[role="banner"] .main-menu a {
+    color: white;
+  }
 }
 
 ul.nav-menu li > a:not([href]):not(.menu-dropdown-button) {
