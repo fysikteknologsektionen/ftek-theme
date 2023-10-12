@@ -241,7 +241,7 @@ strong {
 }
 
 @media (prefers-color-scheme: dark) {
-  .featured-image {
+  h1 {
     color: white;
   }
 }
