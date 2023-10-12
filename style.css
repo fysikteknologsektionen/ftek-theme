@@ -240,6 +240,12 @@ strong {
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  .featured-image {
+    color: white;
+  }
+}
+
 /*
  * END fonts
  */
@@ -1095,6 +1101,12 @@ main.home {
   main.home {
     background-color: #31323d;
     background-image: url(images/bg-site-dark.png);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  main {
+    background-color: #31323d;
   }
 }
 
