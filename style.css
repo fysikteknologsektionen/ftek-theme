@@ -1825,6 +1825,12 @@ ul.alm-listing a {
   color: black;
 }
 
+@media (prefers-color-scheme: dark) {
+  ul.alm-listing a {
+    color: white;
+  }
+}
+
 ul.alm-listing a:hover {
   text-decoration: none;
 }
@@ -2330,7 +2336,12 @@ article .event-info #map-button {
 }
 
 @media (prefers-color-scheme: dark) {
-  background-color: #31323d;
+  #course-table thead th.sorting:hover, #course-table thead th.sorting_asc, #course-table thead th.sorting_desc,
+  .tablepress thead th.sorting:hover,
+  .tablepress thead th.sorting_asc,
+  .tablepress thead th.sorting_desc {
+    background-color: #31323d;
+  }
 }
 
 #course-table thead th.sorting:hover::after, #course-table thead th.sorting_asc::after, #course-table thead th.sorting_desc::after,
