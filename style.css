@@ -1108,6 +1108,9 @@ main.home {
   main {
     background-color: #31323d;
   }
+  body {
+    background-color: #31323d;
+  }
 }
 
 main p {
@@ -1963,6 +1966,12 @@ article .entry-title.featured-image {
 article .entry-title a {
   color: black;
   text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  article .entry-title a {
+    color: white;
+  }
 }
 
 /* Article */
