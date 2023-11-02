@@ -1977,7 +1977,7 @@ article .entry-title.featured-image {
 
 @media (prefers-color-scheme: dark) {
   .entry-title.featured-image a {
-    color: #262730;
+    color: white;
   }
 }
 
