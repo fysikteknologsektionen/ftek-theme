@@ -246,6 +246,19 @@ strong {
   }
 }
 
+
+@media (prefers-color-scheme: dark) {
+  h1 a {
+    color: white;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  h1.nollk {
+    color: white;
+  }
+}
+
 /*
  * END fonts
  */
@@ -536,7 +549,7 @@ ul.nav-menu > li:nth-child(n+2):hover {
 
 @media (prefers-color-scheme: dark) {
   ul.nav-menu > li:nth-child(n+2):hover {
-    background-color: #31323d;
+    background-color: #1c1d23;
   }
 }
 
@@ -759,7 +772,7 @@ ul.nav-menu > li > ul.sub-menu > li:hover {
 
 @media (prefers-color-scheme: dark) {
   ul.nav-menu > li > ul.sub-menu > li:hover {
-    background: #31323d;
+    background: #1c1d23;
   }
 }
 
@@ -1099,17 +1112,17 @@ main.home {
 
 @media (prefers-color-scheme: dark) {
   main.home {
-    background-color: #31323d;
+    background-color: #1c1d23;
     background-image: url(images/bg-site-dark.png);
   }
 }
 
 @media (prefers-color-scheme: dark) {
   main {
-    background-color: #31323d;
+    background-color: #1c1d23;
   }
   body {
-    background-color: #31323d;
+    background-color: #1c1d23;
   }
 }
 
@@ -1170,7 +1183,7 @@ footer#page-footer a:hover {
 
 @media (prefers-color-scheme: dark) {
   footer#page-footer a:hover {
-    color: #262730;
+    color: #1c1d23;
   }
 }
 
@@ -1641,7 +1654,7 @@ span.rss-date {
 
  @media (prefers-color-scheme: dark) {
    #filter-button:hover {
-     background: #31323d;
+     background: #1c1d23;
    }
  }
 
@@ -1651,7 +1664,7 @@ span.rss-date {
 
 @media (prefers-color-scheme: dark) {
   #filter-checkbox:checked + #filter-button {
-    background: #31323d;
+    background: #1c1d23;
   }
 }
 
@@ -1708,7 +1721,7 @@ span.rss-date {
 
 @media (prefers-color-scheme: dark) {
   #news-filter {
-     background: #31323d;
+     background: #1c1d23;
   }
 }
 
@@ -2340,7 +2353,7 @@ article .event-info #map-button {
   .tablepress thead th.sorting:hover,
   .tablepress thead th.sorting_asc,
   .tablepress thead th.sorting_desc {
-    background-color: #31323d;
+    background-color: #1c1d23;
   }
 }
 
@@ -2492,7 +2505,7 @@ article .event-info #map-button {
 @media (prefers-color-scheme: dark) {
   #wp-calendar tbody td.eo-past-date {
     background: #262730;
-    color: #31323d;
+    color: #1c1d23;
   }
 }
 
