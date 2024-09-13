@@ -115,7 +115,9 @@ blockquote {
 }
 
 @media (prefers-color-scheme: dark) {
-  background: #262730;
+  blockquote {
+    background: #262730;
+  }
 }
 
 blockquote::before {
@@ -144,7 +146,7 @@ a {
 
 @media (prefers-color-scheme: dark) {
   a {
-    color: #a40000;
+    color: #b20000;
   }
 }
 
@@ -350,7 +352,9 @@ sup {
 }
 
 @media (prefers-color-scheme: dark) {
-  background: #262730;
+  .info-bar {
+    background: #262730;
+  }
 }
 
 .info-bar > .close-button {
@@ -442,16 +446,13 @@ input[type="search"] {
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  margin-left: 5px;
 }
 
 .main-menu .search-form {
   position: absolute;
   z-index: 10000;
   background-color: hsl(0, 0%, 100%);
-}
-
-@media (prefers-color-scheme: dark) {
-  background-color: #262730;
 }
 
 /* Navigation */
@@ -1569,15 +1570,26 @@ span.rss-date {
     }
 }
 
-
 .post-page .related-posts .post {
   margin-bottom: 1rem;
   border: 1px solid rgba(0,0,0,0.1);
   box-shadow: 0 0.1rem 0.2rem rgba(0,0,0,0.1);
 }
 
+@media (prefers-color-scheme: dark) {
+  .post-page .related-posts .post {
+    background-color: #262730;
+  }
+}
+
 .post-page .related-posts a {
   color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  .post-page .related-posts a {
+    color: #ddd;
+  }
 }
 
 .post-page .related-posts a:hover {
@@ -1624,7 +1636,7 @@ span.rss-date {
 }
 
 @media (prefers-color-scheme: dark) {
-  #filter_button {
+  #filter-button {
     background: #262730;
   }
 }
@@ -2336,7 +2348,8 @@ article .event-info #map-button {
 @media (prefers-color-scheme: dark) {
   #course-table thead th,
   .tablepress thead th {
-    background-color: #262730;
+    background-color: #262730 !important;
+    color: hsl(0, 0%, 100%);
   }
 }
 
@@ -2354,6 +2367,17 @@ article .event-info #map-button {
   .tablepress thead th.sorting_asc,
   .tablepress thead th.sorting_desc {
     background-color: #1c1d23;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  #course-table tbody,
+  .tablepress tbody {
+    --even-bg-color: #262730;
+    --odd-bg-color: #32333f;
+    --even-text-color: #ddd;
+    --odd-text-color: #ddd;
+    --border-color: #111;
   }
 }
 
@@ -2505,7 +2529,6 @@ article .event-info #map-button {
 @media (prefers-color-scheme: dark) {
   #wp-calendar tbody td.eo-past-date {
     background: #262730;
-    color: #1c1d23;
   }
 }
 
