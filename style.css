@@ -630,6 +630,12 @@ ul.nav-menu > li.menu-item-has-children > a.menu-dropdown-button {
 }
 
 @media (prefers-color-scheme: dark) {
+  #lunch-menu-restaurants {
+    background-color: #262730;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
   ul.nav-menu > li.menu-item-has-children > a.menu-dropdown-button {
     color: rgba(255, 255, 255, 0.25);
     border: 1px solid rgba(255, 255, 255, 0.25);
