@@ -2,7 +2,7 @@
 Theme Name: ftek
 Author: Johan Winther
 Description: Theme for F-sektionen at Chalmers.
-Version: 2.4.8
+Version: 2.4.9
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 GitHub Theme URI: fysikteknologsektionen/ftek-theme
@@ -627,12 +627,6 @@ ul.nav-menu > li.menu-item-has-children > a.menu-dropdown-button {
   margin-right: 1rem;
   transition: transform 0.2s ease;
   vertical-align: middle;
-}
-
-@media (prefers-color-scheme: dark) {
-  #lunch-menu-restaurants {
-    background-color: #262730;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -2786,4 +2780,10 @@ article .event-info #map-button {
   background-size: 32px 32px;
   background-position: center;
   padding: 32px 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  #lunch-menu-restaurants {
+    background-color: #262730;
+  }
 }
