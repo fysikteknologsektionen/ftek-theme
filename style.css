@@ -2781,9 +2781,3 @@ article .event-info #map-button {
   background-position: center;
   padding: 32px 0;
 }
-
-@media (prefers-color-scheme: dark) {
-  #lunch-menu-restaurants {
-    background-color: #262730;
-  }
-}
