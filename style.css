@@ -2594,7 +2594,7 @@ article .event-info #map-button {
     .eo-fullcalendar .fc-daygrid-day,
     .eo-fullcalendar .fc-daygrid-body,
     .eo-fullcalendar table {
-        background: #1c1d23;
+        background-color: #1c1d23;
     }
 }
 
