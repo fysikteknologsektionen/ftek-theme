@@ -2591,8 +2591,6 @@ article .event-info #map-button {
 }
 
 @media (prefers-color-scheme: dark) {
-    .eo-fullcalendar .fc-daygrid-day,
-    .eo-fullcalendar .fc-daygrid-body,
     .eo-fullcalendar table {
         background-color: #1c1d23 !important;
     }
