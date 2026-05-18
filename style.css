@@ -2590,12 +2590,6 @@ article .event-info #map-button {
   margin-bottom: 1em;
 }
 
-@media (prefers-color-scheme: dark) {
-    .eo-fullcalendar table {
-        background-color: #1c1d23 !important;
-    }
-}
-
 .fc-event {
   padding: 5px;
 }
