@@ -2,7 +2,7 @@
 Theme Name: ftek
 Author: Johan Winther
 Description: Theme for F-sektionen at Chalmers.
-Version: 2.4.17
+Version: 2.4.12
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 GitHub Theme URI: fysikteknologsektionen/ftek-theme
@@ -1216,7 +1216,7 @@ footer#page-footer > *:nth-child(-n+3) > * {
     }
     footer#page-footer #footer-jane-logo > a {
       margin-top: 1.6em;
-      width: 20%;
+      width: 50%;
     }
 }
 
@@ -1244,7 +1244,7 @@ footer#page-footer > *:nth-child(-n+3) > * {
     }
     footer#page-footer #footer-jane-logo > a {
       margin-top: 1.6em;
-      width: 20%;
+      width: 50%;
     }
 }
 @media (max-width: 546px) {
@@ -1253,7 +1253,7 @@ footer#page-footer > *:nth-child(-n+3) > * {
     width: 85%;
   }
   footer#page-footer #footer-jane-logo > a {
-    width: 25%;
+    width: 85%;
   }
 }
 
@@ -1356,7 +1356,7 @@ footer#page-footer > div#footer-djungle-saying > p {
   width: 80%;
 }
 #footer-jane-logo img {
-  width: 20%;
+  width: 80%;
 }
 
 #footer-chs-logo img:hover {
