@@ -1216,7 +1216,7 @@ footer#page-footer > *:nth-child(-n+3) > * {
     }
     footer#page-footer #footer-jane-logo > a {
       margin-top: 1.6em;
-      width: 50%;
+      width: 20%;
     }
 }
 
@@ -1244,7 +1244,7 @@ footer#page-footer > *:nth-child(-n+3) > * {
     }
     footer#page-footer #footer-jane-logo > a {
       margin-top: 1.6em;
-      width: 50%;
+      width: 20%;
     }
 }
 @media (max-width: 546px) {
@@ -1253,7 +1253,7 @@ footer#page-footer > *:nth-child(-n+3) > * {
     width: 85%;
   }
   footer#page-footer #footer-jane-logo > a {
-    width: 85%;
+    width: 25%;
   }
 }
 
