@@ -203,6 +203,10 @@ footer#page-footer #footer-chs-logo a::after {
   content: none !important;
 }
 
+footer#page-footer #footer-jane-logo a::after {
+  content: none !important;
+}
+
 h1 {
   font-size: 2.2rem;
   font-family: "Latin Modern Roman", Georgia, Times, serif;
@@ -1210,6 +1214,10 @@ footer#page-footer > *:nth-child(-n+3) > * {
       margin-top: 1.6em;
       width: 50%;
     }
+    footer#page-footer #footer-jane-logo > a {
+      margin-top: 1.6em;
+      width: 50%;
+    }
 }
 
 @media
@@ -1234,10 +1242,17 @@ footer#page-footer > *:nth-child(-n+3) > * {
       margin-top: 1.6em;
       width: 50%;
     }
+    footer#page-footer #footer-jane-logo > a {
+      margin-top: 1.6em;
+      width: 50%;
+    }
 }
 @media (max-width: 546px) {
 
-    footer#page-footer #footer-chs-logo > a {
+  footer#page-footer #footer-chs-logo > a {
+    width: 85%;
+  }
+  footer#page-footer #footer-jane-logo > a {
     width: 85%;
   }
 }
@@ -1316,10 +1331,16 @@ footer#page-footer > div#footer-djungle-saying > p {
 #footer-chs-logo {
   text-align: right;
 }
+#footer-jane-logo {
+  text-align: right;
+}
 
 @media
 (max-width: 1100px) {   
   #footer-chs-logo {
+    text-align: center;
+  }
+  #footer-jane-logo {
     text-align: center;
   }
 }
@@ -1327,14 +1348,24 @@ footer#page-footer > div#footer-djungle-saying > p {
 #footer-chs-logo > a {
   display: block;
 }
+#footer-jane-logo > a {
+  display: block;
+}
 
 #footer-chs-logo img {
   width: 80%;
 }
+#footer-jane-logo img {
+  width: 80%;
+}
 
- #footer-chs-logo img:hover {
+#footer-chs-logo img:hover {
   filter: brightness(2.8);
 }
+#footer-jane-logo img:hover {
+  filter: brightness(2.8);
+}
+
 
 #footer-development p,
 #footer-copyright p {

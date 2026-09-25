@@ -28,7 +28,7 @@
 			<a href="https://chalmersstudentkar.se"><img id="chs-logo" alt="Chalmers Studentkår" src="<?php bloginfo('stylesheet_directory'); ?>/images/chalmers.svg" /></a>
 		</div>
 		<div id="footer-chs-logo">
-			<a href="https://www.janestreet.com/"><img id="chs-logo" alt="Jane Street" src="<?php bloginfo('stylesheet_directory'); ?>/images/Jane_Street_Logo.png" /></a>
+			<a href="https://www.janestreet.com/"><img id="jane-logo" alt="Jane Street" src="<?php bloginfo('stylesheet_directory'); ?>/images/Jane_Street_Logo.png" /></a>
 		</div>
 		<div id="footer-development">
 			<p><?=__('Development', 'ftek')?>: Pontus Granström</p>
