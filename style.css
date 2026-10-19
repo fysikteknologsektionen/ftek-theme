@@ -692,7 +692,7 @@ ul.nav-menu > li#menu-item-20000 > a:first-child::after {
 }
 
 ul.nav-menu > li#menu-item-20000.hovered > a:first-child::after {
-  filter: invert(100%);
+  filter: 100%);
 }
 
 
@@ -710,7 +710,7 @@ ul.nav-menu > li:first-child > a:first-child {
 
 @media (prefers-color-scheme: dark) {
   ul.nav-menu > li:first-child > a:first-child {
-    filter: invert(100%);
+    filter: 100%);
   }
 }
 
@@ -1357,14 +1357,14 @@ footer#page-footer > div#footer-djungle-saying > p {
 }
 #footer-jane-logo img {
   width: 80%;
-  filter: invert(1);
+  filter: invert(1) brightness(70%);
 }
 
 #footer-chs-logo img:hover {
   filter: brightness(2.8);
 }
 #footer-jane-logo img:hover {
-  filter: brightness(2.8);
+  filter: invert(1) brightness(100%);
 }
 
 
