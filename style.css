@@ -1357,6 +1357,7 @@ footer#page-footer > div#footer-djungle-saying > p {
 }
 #footer-jane-logo img {
   width: 80%;
+  filter: invert(1);
 }
 
 #footer-chs-logo img:hover {
