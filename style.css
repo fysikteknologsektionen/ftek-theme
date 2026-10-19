@@ -1357,14 +1357,19 @@ footer#page-footer > div#footer-djungle-saying > p {
 }
 #footer-jane-logo img {
   width: 80%;
-  filter: invert(1) brightness(70%);
+}
+#jane-logo {
+    filter: invert(1) brightness(70%);
 }
 
 #footer-chs-logo img:hover {
   filter: brightness(2.8);
 }
 #footer-jane-logo img:hover {
-  filter: invert(1) brightness(100%);
+  filter: brightness(2.8);
+}
+#jane-logo:hover {
+  filter: invert(1) brightness(70%);
 }
 
 
